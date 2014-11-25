@@ -22,7 +22,7 @@ Node, grunt, karma and protractor are and will be used for client and e2e testin
 * Add a home page showing some statistics to get more mvc views (this will be a few presentation pages, home, stats, about, contact)
 
 ##External Apis
-Which external apis are used might change, calendar is probably a great idea. Not that sure about the commit log though. These will change if I figure something a bit more interesting out. Guessing I have a few weeks of work before I can think about adding new features.
+Which external apis are used might change, calendar is probably a great idea. Not that sure about the commit log though. These will change if I figure something a bit more interesting out. Guessing I have a few weeks of work before it's time to add these features.
 
 ##Bonus tasks
 * add configurable public project reports using mvc (configuration in spa, public page in mvc)
@@ -33,10 +33,10 @@ Which external apis are used might change, calendar is probably a great idea. No
 Would nice to find something comparable to code climate, pretty sure they don't support c#
 
 ##Solution structure
-no route - Domain model project
-/ - mvc project
-/api - api project
-/dashboard - spa project
+* no route - Domain model project
+* / - mvc project
+* /api - api project
+* /dashboard - spa project
 
 ##Api endpoints
 * /api/project
@@ -49,11 +49,11 @@ no route - Domain model project
 * /api/documentMeta - Would be nice to figure out some nice way to put these two together
 
 ##Problems with requirements
+###1DV409
 * Most of the c# parts of the application will be api points for the spa, tried adding a few views with presentation page and moving authentication to mvc (not completely sure about this)
-* Use of 2 external apis, spa will use all of the api points aswell as github and google (these two are required for WT2) Stats page was added to make sure I use the api in the mvc project aswell
-* Not sure i can make mongodb work with entity framework, couldn't find any library for it. Guessing it's pretty hard to implement. Not very useful either as entity is an orm.
+* Not sure I can make mongodb work with entity framework, couldn't find any library for it. Guessing it's pretty hard to implement. Not very useful either as entity is an orm.
 
-##General problems
-* Need to figure out where to deploy, azure? (mongodb is not allowed on my binero server, .net is not allowed on my openshift account, pretty sure school server doesn't have mongodb)
-* Lack of knowledge about nosql security, especially when used in combination with .net
-* Need to implement equivalents to mongoose's onsave, onremove and populate. onsave and onremove are probably easy, populate might be hard?
+###1DV449
+* Use of 2 external apis, spa will use all of the api points aswell as github and google (these two are required for WT2) Stats page was added to make sure I use the api in the mvc project aswell
+* Offline first seems pretty hard to implement in combination with realtime data across multiple clients (Need to implement some kind of queue and diffs).
+* There will be a few issues with mobile first. I already have a design I want to start off with so the process can't be correct. Guessing document editor and drag & drop will be pretty hard to get right aswell.
