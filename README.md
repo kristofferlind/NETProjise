@@ -11,7 +11,7 @@ Projise is a realtime multiuser project management system with project, sprint, 
 Current application uses mongodb, node, express, angular and socket.io
 New application will use mongodb, .net web api, .net mvc, angular and signalr
 
-Node, grunt, karma and protractor are and will be used for client and e2e testing.
+Node, grunt, karma and protractor will be used for client and e2e testing.
 
 ##Modifications
 * Will probably use signalr instead of socket.io, found a library for socket.io, but i'm pretty sure it's nowhere near as stable.
@@ -30,8 +30,6 @@ Which external apis are used might change, calendar is probably a great idea. No
 * add IDE remote
 * make current travis tasks work with .net (if it's even possible)
 
-Would nice to find something comparable to code climate, pretty sure they don't support c#
-
 ##Solution structure
 * no route - Domain model project
 * / - mvc project
@@ -45,15 +43,15 @@ Would nice to find something comparable to code climate, pretty sure they don't 
 * /api/task
 * /api/user
 * /api/team
+* /api/idea
 * /api/documentData
-* /api/documentMeta - Would be nice to figure out some nice way to put these two together
+* /api/documentMeta
 
 ##Problems with requirements
 ###1DV409
-* Most of the c# parts of the application will be api points for the spa, tried adding a few views with presentation page and moving authentication to mvc (not completely sure about this)
+* Most of the c# parts of the application will be api points for the spa, tried adding a few views with presentation page and moving authentication to mvc (not completely sure about auth)
 * Not sure I can make mongodb work with entity framework, couldn't find any library for it. Guessing it's pretty hard to implement. Not very useful either as entity is an orm.
 
 ###1DV449
-* Use of 2 external apis, spa will use all of the api points aswell as github and google (these two are required for WT2) Stats page was added to make sure I use the api in the mvc project aswell
 * Offline first seems pretty hard to implement in combination with realtime data across multiple clients (Need to implement some kind of queue and diffs).
 * There will be a few issues with mobile first. I already have a design I want to start off with so the process can't be correct. Guessing document editor and drag & drop will be pretty hard to get right aswell.
