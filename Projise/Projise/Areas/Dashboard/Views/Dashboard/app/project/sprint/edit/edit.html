@@ -1,0 +1,18 @@
+<h2>Edit sprint</h2>
+<form role="form" name="sprint_create" ng-submit="update()">
+    <fieldset>
+        <label for="sprint_name">Name</label>
+        <input id="sprint_name" type="text" placeholder="Name" ng-model="sprint.name" maxlength="50" ng-maxlength="50" required>
+
+        <label for="sprint_goal">Goal</label>
+        <textarea id="sprint_goal" type="text" placeholder="Name" ng-model="sprint.goal" maxlength="250" ng-maxlength="250" required></textarea>
+
+        <label for="sprint_start">Start</label>
+        <input id="sprint_start" type="date" ng-model="sprint.start">
+
+        <label for="sprint_end">End</label>
+        <input id="sprint_end" type="date" ng-model="sprint.end">
+    </fieldset>
+    <button class="button button-primary" ng-disabled="sprint_create.$invalid" type="submit">Update</button>
+    <button class="button button-secondary" type="button" ng-click="cancel()">Cancel</button>
+</form>

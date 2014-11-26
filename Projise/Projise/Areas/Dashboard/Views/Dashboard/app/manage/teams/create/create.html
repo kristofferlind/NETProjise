@@ -1,0 +1,12 @@
+<h2>Create team</h2>
+<form role="form" name="team_create" ng-submit="create()">
+    <fieldset>
+        <label for="team_create_name">Name</label>
+        <input id="team_create_name" type="text" placeholder="Name" ng-model="model.newTeam.name" maxlength="50" ng-maxlength="50" required>
+
+        <label for="team_create_description">Description</label>
+        <textarea id="team_create_description" type="text" placeholder="Name" ng-model="model.newTeam.description" maxlength="250" ng-maxlength="250" required></textarea>
+    </fieldset>
+    <button class="button button-primary" ng-disabled="team_create.$invalid" type="submit">Create</button>
+    <button class="button button-secondary" ng-click="cancel()" type="button">Cancel</button>
+</form>

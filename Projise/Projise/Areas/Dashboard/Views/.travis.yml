@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - '0.10'
+before_script:
+  - 'gem update --system'
+  - 'gem install sass'
+  - 'gem install susy'
+  - 'npm install -g bower grunt-cli'
+  - 'bower install'
+  - 'npm install -g codeclimate-test-reporter'
+services: mongodb
+after_script:
+  - codeclimate < coverage/**/lcov.info
+env:
+  - CODECLIMATE_REPO_TOKEN=696ce5520f3d9d8913193a7399e3dd4e67a5f62e5aca3c6e910233e8a45c62b5

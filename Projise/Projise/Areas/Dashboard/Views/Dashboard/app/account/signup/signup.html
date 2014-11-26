@@ -1,0 +1,33 @@
+<div class="backdrop">
+    <div class="box">
+        <form class="form" name="form" ng-submit="register(form)" novalidate>
+            <label for="signup-name">Name</label>
+            <input id="signup-name" type="text" name="name" ng-model="user.name" required/>
+            <p class="help-block" ng-show="form.name.$error.required && submitted">A name is required</p>
+
+            <label for="signup-email">Email</label>
+            <input id="signup-email" type="email" name="email" ng-model="user.email" required mongoose-error/>
+            <p class="help-block" ng-show="form.email.$error.email && submitted">Doesn't look like a valid email.</p>
+            <p class="help-block" ng-show="form.email.$error.required && submitted">What's your email address?</p>
+            <p class="help-block" ng-show="form.email.$error.mongoose">{{ errors.email }}</p>
+
+            <label for="signup-password">Password</label>
+
+            <input id="signup-password" type="password" name="password" class="form-control" ng-model="user.password" ng-minlength="3" required mongoose-error/>
+            <p class="help-block" ng-show="(form.password.$error.minlength || form.password.$error.required) && submitted">Password must be at least 3 characters.</p>
+            <p class="help-block" ng-show="form.password.$error.mongoose">{{ errors.password }}</p>
+
+            <button class="button button-success" type="submit">Sign up</button>
+            <a class="button button-primary" href="/login">Login</a>
+
+
+            <hr>
+            <div>
+            Connect with:
+                <a class="button button-facebook" href="" ng-click="loginOauth('facebook')"><i class="fa fa-facebook"></i> Facebook</a>
+                <a class="button button-google-plus" href="" ng-click="loginOauth('google')"><i class="fa fa-google-plus"></i> Google+</a>
+                <a class="button button-twitter" href="" ng-click="loginOauth('twitter')"><i class="fa fa-twitter"></i> Twitter</a>
+            </div>
+        </form>
+    </div>
+</div>

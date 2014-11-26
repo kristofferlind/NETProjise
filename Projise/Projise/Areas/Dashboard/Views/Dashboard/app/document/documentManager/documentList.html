@@ -1,0 +1,19 @@
+<div class="grid">
+    <div class="grid-3-3">
+        <h2>Documents</h2>
+        <ul class="list-toolbar">
+            <li><a tooltip="Create document" class="button button-primary button-small" ng-click="DocumentManager.create()"><i class="fa fa-plus"></i></a></li>
+        </ul>
+        <table class="table table-horizontal">
+            <tr ng-repeat="document in DocumentManager.all">
+                <td>{{document.name}}</td>
+                <td class="td-wide">{{document.description}}</td>
+                <td class="button-group-inline">
+                <button tooltip="Show document" class="button button-success button-small" ng-click="DocumentManager.show(document)"><i class="fa fa-check"></i></button>
+                <button tooltip="Edit document" class="button button-secondary button-small" ng-click="DocumentManager.edit(document)"><i class="fa fa-pencil"></i></button>
+                <button tooltip="Edit document metadata" class="button button-secondary button-small" ng-click="DocumentManager.update(document)"><i class="fa fa-cog"></i></button>
+                <button tooltip="Delete document" class="button button-small button-error" ng-click="DocumentManager.delete(document)"><i class="fa fa-trash-o"></i></button></td>
+            </tr>
+        </table>
+    </div>
+</div>

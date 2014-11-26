@@ -1,0 +1,12 @@
+<div class="grid">
+    <div class="grid-3-3">
+        <div ng-hide="DocumentManager.activeDocument">
+            <h2>No active document</h2>
+            <p>Click show document to view a document here.</p>
+        </div>
+
+        <div ng-show="DocumentManager.activeDocument">
+            <div btf-markdown="DocumentManager.activeDocumentData.data"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="grid">
+    <div class="grid-3-3"><h1>Overview</h1></div>
+    <section class="grid-1-3">
+        <h2>Calendar</h2>
+    </section>
+    <section class="grid-1-3">
+        <h2>Ideas</h2>
+        <ul class="list-toolbar">
+            <li><a tooltip="Create idea" class="button button-primary button-small" ng-click="Idea.create()"><i class="fa fa-plus"></i></a></li>
+        </ul>
+        <div ng-repeat="idea in Idea.all | orderBy:'score':true">
+            <div class="idea-item grid">
+                <div class="grid-2-12 idea-item-score">{{idea.score}}</div>
+                <div class="grid-9-12 idea-item-body" ng-click="show=!show">
+                    <p><b>{{idea.name}}</b> - {{idea.description}}</p>
+                </div>
+                <div class="grid-1-12 idea-item-voting">
+                    <a class="idea-item-voting-up" ng-click="Idea.voteUp(idea)">▲</a><br>
+                    <a class="idea-item-voting-down" ng-click="Idea.voteDown(idea)">▼</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="grid-1-3">
+        <h2>Project burndown chart</h2>
+    </section>
+</div>

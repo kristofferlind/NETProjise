@@ -1,0 +1,20 @@
+//************************
+//    Basic reset
+//************************
+
+
+//************************
+//    Importing Metas
+//************************
+
+@import "meta/colors";
+@import "meta/grid"; // requires Susy 2.0.0 or later
+@import "meta/typography";
+
+//************************
+//    Base Styles
+//************************
+
+img {
+    max-width: 100%;
+}

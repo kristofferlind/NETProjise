@@ -1,0 +1,652 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{07CA9AB0-0B9E-4368-926C-040820F84357}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Projise</RootNamespace>
+    <AssemblyName>Projise</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AspNet.Identity.MongoDB">
+      <HintPath>..\packages\AspNet.Identity.MongoDB.1.0.11\lib\net45\AspNet.Identity.MongoDB.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\packages\mongocsharpdriver.1.9.0\lib\net35\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\packages\mongocsharpdriver.1.9.0\lib\net35\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=__MvcPagesVersion__, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.2\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.2\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.2\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.2\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.1.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.0\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.0\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\ApplicationIdentityContext.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\EnsureAuthIndexes.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Dashboard\DashboardAreaRegistration.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RolesAdminController.cs" />
+    <Compile Include="Controllers\UserAdminController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AdminViewModel.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\account\account.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\account\login\login.controller.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\account\login\login.controller.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\account\login\login.html" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\account\settings\settings.controller.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\account\settings\settings.controller.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\account\settings\settings.html" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\account\signup\signup.controller.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\account\signup\signup.controller.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\account\signup\signup.html" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\app.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\chatpanel\chat.service.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\chatpanel\chat.service.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\chatpanel\chatpanel.controller.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\chatpanel\chatpanel.controller.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\chatpanel\chatpanel.html" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\chatpanel\lineBreak.filter.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\chatpanel\lineBreak.filter.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\chatpanel\scrollBottom.directive.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\chatpanel\scrollBottom.directive.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\document\document.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\document\documentEditor\documentEditor.controller.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\document\documentEditor\documentEditor.controller.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\document\documentEditor\documentEditor.html" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\document\documentManager\create\create.controller.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\document\documentManager\create\create.controller.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\document\documentManager\create\create.html" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\document\documentManager\documentList.controller.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\document\documentManager\documentList.controller.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\document\documentManager\documentList.html" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\document\documentManager\documentManager.controller.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\document\documentManager\documentManager.controller.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\document\documentManager\documentManager.html" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\document\documentManager\documentManager.service.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\document\documentManager\documentManager.service.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\document\documentViewer\documentViewer.controller.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\document\documentViewer\documentViewer.controller.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\document\documentViewer\documentViewer.html" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\manage\manage.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\manage\projects\create\create.controller.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\manage\projects\create\create.controller.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\manage\projects\create\create.html" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\manage\projects\edit\edit.controller.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\manage\projects\edit\edit.controller.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\manage\projects\edit\edit.html" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\manage\projects\projects.controller.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\manage\projects\projects.controller.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\manage\projects\projects.html" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\manage\projects\users\add\add.controller.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\manage\projects\users\add\add.controller.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\manage\projects\users\add\add.html" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\manage\teams\create\create.controller.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\manage\teams\create\create.controller.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\manage\teams\create\create.html" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\manage\teams\edit\edit.controller.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\manage\teams\edit\edit.controller.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\manage\teams\edit\edit.html" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\manage\teams\teams.controller.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\manage\teams\teams.controller.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\manage\teams\teams.html" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\manage\teams\teams.provider.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\manage\teams\teams.provider.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\manage\teams\teams.service.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\manage\teams\teams.service.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\navbar\navbar.controller.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\navbar\navbar.controller.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\navbar\navbar.html" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\navpanel\navpanel.controller.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\navpanel\navpanel.controller.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\navpanel\navpanel.html" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\idea\create\create.controller.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\idea\create\create.controller.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\idea\create\create.html" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\idea\idea.service.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\idea\idea.service.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\project.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\project\overview.controller.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\project\overview.controller.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\project\overview.html" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\project\project.controller.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\project\project.controller.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\project\project.html" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\project\projects.provider.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\project\projects.provider.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\project\projects.service.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\project\projects.service.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\sprint\create\create.controller.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\sprint\create\create.controller.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\sprint\create\create.html" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\sprint\edit\edit.controller.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\sprint\edit\edit.controller.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\sprint\edit\edit.html" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\sprint\sprint.controller.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\sprint\sprint.controller.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\sprint\sprint.html" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\sprint\sprintItem.directive.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\sprint\sprintItem.partial.html" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\sprint\sprints.provider.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\sprint\sprints.provider.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\sprint\sprints.service.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\sprint\sprints.service.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\story\create\create.controller.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\story\create\create.controller.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\story\create\create.html" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\story\edit\edit.controller.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\story\edit\edit.controller.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\story\edit\edit.html" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\story\story.controller.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\story\story.controller.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\story\story.html" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\story\story.provider.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\story\story.provider.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\story\story.service.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\story\story.service.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\story\storyItem.directive.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\story\storyItem.partial.html" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\task\task.service.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\task\task.service.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\images\yeoman.png" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-bootstrap\ui-bootstrap-tpls.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-bootstrap\ui-bootstrap-tpls.min.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-bootstrap\ui-bootstrap.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-bootstrap\ui-bootstrap.min.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-cookies\angular-cookies.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-cookies\angular-cookies.min.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-markdown-directive\.gitignore" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-markdown-directive\karma.conf.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-markdown-directive\markdown.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-markdown-directive\markdown.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-mocks\angular-mocks.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-resource\angular-resource.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-resource\angular-resource.min.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-sanitize\angular-sanitize.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-sanitize\angular-sanitize.min.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-scenario\angular-scenario.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-scenario\jstd-scenario-adapter-config.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-scenario\jstd-scenario-adapter.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-socket-io\.gitignore" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-socket-io\gulpfile.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-socket-io\karma.conf.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-socket-io\mock\socket-io.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-socket-io\socket.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-socket-io\socket.min.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-socket-io\socket.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-ui-router\release\angular-ui-router.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-ui-router\release\angular-ui-router.min.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-ui-router\src\common.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-ui-router\src\compat.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-ui-router\src\resolve.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-ui-router\src\state.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-ui-router\src\stateDirectives.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-ui-router\src\stateFilters.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-ui-router\src\templateFactory.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-ui-router\src\urlMatcherFactory.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-ui-router\src\urlRouter.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-ui-router\src\view.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-ui-router\src\viewDirective.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-ui-router\src\viewScroll.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular\angular-csp.css" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular\angular.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular\angular.min.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\es5-shim\es5-sham.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\es5-shim\es5-sham.min.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\es5-shim\es5-shim.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\es5-shim\es5-shim.min.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\.gitignore" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\css\font-awesome.css" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\json3\lib\json3.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\json3\lib\json3.min.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\lodash\dist\lodash.compat.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\lodash\dist\lodash.compat.min.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\lodash\dist\lodash.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\lodash\dist\lodash.min.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\lodash\dist\lodash.underscore.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\lodash\dist\lodash.underscore.min.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\lodash\LICENSE.txt" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\showdown\compressed\extensions\github.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\showdown\compressed\extensions\google-prettify.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\showdown\compressed\extensions\twitter.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\showdown\compressed\showdown.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\showdown\license.txt" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\showdown\src\extensions\github.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\showdown\src\extensions\prettify.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\showdown\src\extensions\table.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\showdown\src\extensions\twitter.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\showdown\src\showdown.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\components\auth\auth.service.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\components\auth\auth.service.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\components\auth\user.service.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\components\confirm\confirm.html" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\components\confirm\confirmDialog.directive.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\components\confirm\confirmShow.directive.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\components\dragAndDrop\dragAndDrop.directive.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\components\filters\toCSSName.filter.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\components\filters\toCSSName.filter.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\components\mongoose-error\mongoose-error.directive.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\components\panelswitch\panelswitch.service.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\components\session\session.service.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\components\socket\socket.mock.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\components\socket\socket.service.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\components\uiRouter.mock.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\favicon.ico" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\robots.txt" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Dashboard\Views\web.config" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\.htaccess" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\.jshintrc" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\account\login\login.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\app.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\chatpanel\chatpanel.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\document\document.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\manage\projects\projects.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\manage\teams\teams.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\navbar\navbar.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\navpanel\navpanel.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\idea\idea.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\sprint\sprint.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\story\story.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\task\task.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\meta\_colors.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\meta\_grid.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\meta\_typography.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\modules\_all.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\modules\_button.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\modules\_content.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\modules\_forms.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\modules\_header.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\modules\_menu.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\modules\_modal.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\modules\_status.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\modules\_table.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\modules\_toolbar.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\modules\_tooltip.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\style.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\_vendor-styles-go-here.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\_base.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\_layout.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\_normalize.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\_states.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-bootstrap\.bower.json" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-bootstrap\bower.json" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-cookies\.bower.json" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-cookies\angular-cookies.min.js.map" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-cookies\bower.json" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-cookies\README.md" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-markdown-directive\.bower.json" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-markdown-directive\.travis.yml" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-markdown-directive\bower.json" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-markdown-directive\package.json" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-markdown-directive\README.md" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-mocks\.bower.json" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-mocks\bower.json" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-mocks\README.md" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-resource\.bower.json" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-resource\angular-resource.min.js.map" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-resource\bower.json" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-resource\README.md" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-sanitize\.bower.json" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-sanitize\angular-sanitize.min.js.map" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-sanitize\bower.json" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-sanitize\README.md" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-scenario\.bower.json" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-scenario\bower.json" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-scenario\README.md" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-socket-io\.bower.json" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-socket-io\.travis.yml" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-socket-io\bower.json" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-socket-io\package.json" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-socket-io\README.md" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-socket-io\socket.min.js.map" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-ui-router\.bower.json" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-ui-router\bower.json" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-ui-router\CHANGELOG.md" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-ui-router\LICENSE" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-ui-router\README.md" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular\.bower.json" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular\angular.min.js.gzip" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular\angular.min.js.map" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular\bower.json" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular\README.md" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\es5-shim\.bower.json" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\es5-shim\bower.json" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\es5-shim\CHANGES" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\es5-shim\component.json" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\es5-shim\CONTRIBUTORS.md" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\es5-shim\es5-sham.map" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\es5-shim\es5-shim.map" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\es5-shim\LICENSE" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\es5-shim\package.json" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\es5-shim\README.md" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\es5-shim\shims.json" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\.bower.json" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\.npmignore" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\less\bordered-pulled.less" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\less\core.less" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\less\extras.less" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\less\fixed-width.less" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\less\font-awesome.less" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\less\icons.less" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\less\larger.less" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\less\list.less" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\less\mixins.less" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\less\path.less" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\less\rotated-flipped.less" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\less\spinning.less" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\less\stacked.less" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\less\variables.less" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\scss\font-awesome.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\scss\_core.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\scss\_extras.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\scss\_icons.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\scss\_larger.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\scss\_list.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\scss\_mixins.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\scss\_path.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\scss\_spinning.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\scss\_stacked.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\font-awesome\scss\_variables.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\json3\.bower.json" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\json3\bower.json" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\json3\CHANGELOG.md" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\json3\CONTRIBUTING.md" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\json3\LICENSE" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\json3\README.md" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\lodash\.bower.json" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\lodash\bower.json" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\showdown\.bower.json" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\showdown\.travis.yml" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\showdown\package.json" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\showdown\README.md" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\components\filters\toArray.filter.bak" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Account\DisplayEmail.cshtml" />
+    <Content Include="Views\RolesAdmin\Create.cshtml" />
+    <Content Include="Views\RolesAdmin\Delete.cshtml" />
+    <Content Include="Views\RolesAdmin\Details.cshtml" />
+    <Content Include="Views\RolesAdmin\Edit.cshtml" />
+    <Content Include="Views\RolesAdmin\Index.cshtml" />
+    <Content Include="Views\UsersAdmin\Create.cshtml" />
+    <Content Include="Views\UsersAdmin\Delete.cshtml" />
+    <Content Include="Views\UsersAdmin\Details.cshtml" />
+    <Content Include="Views\UsersAdmin\Edit.cshtml" />
+    <Content Include="Views\UsersAdmin\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Dashboard\Models\" />
+    <Folder Include="Areas\Dashboard\Views\Dashboard\app\document\documentManager\edit\" />
+    <Folder Include="Areas\Dashboard\Views\Dashboard\app\document\templateManager\" />
+    <Folder Include="Areas\Dashboard\Views\Shared\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Projise.DomainModel\Projise.DomainModel.csproj">
+      <Project>{94e0e2cc-77a8-46ea-970a-2e903bf742c2}</Project>
+      <Name>Projise.DomainModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>48272</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:48272/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

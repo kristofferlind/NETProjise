@@ -1,0 +1,12 @@
+<h2>Create project</h2>
+<form role="form" name="project_create" ng-submit="create()">
+    <fieldset>
+        <label for="project_name">Name</label>
+        <input id="project_name" type="text" placeholder="Name" ng-model="newProject.name" maxlength="50" ng-maxlength="50" required>
+
+        <label for="project_description">Description</label>
+        <textarea id="project_description" type="text" placeholder="Name" ng-model="newProject.description" maxlength="250" ng-maxlength="250" required></textarea>
+    </fieldset>
+    <button class="button button-primary" ng-disabled="project_create.$invalid" type="submit">Create</button>
+    <button class="button button-secondary" type="button" ng-click="cancel()">Cancel</button>
+</form>

@@ -1,0 +1,13 @@
+<h2>Create idea</h2>
+<form role="form" name="idea_create" ng-submit="create()">
+    <fieldset>
+        <label for="idea_name">Name</label>
+        <input id="idea_name" type="text" placeholder="Name" ng-model="idea.name" maxlength="50" ng-maxlength="50" required>
+
+        <label for="idea_description">Description</label>
+        <textarea id="idea_description" type="text" placeholder="Description" ng-model="idea.description" maxlength="250" ng-maxlength="250" required></textarea>
+
+    </fieldset>
+    <button class="button button-primary" ng-disabled="idea_create.$invalid" type="submit">Create</button>
+    <button class="button button-secondary" type="button" ng-click="cancel()">Cancel</button>
+</form>

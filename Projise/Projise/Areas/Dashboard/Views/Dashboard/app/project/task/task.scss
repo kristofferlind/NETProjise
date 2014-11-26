@@ -1,0 +1,53 @@
+input.task-add {
+    width: calc(100% - 75px);
+    margin: 0;
+    display: inline;
+    vertical-align: middle;
+}
+
+form.form-add-task {
+    margin: 0;
+}
+
+
+
+
+
+
+
+.task-toggle {
+    text-align: center;
+    /* auto, since non-WebKit browsers doesn't support input styling */
+    position: relative;
+    top: 7px;
+    margin: 0;
+    padding: 0;
+    /* Mobile Safari */
+    border: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    outline: none;
+}
+
+.task-toggle:after {
+    content: '✔';
+    /* 40 + a couple of pixels visual adjustment */
+    font-size: 20px;
+    color: #d9d9d9;
+    text-shadow: 0 -1px 0 #bfbfbf;
+}
+
+.task-toggle:checked:after {
+    color: $color-status-completed;
+    text-shadow: 0 1px 0 #669991;
+    bottom: 1px;
+    position: relative;
+}
+
+td.task-td-description {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+}

@@ -1,0 +1,37 @@
+.idea-item {
+    border: 1px solid black;
+    background-color: #eee;
+    margin-top: -1px;
+}
+
+.idea-item-score {
+    background-color: #ddd;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 2em;
+    color: #555;
+    line-height: 3em;
+}
+
+.idea-item-body {
+    padding: 0 0.5em;
+    box-sizing: border-box;
+}
+
+.idea-item-voting {
+    background-color: #ddd;
+    text-align: center;
+    font-size: 2em;
+    vertical-align: middle;
+    line-height: 1.5em;
+}
+
+.idea-item-voting-up {
+    color: green;
+    cursor: pointer;
+}
+
+.idea-item-voting-down {
+    color: red;
+    cursor: pointer;
+}

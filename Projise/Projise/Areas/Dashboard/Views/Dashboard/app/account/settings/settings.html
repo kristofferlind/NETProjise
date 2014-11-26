@@ -1,0 +1,21 @@
+<div class="grid">
+    <div class="grid-3-3"><div class="container">
+        <h1>Change Password</h1>
+    </div>
+    <div class="grid-1-3">
+        <form class="form" name="form" ng-submit="changePassword(form)" novalidate>
+            <label for="settigs-old-password">Current Password</label>
+            <input id="settings-old-password" type="password" name="password" ng-model="user.oldPassword" mongoose-error/>
+            <p class="help-block" ng-show="form.password.$error.mongoose">{{ errors.other }}</p>
+
+            <label for="settings-new-password">New Password</label>
+            <input id="settings-new-password" type="password" name="newPassword" ng-model="user.newPassword" ng-minlength="3" required/>
+            <p class="help-block" ng-show="(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || submitted)">Password must be at least 3 characters.</p>
+
+            <p class="help-block"> {{ message }} </p>
+
+        <button class="button button-primary" type="submit">Save changes</button>
+      </form>
+    </div>
+  </div>
+</div>

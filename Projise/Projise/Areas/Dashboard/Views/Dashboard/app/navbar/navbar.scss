@@ -1,0 +1,28 @@
+.navbar {
+    background-color: $color-navbar-bg;
+    color: $color-text-inverse;
+    box-sizing: border-box;
+    padding-top: 10px;
+}
+
+.navbar a {
+    color: $color-navbar-link;
+}
+
+.navbar a:hover {
+    color: $color-navbar-link-active;
+}
+
+.navbar-branding {
+    font-size: 30px;
+    margin-left: 40px;
+    line-height: 30px;
+    position: absolute;
+}
+
+.navbar-project {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    line-height: 30px;
+}

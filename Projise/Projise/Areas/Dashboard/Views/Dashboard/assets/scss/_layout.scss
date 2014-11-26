@@ -1,0 +1,76 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.wrapper {
+    padding-top: 50px;
+    display: flex;
+    min-height: calc(100% - 50px);
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.navbar {
+    position: absolute;
+    width: 100%;
+    height: 50px;
+}
+
+.flex-height {
+    flex: 1;
+    display: flex;
+    flex-flow: column;
+}
+
+.main {
+    background-color: $white;
+    flex: 1;
+    display: flex;
+}
+
+.full-height {
+    min-height: 100%;
+    display: flex;
+}
+
+.grid {
+    @include container(100%);
+    min-height: 100%;
+    width: 100%;
+}
+
+.grid-1-3 {
+    @include span(4 of 12);
+    min-width: 300px;
+    box-sizing: border-box;
+}
+
+.grid-2-3 {
+    @include span(8 of 12);
+}
+
+.grid-3-3 {
+    @include span(full);
+}
+
+.grid-1-6 {
+    @include span(2 of 12);
+}
+
+.grid-5-6 {
+    @include span(10 of 12);
+}
+
+.grid-1-12 {
+    @include span(1 of 12);
+}
+
+.grid-2-12 {
+    @include span(2 of 12);
+}
+
+.grid-9-12 {
+    @include span(9 of 12);
+}

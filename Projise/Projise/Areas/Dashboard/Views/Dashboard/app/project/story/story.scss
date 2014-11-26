@@ -1,0 +1,64 @@
+.story-item {
+    border: 1px solid black;
+    /*background-color: #eee;*/
+    margin-top: -1px;
+}
+
+.story-item-priority {
+    text-align: center;
+    font-size: 2em;
+    color: #555;
+    line-height: 3em;
+    background-color: rgba(0,0,0,0.1)
+}
+
+.story-item-delete {
+    float: right;
+    margin-right: 0.5em;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.story-item-body {
+    padding: 4px;
+    box-sizing: border-box;
+}
+
+.story-item-body p {
+    margin: 0;
+}
+
+.story-item.story-in-sprint {
+    border-left: 1px black dashed;
+    border-right: 1px black dashed;
+}
+
+/*.story-item.story-in-sprint .story-item-body {
+    background-color: rgba(0,0,0,0.05);
+}
+*/
+div[drag] {
+    cursor: move;
+}
+
+input.story-filter {
+    width: calc(100% - 171px);
+    display: inline;
+    margin: 0;
+    height: 26px;
+}
+
+.story-filter-container {
+    margin-bottom: 11px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.dropzone {
+    border: 1px dotted black;
+}
+
+.dropzone-task {
+    display: block;
+    height: 100px;
+}

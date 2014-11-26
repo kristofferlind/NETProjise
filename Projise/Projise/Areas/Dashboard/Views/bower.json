@@ -1,0 +1,24 @@
+{
+  "name": "projise",
+  "version": "0.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "1.2.x",
+    "json3": "3.3.x",
+    "es5-shim": "3.0.x",
+    "angular-resource": "1.2.x",
+    "angular-cookies": "1.2.x",
+    "angular-sanitize": "1.2.x",
+    "angular-bootstrap": "0.11.x",
+    "font-awesome": "4.1.x",
+    "lodash": "2.4.x",
+    "angular-socket-io": "0.6.x",
+    "angular-ui-router": "0.2.x",
+    "angular-markdown-directive": "0.3.x",
+    "showdown": "0.3.x"
+  },
+  "devDependencies": {
+    "angular-mocks": "1.2.x",
+    "angular-scenario": "1.2.x"
+  }
+}

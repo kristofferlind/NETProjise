@@ -1,0 +1,19 @@
+.not-started {
+    background-color: $color-status-not-started;
+}
+.in-progress {
+    background-color: $color-status-in-progress;
+}
+.completed {
+    background-color: $color-status-completed;
+}
+
+.not-started:hover {
+    background-color: $color-status-not-started-active;
+}
+.in-progress:hover {
+    background-color: $color-status-in-progress-active;
+}
+.completed:hover {
+    background-color: $color-status-completed-active;
+}

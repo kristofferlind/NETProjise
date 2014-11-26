@@ -1,0 +1,12 @@
+<div class="dialogs">
+    <div class="modal" ng-repeat="dialog in confirmDialogs">
+        <div class="modal-backdrop" ng-click="close(dialog)"></div>
+        <div class="modal-body">
+            <div class="modal-close" ng-click="close(dialog)">X</div>
+            <h1>Warning</h1>
+            <p>{{dialog.message}}</p>
+            <button class="button button-error" ng-click="yes(dialog)">Yes</button>
+            <button class="button button-secondary" ng-click="close(dialog)">No</button>
+        </div>
+    </div>
+</div>

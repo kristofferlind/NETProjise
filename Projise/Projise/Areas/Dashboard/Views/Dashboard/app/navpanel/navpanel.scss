@@ -1,0 +1,125 @@
+.pane-left {
+    background-color: $color-panel;
+    border-right: 3px solid $color-border;
+}
+
+.navpanel-switch {
+    position: absolute;
+    left: 10px;
+    z-index: 5;
+}
+
+.panel-group {
+
+}
+
+.panel, .panel-title, panel-body {
+    margin: 0;
+}
+
+.panel {
+    width: 100%;
+}
+
+.panel-heading {
+    margin-top: -1px;
+    cursor: pointer;
+    background-color: $color-accordion-bg;
+    border-top: 1px solid $black;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 150ms ease-in;
+}
+
+.panel-title, .accordion-toggle {
+    width: 100%;
+    height: 100%;
+}
+
+.accordion-toggle {
+    padding: 15px;
+}
+
+.panel-heading:hover {
+    background-color: lighten($color-accordion-bg, 20%);
+    transition: all 50ms ease-in;
+}
+
+.panel-active .panel-title:after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-top: 9px solid $color-accordion-bg;
+    border-bottom: 9px solid transparent;
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    z-index: 2;
+}
+
+.panel-active .panel-heading {
+    border-bottom: 0;
+}
+
+.panel:last-child .panel-heading {
+    border-bottom: 1px solid $black;
+}
+.panel:last-child.panel-active .panel-heading {
+    border-bottom: 0;
+}
+
+.menu-item:first-child {
+    border-top: 0;
+}
+
+.menu-item {
+    display: block;
+    box-sizing: border-box;
+    padding: 15px;
+    background-color: $color-accordion-item-bg;
+    border-top: 1px solid $black;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 150ms ease-in;
+    color: $black;
+    text-decoration: none;
+}
+
+.menu-item:hover {
+    background-color: lighten($color-accordion-item-bg, 20%);
+    transition: all 50ms ease-in;
+}
+
+.menu-item:last-child {
+    border-bottom: 1px solid $black;
+}
+
+.panel-heading:last-of-type {
+    border-bottom: 1px solid $black;
+}
+
+.panel-collapse {
+    overflow-y: hidden;
+    transition: all 150ms ease;
+}
+
+panel-group {
+    border-bottom: 1px solid $black;
+}
+
+.accordion-toggle {
+    display: block;
+    width: 100%;
+}
+
+.pane.pane-left {
+    width: 300px;
+    min-height: 100%;
+    margin-left: -303px;
+    transition: all 300ms ease;
+}
+
+.pane-active.pane-left {
+    width: 300px;
+    min-height: 100%;
+    margin-left: 0;
+}

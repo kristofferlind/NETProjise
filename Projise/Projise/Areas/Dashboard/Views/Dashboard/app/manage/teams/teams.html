@@ -1,0 +1,36 @@
+<div class="grid">
+    <div class="grid-3-3">
+        <h1>Manage teams</h1>
+    </div>
+    <section class="grid-1-3">
+        <h2>My teams</h2>
+        <ul class="list-toolbar">
+            <li><a tooltip="Create team" class="button button-primary button-small" href="" ng-click="Team.create()"><i class="fa fa-plus"></i></a></li>
+        </ul>
+        <table class="table table-horizontal">
+            <tr ng-repeat="team in Team.all()">
+                <td><b>{{team.name}}: </b>{{team.description}}</td>
+                <td class="button-group-inline"><button tooltip="Show team" class="button button-success button-small" ng-disabled="Team.active() === team._id" ng-click="Team.activate(team)"><i class="fa fa-check"></i></button>
+                <button tooltip="Edit team" class="button button-secondary button-small" ng-click="Team.update(team)"><i class="fa fa-cog"></i></button>
+                <button tooltip="Delete team" class="button button-small button-error" confirm-dialog confirm-id="teamId" confirm-message="Are you sure you want to delete this team and all it's data?" on-confirm="Team.delete(team)"><i class="fa fa-trash-o"></i></button></td>
+            </tr>
+        </table>
+    </section>
+    <section class="grid-1-3">
+        <h2>Team users</h2>
+        <table class="table table-horizontal">
+            <tr ng-repeat="user in Team.Users.all()">
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+                <td class="button-group-inline"><button tooltip="Remove user" class="button button-small button-error" confirm-dialog confirm-id="teamId" confirm-message="Are you sure you want to remove this member?" on-confirm="Team.Users.remove(user)"><i class="fa fa-trash-o"></i></button></td>
+            </tr>
+        </table>
+    </section>
+    <section class="grid-1-3">
+        <h2>Add user</h2>
+        <form role="form" name="team_add_user" ng-submit="addUser()">
+            <input type="text" type="email" required ng-model="model.newUser.email">
+            <button tooltip="Invite user to team" class="button button-primary" ng-disabled="team_add_user.$invalid" type="submit">Invite</button>
+        </form>
+    </section>
+</div>

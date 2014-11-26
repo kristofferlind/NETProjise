@@ -1,0 +1,24 @@
+<section class="pane pane-left" ng-class="{'pane-active': navpanelActive}" >
+    <accordion close-others="true">
+        <accordion-group heading="Manage" is-open="manage.open" ng-class="{'panel-active': manage.open}">
+            <a ui-sref="dashboard.manage.projects" href="" class="panel menu-item">Manage projects</a>
+            <a ui-sref="dashboard.manage.teams" href="" class="panel menu-item">Manage teams</a>
+        </accordion-group>
+        <accordion-group heading="Project" is-open="project.open" ng-class="{'panel-active': project.open}">
+            <a ui-sref="dashboard.project.overview" href="" class="panel menu-item">Overview</a>
+            <a ui-sref="dashboard.project.project" href="" class="panel menu-item">Plan project</a>
+            <a ui-sref="dashboard.project.sprint" href="" class="panel menu-item">Plan sprint</a>
+            <a ui-sref="dashboard.project.story" href="" class="panel menu-item">My task</a>
+        </accordion-group>
+        <accordion-group heading="Documents" is-open="documents.open" ng-class="{'panel-active': documents.open}">
+            <a ui-sref="dashboard.document.list" href="" class="panel menu-item">Manage documents</a>
+            <a href="" class="panel menu-item">Manage templates</a>
+            <a href="" class="panel menu-item">Link</a>
+        </accordion-group>
+        <accordion-group heading="My account" is-open="account.open" ng-class="{'panel-active': account.open}">
+            <a href="" class="panel menu-item">Profile</a>
+            <a ui-sref="dashboard.settings" href="" ui-sref="dashboard.settings" class="panel menu-item">Settings</a>
+            <a href="" class="panel menu-item" ng-click="Auth.logout()">Logout</a>
+        </accordion-group>
+    </accordion>
+</section>
