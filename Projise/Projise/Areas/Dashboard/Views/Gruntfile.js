@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 
     // Load grunt tasks automatically, when needed
     require('jit-grunt')(grunt, {
-        express: 'grunt-express-server',
+        // express: 'grunt-express-server',
         useminPrepare: 'grunt-usemin',
         ngtemplates: 'grunt-angular-templates',
         cdnify: 'grunt-google-cdn',
@@ -23,30 +23,30 @@ module.exports = function(grunt) {
         // Project settings
         yeoman: {
             // configurable paths
-            client: require('./bower.json').appPath || 'client',
+            client: require('./bower.json').appPath || 'Dashboard',
             dist: 'dist'
         },
-        express: {
-            options: {
-                port: process.env.PORT || 9000
-            },
-            dev: {
-                options: {
-                    script: 'server/app.js',
-                    debug: true
-                }
-            },
-            prod: {
-                options: {
-                    script: 'dist/server/app.js'
-                }
-            }
-        },
-        open: {
-            server: {
-                url: 'http://localhost:<%= express.options.port %>'
-            }
-        },
+        // express: {
+        //     options: {
+        //         port: process.env.PORT || 9000
+        //     },
+        //     dev: {
+        //         options: {
+        //             script: 'server/app.js',
+        //             debug: true
+        //         }
+        //     },
+        //     prod: {
+        //         options: {
+        //             script: 'dist/server/app.js'
+        //         }
+        //     }
+        // },
+        // open: {
+        //     server: {
+        //         url: 'http://localhost:<%= express.options.port %>'
+        //     }
+        // },
         watch: {
             injectJS: {
                 files: [
@@ -103,16 +103,16 @@ module.exports = function(grunt) {
                     livereload: true
                 }
             },
-            express: {
-                files: [
-                    'server/**/*.{js,json}'
-                ],
-                tasks: ['express:dev', 'wait'],
-                options: {
-                    livereload: true,
-                    nospawn: true //Without this option specified express won't be reloaded
-                }
-            }
+            // express: {
+            //     files: [
+            //         'server/**/*.{js,json}'
+            //     ],
+            //     tasks: ['express:dev', 'wait'],
+            //     options: {
+            //         livereload: true,
+            //         nospawn: true //Without this option specified express won't be reloaded
+            //     }
+            // }
         },
 
         // Make sure code styles are up to par and there are no obvious mistakes
@@ -121,12 +121,12 @@ module.exports = function(grunt) {
                 jshintrc: '<%= yeoman.client %>/.jshintrc',
                 reporter: require('jshint-stylish')
             },
-            server: {
-                options: {
-                    jshintrc: 'server/.jshintrc'
-                },
-                src: ['server/{,*/}*.js']
-            },
+            // server: {
+            //     options: {
+            //         jshintrc: 'server/.jshintrc'
+            //     },
+            //     src: ['server/{,*/}*.js']
+            // },
             all: [
                 '<%= yeoman.client %>/{app,components}/**/*.js',
                 '!<%= yeoman.client %>/{app,components}/**/*.spec.js',
@@ -172,47 +172,47 @@ module.exports = function(grunt) {
             }
         },
 
-        // Debugging with node inspector
-        'node-inspector': {
-            custom: {
-                options: {
-                    'web-host': 'localhost'
-                }
-            }
-        },
+        // // Debugging with node inspector
+        // 'node-inspector': {
+        //     custom: {
+        //         options: {
+        //             'web-host': 'localhost'
+        //         }
+        //     }
+        // },
 
-        // Use nodemon to run server in debug mode with an initial breakpoint
-        nodemon: {
-            debug: {
-                script: 'server/app.js',
-                options: {
-                    nodeArgs: ['--debug-brk'],
-                    env: {
-                        PORT: process.env.PORT || 9000
-                    },
-                    callback: function(nodemon) {
-                        nodemon.on('log', function(event) {
-                            console.log(event.colour);
-                        });
+        // // Use nodemon to run server in debug mode with an initial breakpoint
+        // nodemon: {
+        //     debug: {
+        //         script: 'server/app.js',
+        //         options: {
+        //             nodeArgs: ['--debug-brk'],
+        //             env: {
+        //                 PORT: process.env.PORT || 9000
+        //             },
+        //             callback: function(nodemon) {
+        //                 nodemon.on('log', function(event) {
+        //                     console.log(event.colour);
+        //                 });
 
-                        // opens browser on initial server start
-                        nodemon.on('config:update', function() {
-                            setTimeout(function() {
-                                require('open')('http://localhost:8080/debug?port=5858');
-                            }, 500);
-                        });
-                    }
-                }
-            }
-        },
+        //                 // opens browser on initial server start
+        //                 nodemon.on('config:update', function() {
+        //                     setTimeout(function() {
+        //                         require('open')('http://localhost:8080/debug?port=5858');
+        //                     }, 500);
+        //                 });
+        //             }
+        //         }
+        //     }
+        // },
 
         // Automatically inject Bower components into the app
         bowerInstall: {
             target: {
-                src: '<%= yeoman.client %>/index.html',
+                src: '<%= yeoman.client %>/index.cshtml',
                 ignorePath: '<%= yeoman.client %>/',
                 exclude: [/bootstrap-sass-official/, /bootstrap.js/, '/json3/', '/es5-shim/', /bootstrap.css/, /font-awesome.css/]
-            }
+            },
         },
 
         // Renames files for browser caching purposes
@@ -233,7 +233,7 @@ module.exports = function(grunt) {
         // concat, minify and revision files. Creates configurations in memory so
         // additional tasks can operate on them
         useminPrepare: {
-            html: ['<%= yeoman.client %>/index.html'],
+            html: ['<%= yeoman.client %>/index.cshtml'],
             options: {
                 dest: '<%= yeoman.dist %>/public'
             }
@@ -343,7 +343,7 @@ module.exports = function(grunt) {
                         'bower_components/**/*',
                         'assets/images/{,*/}*.{webp}',
                         'assets/fonts/**/*',
-                        'index.html'
+                        'index.cshtml'
                     ]
                 }, {
                     expand: true,
@@ -375,15 +375,15 @@ module.exports = function(grunt) {
             test: [
                 'sass',
             ],
-            debug: {
-                tasks: [
-                    'nodemon',
-                    'node-inspector'
-                ],
-                options: {
-                    logConcurrentOutput: true
-                }
-            },
+            // debug: {
+            //     tasks: [
+            //         'nodemon',
+            //         'node-inspector'
+            //     ],
+            //     options: {
+            //         logConcurrentOutput: true
+            //     }
+            // },
             dist: [
                 'sass',
                 'imagemin',
@@ -399,12 +399,12 @@ module.exports = function(grunt) {
             }
         },
 
-        mochaTest: {
-            options: {
-                reporter: 'spec'
-            },
-            src: ['server/**/*.spec.js']
-        },
+        // mochaTest: {
+        //     options: {
+        //         reporter: 'spec'
+        //     },
+        //     src: ['server/**/*.spec.js']
+        // },
 
         protractor: {
             options: {
@@ -419,15 +419,15 @@ module.exports = function(grunt) {
             }
         },
 
-        env: {
-            test: {
-                NODE_ENV: 'test'
-            },
-            prod: {
-                NODE_ENV: 'production'
-            },
-            all: require('./server/config/local.env')
-        },
+        // env: {
+        //     test: {
+        //         NODE_ENV: 'test'
+        //     },
+        //     prod: {
+        //         NODE_ENV: 'production'
+        //     },
+        //     all: require('./server/config/local.env')
+        // },
 
         // Compiles Sass to CSS
         sass: {
@@ -453,19 +453,19 @@ module.exports = function(grunt) {
             options: {
 
             },
-            // Inject application script files into index.html (doesn't include bower)
+            // Inject application script files into index.cshtml (doesn't include bower)
             scripts: {
                 options: {
                     transform: function(filePath) {
-                        filePath = filePath.replace('/client/', '');
+                        filePath = filePath.replace('/Dashboard/', '');
                         filePath = filePath.replace('/.tmp/', '');
-                        return '<script src="' + filePath + '"></script>';
+                        return '<script src="~/Areas/Dashboard/Views/Dashboard/' + filePath + '"></script>';
                     },
                     starttag: '<!-- injector:js -->',
                     endtag: '<!-- endinjector -->'
                 },
                 files: {
-                    '<%= yeoman.client %>/index.html': [
+                    '<%= yeoman.client %>/index.cshtml': [
                         ['{.tmp,<%= yeoman.client %>}/{app,components}/**/*.js',
                             '!{.tmp,<%= yeoman.client %>}/app/app.js',
                             '!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.spec.js',
@@ -479,8 +479,8 @@ module.exports = function(grunt) {
             sass: {
                 options: {
                     transform: function(filePath) {
-                        filePath = filePath.replace('/client/app/', '');
-                        filePath = filePath.replace('/client/components/', '');
+                        filePath = filePath.replace('/Dashboard/app/', '');
+                        filePath = filePath.replace('/Dashboard/components/', '');
                         return '@import \'' + filePath + '\';';
                     },
                     starttag: '// injector',
@@ -494,19 +494,19 @@ module.exports = function(grunt) {
                 }
             },
 
-            // Inject component css into index.html
+            // Inject component css into index.cshtml
             css: {
                 options: {
                     transform: function(filePath) {
-                        filePath = filePath.replace('/client/', '');
-                        filePath = filePath.replace('/.tmp/', '');
+                        filePath = filePath.replace('Views/Dashboard/', '');
+                        filePath = filePath.replace('Views/.tmp/', '');
                         return '<link rel="stylesheet" href="' + filePath + '">';
                     },
                     starttag: '<!-- injector:css -->',
                     endtag: '<!-- endinjector -->'
                 },
                 files: {
-                    '<%= yeoman.client %>/index.html': [
+                    '<%= yeoman.client %>/index.cshtml': [
                         '<%= yeoman.client %>/{app,components}/**/*.css'
                     ]
                 }
@@ -526,9 +526,9 @@ module.exports = function(grunt) {
         }, 500);
     });
 
-    grunt.registerTask('express-keepalive', 'Keep grunt running', function() {
-        this.async();
-    });
+    // grunt.registerTask('express-keepalive', 'Keep grunt running', function() {
+    //     this.async();
+    // });
 
     grunt.registerTask('serve', function(target) {
         if (target === 'dist') {
@@ -537,28 +537,28 @@ module.exports = function(grunt) {
 
         if (target === 'debug') {
             return grunt.task.run([
-                'clean:server',
-                'env:all',
+                // 'clean:server',
+                // 'env:all',
                 'injector:sass',
                 'concurrent:server',
                 'injector',
-                'bowerInstall',
+                // 'bowerInstall',
                 'autoprefixer',
-                'concurrent:debug'
+                // 'concurrent:debug'
             ]);
         }
 
         grunt.task.run([
-            'clean:server',
-            'env:all',
+            // 'clean:server',
+            // 'env:all',
             'injector:sass',
             'concurrent:server',
             'injector',
-            'bowerInstall',
+            // 'bowerInstall',  //Can't find settings for output src, fix with transform in other task?
             'autoprefixer',
-            'express:dev',
+            // 'express:dev',
             'wait',
-            'open',
+            // 'open',
             'watch'
         ]);
     });

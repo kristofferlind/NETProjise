@@ -39,15 +39,45 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AntiXssLibrary">
+      <HintPath>..\packages\AntiXSS.4.3.0\lib\net40\AntiXssLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="AspNet.Identity.MongoDB">
       <HintPath>..\packages\AspNet.Identity.MongoDB.1.0.11\lib\net45\AspNet.Identity.MongoDB.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="MongoDB.Bson">
-      <HintPath>..\packages\mongocsharpdriver.1.9.0\lib\net35\MongoDB.Bson.dll</HintPath>
+    <Reference Include="BrightstarDB, Version=1.7.1.0, Culture=neutral, PublicKeyToken=e08b12254e74c9d9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\BrightstarDBLibs.1.7.1.0\lib\net45\BrightstarDB.dll</HintPath>
     </Reference>
-    <Reference Include="MongoDB.Driver">
-      <HintPath>..\packages\mongocsharpdriver.1.9.0\lib\net35\MongoDB.Driver.dll</HintPath>
+    <Reference Include="dotNetRDF, Version=1.0.3.0, Culture=neutral, PublicKeyToken=6055ffe4c97cc780, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\dotNetRDF.1.0.6.3421\lib\net40\dotNetRDF.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\HtmlAgilityPack.1.4.6\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlSanitizationLibrary">
+      <HintPath>..\packages\AntiXSS.4.3.0\lib\net40\HtmlSanitizationLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.1.2\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.1.2\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MongoDB.Bson, Version=1.9.2.235, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\mongocsharpdriver.1.9.2\lib\net35\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver, Version=1.9.2.235, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\mongocsharpdriver.1.9.2\lib\net35\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Linq, Version=1.13.122.1, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\BrightstarDBLibs.1.7.1.0\lib\net45\Remotion.Linq.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -101,6 +131,10 @@
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="VDS.Common, Version=1.2.1.0, Culture=neutral, PublicKeyToken=ab5f4eb908061bf0, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\VDS.Common.1.3.0\lib\net40-client\VDS.Common.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -162,6 +196,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Infrastructure\ChatHub.cs" />
     <Compile Include="App_Start\ApplicationIdentityContext.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\EnsureAuthIndexes.cs" />
@@ -170,6 +205,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Chatty\ChattyAreaRegistration.cs" />
+    <Compile Include="Areas\Chatty\Controllers\ChatController.cs" />
+    <Compile Include="Areas\Chatty\Controllers\MessageController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Dashboard\DashboardAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -188,6 +226,16 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Chatty\Content\dyn.css" />
+    <Content Include="Areas\Chatty\Content\pic\b.jpg" />
+    <Content Include="Areas\Chatty\Content\pic\clock.png" />
+    <Content Include="Areas\Chatty\Content\pic\delete.png" />
+    <Content Include="Areas\Chatty\Content\pic\favicon.png" />
+    <Content Include="Areas\Chatty\Content\pic\logo.png" />
+    <Content Include="Areas\Chatty\Scripts\Message.js" />
+    <Content Include="Areas\Chatty\Scripts\MessageBoard.js" />
+    <Content Include="Areas\Dashboard\Views\.gitattributes" />
+    <Content Include="Areas\Dashboard\Views\.gitignore" />
     <Content Include="Areas\Dashboard\Views\Dashboard\app\account\account.js" />
     <Content Include="Areas\Dashboard\Views\Dashboard\app\account\login\login.controller.js" />
     <Content Include="Areas\Dashboard\Views\Dashboard\app\account\login\login.controller.spec.js" />
@@ -393,6 +441,14 @@
     <Content Include="Areas\Dashboard\Views\Dashboard\components\uiRouter.mock.js" />
     <Content Include="Areas\Dashboard\Views\Dashboard\favicon.ico" />
     <Content Include="Areas\Dashboard\Views\Dashboard\robots.txt" />
+    <Content Include="Areas\Dashboard\Views\deplist.txt" />
+    <Content Include="Areas\Dashboard\Views\docgen\dgeni-generator.js" />
+    <Content Include="Areas\Dashboard\Views\docgen\templates\common.template.html" />
+    <Content Include="Areas\Dashboard\Views\e2e\main\main.po.js" />
+    <Content Include="Areas\Dashboard\Views\e2e\main\main.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Gruntfile.js" />
+    <Content Include="Areas\Dashboard\Views\karma.conf.js" />
+    <Content Include="Areas\Dashboard\Views\protractor.conf.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -536,10 +592,25 @@
     <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\showdown\package.json" />
     <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\showdown\README.md" />
     <Content Include="Areas\Dashboard\Views\Dashboard\components\filters\toArray.filter.bak" />
+    <Content Include="Areas\Dashboard\Views\.bowerrc" />
+    <Content Include="Areas\Dashboard\Views\.buildignore" />
+    <Content Include="Areas\Dashboard\Views\.editorconfig" />
+    <Content Include="Areas\Dashboard\Views\.travis.yml" />
+    <Content Include="Areas\Dashboard\Views\.yo-rc.json" />
+    <Content Include="Areas\Dashboard\Views\bower.json" />
+    <Content Include="Areas\Dashboard\Views\dependency-licenses.json" />
+    <Content Include="Areas\Dashboard\Views\license.md" />
+    <Content Include="Areas\Dashboard\Views\package.json" />
+    <Content Include="Areas\Dashboard\Views\README.md" />
+    <Content Include="Areas\Dashboard\Views\e2e\.jshintrc" />
+    <Content Include="Areas\Chatty\Views\web.config" />
+    <Content Include="Areas\Chatty\Views\Chat\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.signalR-2.1.2.js" />
+    <Content Include="Scripts\jquery.signalR-2.1.2.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -597,7 +668,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Dashboard\Models\" />
+    <Folder Include="Areas\Chatty\Views\Shared\" />
     <Folder Include="Areas\Dashboard\Views\Dashboard\app\document\documentManager\edit\" />
     <Folder Include="Areas\Dashboard\Views\Dashboard\app\document\templateManager\" />
     <Folder Include="Areas\Dashboard\Views\Shared\" />
@@ -614,6 +685,9 @@
       <Project>{94e0e2cc-77a8-46ea-970a-2e903bf742c2}</Project>
       <Name>Projise.DomainModel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
