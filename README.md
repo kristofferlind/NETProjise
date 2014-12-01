@@ -14,7 +14,7 @@ New application will use mongodb, .net web api, .net mvc, angular and signalr
 Node, grunt, karma and protractor will be used for client and e2e testing.
 
 ##Modifications
-* Will probably use signalr instead of socket.io, found a library for socket.io, but i'm pretty sure it's nowhere near as stable.
+* Will probably use signalr instead of socket.io.
 * Remote management from IDE will not be implemented(it's not in there now either, just an idea in the model)
 * I might skip team management and document management to save time.
 * Add commit logs
@@ -50,7 +50,7 @@ Which external apis are used might change, calendar is probably a great idea. No
 ##Problems with requirements
 ###1DV409
 * Most of the c# parts of the application will be api points for the spa, tried adding a few views with presentation page and moving authentication to mvc (not completely sure about auth)
-* Not sure I can make mongodb work with entity framework, couldn't find any library for it. Guessing it's pretty hard to implement. Not very useful either as entity is an orm.
+* Couldn't find an entity framework provider for mongodb, I'll use entity for caching data from external apis.
 
 ###1DV449
 * Offline first seems pretty hard to implement in combination with realtime data across multiple clients (Need to implement some kind of queue and diffs).
