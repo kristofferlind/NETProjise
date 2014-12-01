@@ -49,7 +49,7 @@ Which external apis are used might change, calendar is probably a great idea. No
 
 ##Problems with requirements
 ###1DV409
-* Most of the c# parts of the application will be api points for the spa, tried adding a few views with presentation page and moving authentication to mvc (not completely sure about auth)
+* Most of the backend will be api points for the spa, tried adding a few views(presentation and auth), putting project reports as first bonus task.
 * Couldn't find an entity framework provider for mongodb, I'll use entity for caching data from external apis.
 
 ###1DV449
