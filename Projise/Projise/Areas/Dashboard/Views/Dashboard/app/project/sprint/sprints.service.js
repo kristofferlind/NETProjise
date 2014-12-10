@@ -71,7 +71,7 @@ angular.module('projiSeApp').factory('Sprint', function($http, $modal, SprintPro
             create: function() {
                 //Open modal for user input
                 var createModal = $modal.open({
-                    templateUrl: 'app/project/sprint/create/create.html',
+                    templateUrl: 'Areas/Dashboard/Views/Dashboard/app/project/sprint/create/create.html',
                     controller: 'sprintCreateController'
                 });
 
@@ -99,7 +99,7 @@ angular.module('projiSeApp').factory('Sprint', function($http, $modal, SprintPro
             update: function(sprint) {
                 //Open modal for user input
                 var editModal = $modal.open({
-                    templateUrl: 'app/project/sprint/edit/edit.html',
+                    templateUrl: 'Areas/Dashboard/Views/Dashboard/app/project/sprint/edit/edit.html',
                     controller: 'sprintEditController',
                     resolve: {
                         sprint: function() {

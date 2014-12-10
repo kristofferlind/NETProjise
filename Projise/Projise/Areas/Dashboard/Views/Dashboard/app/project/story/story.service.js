@@ -42,7 +42,7 @@ angular.module('projiSeApp').factory('Story', function($http, $modal, $rootScope
             create: function() {
                 //Request user input using modal
                 var createModal = $modal.open({
-                    templateUrl: 'app/project/story/create/create.html',
+                    templateUrl: 'Areas/Dashboard/Views/Dashboard/app/project/story/create/create.html',
                     controller: 'storyCreateController'
                 });
 
@@ -72,7 +72,7 @@ angular.module('projiSeApp').factory('Story', function($http, $modal, $rootScope
             edit: function(story) {
                 //Request user in put using modal
                 var editModal = $modal.open({
-                    templateUrl: 'app/project/story/edit/edit.html',
+                    templateUrl: 'Areas/Dashboard/Views/Dashboard/app/project/story/edit/edit.html',
                     controller: 'storyEditController',
                     resolve: {
                         story: function() {

@@ -33,7 +33,7 @@ angular.module('projiSeApp').factory('Idea', function($http, $modal, socket) {
 
             //Open up modal for user input
             var createModal = $modal.open({
-                templateUrl: 'app/project/idea/create/create.html',
+                templateUrl: 'Areas/Dashboard/Views/Dashboard/app/project/idea/create/create.html',
                 controller: 'ideaCreateController'
             });
 

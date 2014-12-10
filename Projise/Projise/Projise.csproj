@@ -88,6 +88,9 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.2\lib\net45\System.Web.Http.Owin.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -197,6 +200,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Infrastructure\ChatHub.cs" />
+    <Compile Include="App_Infrastructure\ProjectHub.cs" />
     <Compile Include="App_Start\ApplicationIdentityContext.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\EnsureAuthIndexes.cs" />
@@ -210,11 +214,19 @@
     <Compile Include="Areas\Chatty\Controllers\MessageController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Dashboard\DashboardAreaRegistration.cs" />
+    <Compile Include="Areas\Traffic\Controllers\TrafficController.cs" />
+    <Compile Include="Areas\Traffic\Controllers\TrafficInfoController.cs" />
+    <Compile Include="Areas\Traffic\TrafficAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MessagesController.cs" />
+    <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
+    <Compile Include="Controllers\SprintsController.cs" />
+    <Compile Include="Controllers\TeamsController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -449,6 +461,8 @@
     <Content Include="Areas\Dashboard\Views\Gruntfile.js" />
     <Content Include="Areas\Dashboard\Views\karma.conf.js" />
     <Content Include="Areas\Dashboard\Views\protractor.conf.js" />
+    <Content Include="Areas\Traffic\Content\site.css" />
+    <Content Include="Areas\Traffic\Scripts\trafficInfo.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -605,6 +619,8 @@
     <Content Include="Areas\Dashboard\Views\e2e\.jshintrc" />
     <Content Include="Areas\Chatty\Views\web.config" />
     <Content Include="Areas\Chatty\Views\Chat\Index.cshtml" />
+    <Content Include="Areas\Traffic\Views\web.config" />
+    <Content Include="Areas\Traffic\Views\Traffic\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -672,6 +688,8 @@
     <Folder Include="Areas\Dashboard\Views\Dashboard\app\document\documentManager\edit\" />
     <Folder Include="Areas\Dashboard\Views\Dashboard\app\document\templateManager\" />
     <Folder Include="Areas\Dashboard\Views\Shared\" />
+    <Folder Include="Areas\Traffic\Views\Shared\" />
+    <Folder Include="Controllers\Api\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

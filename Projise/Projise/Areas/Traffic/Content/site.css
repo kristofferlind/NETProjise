@@ -1,0 +1,31 @@
+﻿html, body, #map-canvas {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#map-canvas {
+    margin-top: -34px;
+}
+
+.toolbar-filter {
+    position: absolute;
+    left: 100px;
+    top: 20px;
+    z-index: 10000;
+}
+
+#sidebar-info {
+    position: absolute;
+    max-width: 300px;
+    right: 20px;
+    top: 40px;
+    background-color: #FFF;
+    padding: 10px;
+    overflow: auto;
+    max-height: 600px;
+}
+
+.log-item {
+    cursor: pointer;
+}

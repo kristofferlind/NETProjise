@@ -21,40 +21,40 @@ angular.module('projiSeApp')
         })
         .state('dashboard.project.overview', {
             url: '/overview',
-            authenticate: true,
+            //authenticate: true,
             views: {
                 'main@': {
-                    templateUrl: 'app/project/project/overview.html',
+                    templateUrl: 'Areas/Dashboard/Views/Dashboard/app/project/project/overview.html',
                     controller: 'OverviewController'
                 }
             }
         })
         .state('dashboard.project.project', {
             url: '/project',
-            authenticate: true,
+            //authenticate: true,
             views: {
                 'main@': {
-                    templateUrl: 'app/project/project/project.html',
+                    templateUrl: 'Areas/Dashboard/Views/Dashboard/app/project/project/project.html',
                     controller: 'ProjectController'
                 }
             }
         })
         .state('dashboard.project.sprint', {
             url: '/sprint',
-            authenticate: true,
+            //authenticate: true,
             views: {
                 'main@': {
-                    templateUrl: 'app/project/sprint/sprint.html',
+                    templateUrl: 'Areas/Dashboard/Views/Dashboard/app/project/sprint/sprint.html',
                     controller: 'SprintController'
                 }
             }
         })
         .state('dashboard.project.story', {
             url: '/story',
-            authenticate: true,
+            //authenticate: true,
             views: {
                 'main@': {
-                    templateUrl: 'app/project/story/story.html',
+                    templateUrl: 'Areas/Dashboard/Views/Dashboard/app/project/story/story.html',
                     controller: 'StoryController'
                 }
             }

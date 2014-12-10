@@ -21,7 +21,7 @@ angular.module('projiSeApp')
             },
             views: {
                 'main@': {
-                    templateUrl: 'app/manage/projects/projects.html',
+                    templateUrl: 'Areas/Dashboard/Views/Dashboard/app/manage/projects/projects.html',
                     controller: 'ProjectsController'
                 }
             }
@@ -36,7 +36,7 @@ angular.module('projiSeApp')
             },
             views: {
                 'main@': {
-                    templateUrl: 'app/manage/teams/teams.html',
+                    templateUrl: 'Areas/Dashboard/Views/Dashboard/app/manage/teams/teams.html',
                     controller: 'TeamsController'
                 }
             }

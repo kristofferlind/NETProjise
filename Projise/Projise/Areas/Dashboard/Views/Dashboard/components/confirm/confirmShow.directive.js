@@ -10,7 +10,7 @@ angular.module('projiSeApp')
     return {
         scope: true, // {} = isolate, true = child, false/undefined = no change
         restrict: 'EA', // E = Element, A = Attribute, C = Class, M = Comment
-        templateUrl: 'components/confirm/confirm.html',
+        templateUrl: 'Areas/Dashboard/Views/Dashboard/components/confirm/confirm.html',
         replace: false,
         controller: function($scope, $rootScope) {
             //Close dialog

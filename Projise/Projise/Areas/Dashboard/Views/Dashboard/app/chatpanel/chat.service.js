@@ -7,7 +7,7 @@ angular.module('projiSeApp').factory('Chat', function($http, socket) {
     'use strict';
 
     //Fetch messages on load
-    $http.get('/api/messages').success(function(messages) {
+    $http.get('/api/Message').success(function(messages) {
         //Update messages
         Chat.messages = angular.copy(messages);
         //Setup sync for messages
@@ -17,7 +17,7 @@ angular.module('projiSeApp').factory('Chat', function($http, socket) {
     var Chat = {
         messages: [],
         sendMessage: function(message) {
-            $http.post('/api/messages', message);
+            $http.post('/api/Message', message);
         }
     };
 

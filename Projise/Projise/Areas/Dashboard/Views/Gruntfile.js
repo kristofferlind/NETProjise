@@ -26,27 +26,6 @@ module.exports = function(grunt) {
             client: require('./bower.json').appPath || 'Dashboard',
             dist: 'dist'
         },
-        // express: {
-        //     options: {
-        //         port: process.env.PORT || 9000
-        //     },
-        //     dev: {
-        //         options: {
-        //             script: 'server/app.js',
-        //             debug: true
-        //         }
-        //     },
-        //     prod: {
-        //         options: {
-        //             script: 'dist/server/app.js'
-        //         }
-        //     }
-        // },
-        // open: {
-        //     server: {
-        //         url: 'http://localhost:<%= express.options.port %>'
-        //     }
-        // },
         watch: {
             injectJS: {
                 files: [
@@ -103,16 +82,6 @@ module.exports = function(grunt) {
                     livereload: true
                 }
             },
-            // express: {
-            //     files: [
-            //         'server/**/*.{js,json}'
-            //     ],
-            //     tasks: ['express:dev', 'wait'],
-            //     options: {
-            //         livereload: true,
-            //         nospawn: true //Without this option specified express won't be reloaded
-            //     }
-            // }
         },
 
         // Make sure code styles are up to par and there are no obvious mistakes
@@ -121,12 +90,6 @@ module.exports = function(grunt) {
                 jshintrc: '<%= yeoman.client %>/.jshintrc',
                 reporter: require('jshint-stylish')
             },
-            // server: {
-            //     options: {
-            //         jshintrc: 'server/.jshintrc'
-            //     },
-            //     src: ['server/{,*/}*.js']
-            // },
             all: [
                 '<%= yeoman.client %>/{app,components}/**/*.js',
                 '!<%= yeoman.client %>/{app,components}/**/*.spec.js',
@@ -171,40 +134,6 @@ module.exports = function(grunt) {
                 }]
             }
         },
-
-        // // Debugging with node inspector
-        // 'node-inspector': {
-        //     custom: {
-        //         options: {
-        //             'web-host': 'localhost'
-        //         }
-        //     }
-        // },
-
-        // // Use nodemon to run server in debug mode with an initial breakpoint
-        // nodemon: {
-        //     debug: {
-        //         script: 'server/app.js',
-        //         options: {
-        //             nodeArgs: ['--debug-brk'],
-        //             env: {
-        //                 PORT: process.env.PORT || 9000
-        //             },
-        //             callback: function(nodemon) {
-        //                 nodemon.on('log', function(event) {
-        //                     console.log(event.colour);
-        //                 });
-
-        //                 // opens browser on initial server start
-        //                 nodemon.on('config:update', function() {
-        //                     setTimeout(function() {
-        //                         require('open')('http://localhost:8080/debug?port=5858');
-        //                     }, 500);
-        //                 });
-        //             }
-        //         }
-        //     }
-        // },
 
         // Automatically inject Bower components into the app
         bowerInstall: {
@@ -375,15 +304,6 @@ module.exports = function(grunt) {
             test: [
                 'sass',
             ],
-            // debug: {
-            //     tasks: [
-            //         'nodemon',
-            //         'node-inspector'
-            //     ],
-            //     options: {
-            //         logConcurrentOutput: true
-            //     }
-            // },
             dist: [
                 'sass',
                 'imagemin',
@@ -399,13 +319,6 @@ module.exports = function(grunt) {
             }
         },
 
-        // mochaTest: {
-        //     options: {
-        //         reporter: 'spec'
-        //     },
-        //     src: ['server/**/*.spec.js']
-        // },
-
         protractor: {
             options: {
                 configFile: 'protractor.conf.js'
@@ -418,16 +331,6 @@ module.exports = function(grunt) {
                 }
             }
         },
-
-        // env: {
-        //     test: {
-        //         NODE_ENV: 'test'
-        //     },
-        //     prod: {
-        //         NODE_ENV: 'production'
-        //     },
-        //     all: require('./server/config/local.env')
-        // },
 
         // Compiles Sass to CSS
         sass: {

@@ -1,0 +1,29 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trafikinformation</title>
+    <style type="text/css">
+
+    </style>
+    <link href="~/Areas/Traffic/Content/site.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="btn-group toolbar-filter" role="group">
+        <button type="button" class="btn btn-primary" onclick="TrafficInfo.Map.loadData()">Allt</button>
+        <button type="button" class="btn btn-danger" onclick="TrafficInfo.Map.loadData({showOnly: 0})">Vägtrafik</button>
+        <button type="button" class="btn btn-warning" onclick="TrafficInfo.Map.loadData({ showOnly: 1 })">Kollektivtrafik</button>
+        <button type="button" class="btn btn-success" onclick="TrafficInfo.Map.loadData({ showOnly: 2 })">Planerad störning</button>
+        <button type="button" class="btn btn-info" onclick="TrafficInfo.Map.loadData({ showOnly: 3 })">Övrigt</button>
+    </div>
+    <div id="map-canvas"></div>
+    <div id="sidebar-info"></div>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRA15tKw9NyR_Ay9ugey_mQ_RImz1MJGw"></script>
+    <script src="~/Areas/Traffic/Scripts/trafficInfo.js"></script>
+</body>
+</html>

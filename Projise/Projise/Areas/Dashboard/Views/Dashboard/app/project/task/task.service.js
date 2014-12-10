@@ -62,7 +62,7 @@ angular.module('projiSeApp').factory('Task', function($http, $modal, socket) {
         edit: function(task) {
             //Request userdata using modal
             var editModal = $modal.open({
-                    templateUrl: 'app/project/task/edit/edit.html',
+                templateUrl: 'Areas/Dashboard/Views/Dashboard/app/project/task/edit/edit.html',
                     controller: 'taskEditController',
                     resolve: {
                         task: function() {

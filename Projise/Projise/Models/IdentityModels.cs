@@ -1,5 +1,8 @@
 ﻿using AspNet.Identity.MongoDB;
 using Microsoft.AspNet.Identity;
+using MongoDB.Bson;
+using MongoDB.Driver;
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -12,5 +15,7 @@ namespace Projise.Models {
             // Add custom user claims here
             return userIdentity;
         }
+
+        public List<ObjectId> Projects { get; set; }
     }
 }

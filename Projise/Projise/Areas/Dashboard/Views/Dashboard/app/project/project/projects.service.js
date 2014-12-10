@@ -63,7 +63,7 @@ angular.module('projiSeApp').factory('Project', function($http, $modal, $timeout
             create: function() {
                 //Open modal for user input
                 var createModal = $modal.open({
-                    templateUrl: 'app/manage/projects/create/create.html',
+                    templateUrl: 'Areas/Dashboard/Views/Dashboard/app/manage/projects/create/create.html',
                     controller: 'projectCreateController'
                 });
 
@@ -110,7 +110,7 @@ angular.module('projiSeApp').factory('Project', function($http, $modal, $timeout
             update: function(project) {
                 //Open up a modal for user input
                 var editModal = $modal.open({
-                    templateUrl: 'app/manage/projects/edit/edit.html',
+                    templateUrl: 'Areas/Dashboard/Views/Dashboard/app/manage/projects/edit/edit.html',
                     controller: 'projectEditController',
                     resolve: {
                         project: function() {
@@ -139,7 +139,7 @@ angular.module('projiSeApp').factory('Project', function($http, $modal, $timeout
                 add: function() {
                     //Open modal requesting user input
                     var addUserModal = $modal.open({
-                        templateUrl: 'app/manage/projects/users/add/add.html',
+                        templateUrl: 'Areas/Dashboard/Views/Dashboard/app/manage/projects/users/add/add.html',
                         controller: 'projectAddUserController'
                     });
 

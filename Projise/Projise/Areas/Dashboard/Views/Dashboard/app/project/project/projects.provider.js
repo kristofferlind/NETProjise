@@ -7,7 +7,8 @@ angular.module('projiSeApp').factory('ProjectProvider', function($http, socket) 
     'use strict';
 
     //Make fetching projects a promise so we can check that its done before loading a view that needs it
-    var promise = $http.get('/api/projects').success(function(projects) {
+    var promise = $http.get('/api/projects').success(function (projects) {
+            console.log(projects)
             ProjectProvider.projects.length = 0;
             angular.copy(projects, ProjectProvider.projects);
 

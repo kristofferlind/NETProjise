@@ -27,23 +27,23 @@ angular.module('projiSeApp', [
         },
         views: {
             'header': {
-                templateUrl: 'app/navbar/navbar.html',
+                templateUrl: 'Areas/Dashboard/Views/Dashboard/app/navbar/navbar.html',
                 controller: 'NavbarController'
             },
             'panelLeft': {
-                templateUrl: 'app/navpanel/navpanel.html',
+                templateUrl: 'Areas/Dashboard/Views/Dashboard/app/navpanel/navpanel.html',
                 controller: 'NavpanelController'
             },
             'panelRight': {
-                templateUrl: 'app/chatpanel/chatpanel.html',
+                templateUrl: 'Areas/Dashboard/Views/Dashboard/app/chatpanel/chatpanel.html',
                 controller: 'ChatpanelController'
             }
 
         }
     });
 
-    $locationProvider.html5Mode(true);
-    $httpProvider.interceptors.push('authInterceptor');
+    //$locationProvider.html5Mode(true);
+    //$httpProvider.interceptors.push('authInterceptor');
 }])
 
 .config(['$tooltipProvider', function($tooltipProvider) {
@@ -56,38 +56,38 @@ angular.module('projiSeApp', [
     });
 }])
 
-.factory('authInterceptor', ['$rootScope', '$q', '$cookieStore', '$location', function($rootScope, $q, $cookieStore, $location) {
-    return {
-        // Add authorization token to headers
-        request: function(config) {
-            config.headers = config.headers || {};
-            if ($cookieStore.get('token')) {
-                config.headers.Authorization = 'Bearer ' + $cookieStore.get('token');
-            }
-            return config;
-        },
+//.factory('authInterceptor', ['$rootScope', '$q', '$cookieStore', '$location', function($rootScope, $q, $cookieStore, $location) {
+//    return {
+//        // Add authorization token to headers
+//        request: function(config) {
+//            config.headers = config.headers || {};
+//            if ($cookieStore.get('token')) {
+//                config.headers.Authorization = 'Bearer ' + $cookieStore.get('token');
+//            }
+//            return config;
+//        },
 
-        // Intercept 401s and redirect you to login
-        responseError: function(response) {
-            if (response.status === 401) {
-                $location.path('/login');
-                // remove any stale tokens
-                $cookieStore.remove('token');
-                return $q.reject(response);
-            } else {
-                return $q.reject(response);
-            }
-        }
-    };
-}])
+//        // Intercept 401s and redirect you to login
+//        responseError: function(response) {
+//            if (response.status === 401) {
+//                $location.path('/login');
+//                // remove any stale tokens
+//                $cookieStore.remove('token');
+//                return $q.reject(response);
+//            } else {
+//                return $q.reject(response);
+//            }
+//        }
+//    };
+//}])
 
-.run(['$rootScope', '$location', 'Auth', function($rootScope, $location, Auth) {
-    // Redirect to login if route requires auth and you're not logged in
-    $rootScope.$on('$stateChangeStart', function(event, next) {
-        Auth.isLoggedInAsync(function(loggedIn) {
-            if (next.authenticate && !loggedIn) {
-                $location.path('/login');
-            }
-        });
-    });
-}]);
+//.run(['$rootScope', '$location', 'Auth', function($rootScope, $location, Auth) {
+//    // Redirect to login if route requires auth and you're not logged in
+//    $rootScope.$on('$stateChangeStart', function(event, next) {
+//        Auth.isLoggedInAsync(function(loggedIn) {
+//            if (next.authenticate && !loggedIn) {
+//                $location.path('/login');
+//            }
+//        });
+//    });
+//}]);

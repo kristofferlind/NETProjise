@@ -11,7 +11,7 @@ angular.module('projiSeApp')
                 url: '/login',
                 views: {
                     'main': {
-                        templateUrl: 'app/account/login/login.html',
+                        templateUrl: 'Areas/Dashboard/Views/Dashboard/app/account/login/login.html',
                         controller: 'LoginCtrl'
                     }
                 }
@@ -20,7 +20,7 @@ angular.module('projiSeApp')
                 url: '/signup',
                 views: {
                     'main': {
-                        templateUrl: 'app/account/signup/signup.html',
+                        templateUrl: 'Areas/Dashboard/Views/Dashboard/app/account/signup/signup.html',
                         controller: 'SignupCtrl',
                     }
                 }
@@ -30,7 +30,7 @@ angular.module('projiSeApp')
                 authenticate: true,
                 views: {
                     'main@': {
-                        templateUrl: 'app/account/settings/settings.html',
+                        templateUrl: 'Areas/Dashboard/Views/Dashboard/app/account/settings/settings.html',
                         controller: 'SettingsCtrl',
                     }
                 }

@@ -21,7 +21,7 @@ angular.module('projiSeApp')
                 },
                 views: {
                     'main@': {
-                        templateUrl: 'app/document/documentManager/documentManager.html',
+                        templateUrl: 'Areas/Dashboard/Views/Dashboard/app/document/documentManager/documentManager.html',
                         controller: 'DocumentManagerController'
                     }
                 }
@@ -31,11 +31,11 @@ angular.module('projiSeApp')
                 authenticate: true,
                 views: {
                     'manager': {
-                        templateUrl: 'app/document/documentManager/documentList.html',
+                        templateUrl: 'Areas/Dashboard/Views/Dashboard/app/document/documentManager/documentList.html',
                         controller: 'DocumentListController'
                     },
                     'viewer': {
-                        templateUrl: 'app/document/documentViewer/documentViewer.html',
+                        templateUrl: 'Areas/Dashboard/Views/Dashboard/app/document/documentViewer/documentViewer.html',
                         controller: 'DocumentViewerController'
                     }
                 }
@@ -45,11 +45,11 @@ angular.module('projiSeApp')
                 url: '/edit',
                 views: {
                     'manager': {
-                        templateUrl: 'app/document/documentEditor/documentEditor.html',
+                        templateUrl: 'Areas/Dashboard/Views/Dashboard/app/document/documentEditor/documentEditor.html',
                         controller: 'DocumentEditorController'
                     },
                     'viewer': {
-                        templateUrl: 'app/document/documentViewer/documentViewer.html',
+                        templateUrl: 'Areas/Dashboard/Views/Dashboard/app/document/documentViewer/documentViewer.html',
                         controller: 'DocumentViewerController'
                     }
                 }

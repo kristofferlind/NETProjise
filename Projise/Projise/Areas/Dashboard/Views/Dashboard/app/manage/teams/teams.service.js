@@ -56,7 +56,7 @@ angular.module('projiSeApp').factory('Team', function($http, $rootScope, TeamPro
         create: function() {
             //Open a modal for user input
             var createModal = $modal.open({
-                templateUrl: 'app/manage/teams/create/create.html',
+                templateUrl: 'Areas/Dashboard/Views/Dashboard/app/manage/teams/create/create.html',
                 controller: 'teamCreateController'
             });
 
@@ -103,7 +103,7 @@ angular.module('projiSeApp').factory('Team', function($http, $rootScope, TeamPro
         update: function(team) {
             //Open up a modal for editing the team
             var editModal = $modal.open({
-                templateUrl: 'app/manage/teams/edit/edit.html',
+                templateUrl: 'Areas/Dashboard/Views/Dashboard/app/manage/teams/edit/edit.html',
                 controller: 'teamEditController',
                 resolve: {
                     team: function() {
