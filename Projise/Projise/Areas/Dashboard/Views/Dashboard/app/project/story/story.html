@@ -1,5 +1,5 @@
 <div class="grid">
-    <div class="grid-3-3"><h1>Plan sprint</h1></div>
+    <div class="grid-3-3"><h1>My Task</h1></div>
     <section class="grid-1-3">
         <div drop drop-type="current" on-drop="Story.User.stop($item)">
         <h2>Sprint backlog</h2>
@@ -43,7 +43,7 @@
     <section class="grid-1-3" drop drop-type='current' on-drop="Story.User.finish($item)">
         <h2>Completed tasks</h2>
         <div class="story-filter-container">Filter: <input class="story-filter" type="text" ng-model="cTaskFilter"></div>
-        <div ng-repeat="cStory in Story.sprintBacklog() | toArray | orderBy: 'priority':true | filter: cTaskFilter | filter: 'completed'">
+        <div ng-repeat="cStory in Story.sprintBacklog() | orderBy: 'priority':true | filter: cTaskFilter | filter: 'completed'">
             <div story-item ng-model="cStory"></div>
         </div>
     </section>

@@ -1,6 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
-using Projise.DomainModel.DataModels;
+using Projise.DomainModel.Entities;
 using Projise.DomainModel.Events;
 using System;
 using System.Collections.Generic;

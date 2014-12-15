@@ -58,6 +58,14 @@
     <![endif]-->
     @* Use SignalR instead *@
     @*<script src="~/Areas/Dashboard/Views/Dashboard/socket.io/socket.io.js"></script>*@
+
+    @* Needed by signalR *@
+    @*<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.1.0.min.js"></script>*@
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.1.2.js"></script>
+    <script type="text/javascript" src="~/signalr/hubs"></script>
+
     <!-- build:js(client) app/vendor.js -->
     <!-- bower:js -->
     <script src="~/Areas/Dashboard/Views/Dashboard/bower_components/es5-shim/es5-shim.js"></script>
@@ -133,6 +141,7 @@
     <script src="~/Areas/Dashboard/Views/Dashboard/components/mongoose-error/mongoose-error.directive.js"></script>
     <script src="~/Areas/Dashboard/Views/Dashboard/components/panelswitch/panelswitch.service.js"></script>
     <script src="~/Areas/Dashboard/Views/Dashboard/components/session/session.service.js"></script>
+    <script src="~/Areas/Dashboard/Views/Dashboard/components/socket/hub.provider.js"></script>
     <script src="~/Areas/Dashboard/Views/Dashboard/components/socket/socket.service.js"></script>
     <!-- endinjector -->
     <!-- endbuild -->

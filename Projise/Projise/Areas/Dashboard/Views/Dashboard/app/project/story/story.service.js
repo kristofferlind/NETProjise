@@ -110,6 +110,8 @@ angular.module('projiSeApp').factory('Story', function($http, $modal, $rootScope
                  */
                 add: function(story) {
                     story.sprintId = _sprintId;
+                    console.log(story);
+                    console.log(_sprintId);
                     Story.update(story);
                 },
                 /**
@@ -157,7 +159,7 @@ angular.module('projiSeApp').factory('Story', function($http, $modal, $rootScope
                  * @param {Object} story Story data
                  * @description Start working on story
                  */
-                start: function(story) {
+                start: function (story) {
                     //Make sure there's not another active story or this one is already active
                     if (story.userId || Story.User.story) {
                         return;
@@ -179,7 +181,7 @@ angular.module('projiSeApp').factory('Story', function($http, $modal, $rootScope
                     //Update status
                     story.status = 'not started';
                     //Remove userId (noone is working on it)
-                    story.userId = undefined;
+                    story.userId = null;
                     //update
                     Story.update(story);
                     //Remove tasks from ui
@@ -195,7 +197,7 @@ angular.module('projiSeApp').factory('Story', function($http, $modal, $rootScope
                     //Update status
                     story.status = 'completed';
                     //Remove userId (noone is working on it)
-                    story.userId = undefined;
+                    story.userId = null;
                     //Update (backend)
                     Story.update(story);
                     //Remove tasks from ui

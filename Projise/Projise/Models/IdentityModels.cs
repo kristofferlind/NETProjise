@@ -16,6 +16,9 @@ namespace Projise.Models {
             return userIdentity;
         }
 
-        public List<ObjectId> Projects { get; set; }
+        //public List<ObjectId> Projects { get; set; }      //Projects/Teams här skulle vara rejält mycket effektivare(prestandamässigt), men försvårar generiskt repo
+        //public List<ObjectId> Teams { get; set; }         //Sätter index på arrayerna istället..
+        public ObjectId ActiveProject { get; set; }
+        public ObjectId ActiveTeam { get; set; }
     }
 }

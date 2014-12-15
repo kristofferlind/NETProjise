@@ -7,7 +7,6 @@ angular.module('projiSeApp').factory('Session', function($http, socket) {
     'use strict';
 
     var promise = $http.get('/api/users/me').success(function (user) {
-        console.log(user);
             angular.copy(user, _user);
             socket.syncUpdates('user', _user);
         }),

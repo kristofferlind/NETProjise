@@ -22,7 +22,7 @@ angular.module('projiSeApp')
             }
         },
         restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
-        templateUrl: 'app/project/story/storyItem.partial.html',
+        templateUrl: 'Areas/Dashboard/Views/Dashboard/app/project/story/storyItem.partial.html',
         transclude: true,
     };
 });

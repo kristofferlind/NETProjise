@@ -12,7 +12,7 @@ angular.module('projiSeApp')
         scope: {
             sprint: '=ngModel'
         }, // {} = isolate, true = child, false/undefined = no change
-        templateUrl: 'app/project/sprint/sprintItem.partial.html',
+        templateUrl: 'Areas/Dashboard/Views/Dashboard/app/project/sprint/sprintItem.partial.html',
         replace: true,
         transclude: true,
         link: function($scope) {

@@ -52,7 +52,7 @@ namespace Projise.Controllers
 
         //
         // GET: /Users/
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
             return View(UserManager.Users.ToList());
         }
@@ -74,7 +74,7 @@ namespace Projise.Controllers
 
         //
         // GET: /Users/Create
-        public async Task<ActionResult> Create()
+        public ActionResult Create()
         {
             //Get the list of Roles
             ViewBag.RoleId = new SelectList(RoleManager.Roles.ToList(), "Name", "Name");

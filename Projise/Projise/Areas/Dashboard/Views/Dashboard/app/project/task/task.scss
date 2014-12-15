@@ -10,19 +10,27 @@ form.form-add-task {
 }
 
 
+/*.task-toggle { display:none; }
+.task-toggle + label:before {
+  font-family: FontAwesome;
+  display: inline-block;
+}
 
+.task-toggle + label:before { content: "\f096"; }
+.task-toggle + label:before { letter-spacing: 10px; }
+
+.task-toggle:checked + label:before { content: "\f046"; }
+.task-toggle:checked + label:before { letter-spacing: 5px; }*/
 
 
 
 
 .task-toggle {
     text-align: center;
-    /* auto, since non-WebKit browsers doesn't support input styling */
     position: relative;
     top: 7px;
     margin: 0;
     padding: 0;
-    /* Mobile Safari */
     border: none;
     -webkit-appearance: none;
     -ms-appearance: none;
@@ -32,8 +40,8 @@ form.form-add-task {
 }
 
 .task-toggle:after {
-    content: '✔';
-    /* 40 + a couple of pixels visual adjustment */
+    font-family: FontAwesome;
+    content: '\f046';
     font-size: 20px;
     color: #d9d9d9;
     text-shadow: 0 -1px 0 #bfbfbf;

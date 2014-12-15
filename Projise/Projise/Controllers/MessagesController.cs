@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNet.SignalR;
+using Projise.App_Infrastructure;
+using Projise.DomainModel.Entities;
+using Projise.DomainModel.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -7,33 +11,50 @@ using System.Web.Http;
 
 namespace Projise.Controllers
 {
-    public class MessagesController : ApiController
+    public class MessagesController : ApiControllerBase
     {
-        // GET: api/Message
-        public IEnumerable<string> Get()
+        private MessageRepository messageRepository;
+
+        public MessagesController()
         {
-            return new string[] { "value1", "value2" };
+            messageRepository = new MessageRepository(SessionUser);
+            messageRepository.OnChange += messageRepository_OnChange;
         }
 
-        // GET: api/Message/5
-        public string Get(int id)
+        void messageRepository_OnChange(object sender, DomainModel.Events.SyncEventArgs<DomainModel.Entities.Message> e)
         {
-            return "value";
+            GlobalHost.ConnectionManager.GetHubContext<ProjectHub>().Clients.All.onChange(e.Operation, e.Type, e.Item);
         }
+
+        // GET: api/Message
+        public IEnumerable<Message> Get()
+        {
+            return messageRepository.All();
+        }
+
+        //// GET: api/Message/5
+        //public string Get(int id)
+        //{
+        //    return "value";
+        //}
 
         // POST: api/Message
-        public void Post([FromBody]string value)
+        public void Post([FromBody]Message message)
         {
+            message.ProjectId = SessionUser.ActiveProject;
+            message.User = AppUser;
+            message.Date = DateTime.Now;
+            messageRepository.Add(message);
         }
 
-        // PUT: api/Message/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
+        //// PUT: api/Message/5
+        //public void Put(int id, [FromBody]string value)
+        //{
+        //}
 
-        // DELETE: api/Message/5
-        public void Delete(int id)
-        {
-        }
+        //// DELETE: api/Message/5
+        //public void Delete(int id)
+        //{
+        //}
     }
 }

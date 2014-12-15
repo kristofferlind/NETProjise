@@ -10,91 +10,92 @@ using System.Web.Http;
 using Microsoft.AspNet.Identity;
 using AspNet.Identity.MongoDB;
 using System.Threading.Tasks;
-using Projise.DomainModel.DataModels;
+using Projise.DomainModel.Entities;
 using Projise.DomainModel.Repositories;
 using MongoDB.Bson;
 using Microsoft.AspNet.SignalR;
 using Projise.App_Infrastructure;
+using Projise.DomainModel;
 
 namespace Projise.Controllers
 {
-    public class ProjectsController : ApiController
+    public class ProjectsController : ApiControllerBase
     {
-
-        private ApplicationUserManager userManager;
-        private IProjectRepository projectRepository;
-        private User user;
-
-        public User AppUser {
-            get
-            {
-                if (user == null)
-                {
-                    var userId = User.Identity.GetUserId();
-                    var applicationUser = userManager.FindById(userId);
-
-                    user = new User
-                    {
-                        Id = ObjectId.Parse(applicationUser.Id),
-                        UserName = applicationUser.UserName,
-                        Email = applicationUser.Email,
-                        Projects = applicationUser.Projects
-                    };
-                }
-
-                return user;
-            }
-        }
+        private ProjectRepository projectRepository;
+        private ProjectService projectService;
 
         public ProjectsController()
         {
-            var context = HttpContext.Current.GetOwinContext();
-            userManager = OwinContextExtensions.GetUserManager<ApplicationUserManager>(context);
-            projectRepository = new MongoProjectRepository();
+            projectRepository = new ProjectRepository(AppUser);
             projectRepository.OnChange += projectRepository_OnChange;
+            projectService = new ProjectService(AppUser);
         }
 
         void projectRepository_OnChange(object sender, DomainModel.Events.SyncEventArgs<Project> e)
         {
-            GlobalHost.ConnectionManager.GetHubContext<ProjectHub>().Clients.All.OnChange(e.Operation, e.Type, e.Item);
+            GlobalHost.ConnectionManager.GetHubContext<ProjectHub>().Clients.All.onChange(e.Operation, e.Type, e.Item);
         }
 
         // GET: api/Project
-        public async Task<IEnumerable<Project>> Get()
+        public IEnumerable<Project> Get()
         {
-            IEnumerable<Project> projects = null;
-            if (AppUser.Projects != null)
-            {
-                projects = projectRepository.All(AppUser);
-            }
-
-            return projects;
+            return projectService.All();
         }
 
         // GET: api/Project/5
         public Project Get(string id)
         {
-            var objectId = ObjectId.Parse(id);
-            return projectRepository.Find(objectId);
+            var projectId = ObjectId.Parse(id);
+            return projectService.FindById(projectId);
         }
 
         // POST: api/Project
         public void Post([FromBody]Project project)
         {
-            projectRepository.Add(project, AppUser);
+            projectRepository.Add(project);
         }
 
         // PUT: api/Project/5
-        public void Put(ObjectId id, [FromBody]Project project)
+        public void Put(string id, [FromBody]Project project)
         {
-            projectRepository.Update(id, project);
+            var projectId = ObjectId.Parse(id);
+            project.Id = projectId;
+            projectService.Update(project);
         }
 
         // DELETE: api/Project/5
-        public void Delete(ObjectId id)
+        public void Delete(string id)
         {
-            var project = projectRepository.Find(id);
-            projectRepository.Remove(project, AppUser);
+            var projectId = ObjectId.Parse(id);
+            var project = projectRepository.FindById(projectId);
+            projectService.Remove(project);
+        }
+
+        [HttpPut]
+        [Route("api/projects/{id}/users")]
+        public void AddUser(string id, [FromBody]User user)
+        {
+            var projectId = ObjectId.Parse(id);
+            var email = user.Email;
+            projectService.AddUser(projectId, email);
+        }
+
+        [HttpPut]
+        [Route("api/projects/{pId}/users/{tId}")]
+        public void AddTeam(string pId, string tId)
+        {
+            var projectId = ObjectId.Parse(pId);
+            var teamId = ObjectId.Parse(tId);
+            projectService.AddTeam(projectId, teamId);
+        }
+
+        [HttpDelete]
+        [Route("api/projects/{pId}/users/{uId}")]
+        public void RemoveUser(string pId, string uId)
+        {
+            var projectId = ObjectId.Parse(pId);
+            var userId = ObjectId.Parse(uId);
+            projectService.RemoveUser(projectId, userId);
         }
     }
 }

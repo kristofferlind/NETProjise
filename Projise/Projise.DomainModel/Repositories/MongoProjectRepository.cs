@@ -1,7 +1,7 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
-using Projise.DomainModel.DataModels;
+using Projise.DomainModel.Entities;
 using Projise.DomainModel.Events;
 using System;
 using System.Collections.Generic;
@@ -36,17 +36,10 @@ namespace Projise.DomainModel.Repositories
             users = database.GetCollection<User>("users");
         }
 
-        public IEnumerable<Project> All(User user)  //ApplicationUser user? flytta auth till domainmodel..
+        public IEnumerable<Project> All(User user)
         {
-            var userProjects = new List<Project>();
+            return projects.FindAs<Project>(Query<Project>.Where(p => p.Users.Any(u => u.Id == user.Id)));
 
-            foreach (var projectId in user.Projects)
-            {
-                var project = projects.FindOneByIdAs<Project>(projectId);
-                userProjects.Add(project);
-            }
-
-            return userProjects;
         }
 
         public Project Find(ObjectId id)
@@ -56,31 +49,32 @@ namespace Projise.DomainModel.Repositories
 
         public void Add(Project project, User user)
         {
-            project.Users.Add(user.Id);
+            project.Users.Clear();
+            project.Users.Add(user);
             projects.Insert(project);
-            users.FindAndModify(new FindAndModifyArgs
-            {
-                Query = Query<User>.EQ(u => u.Id, user.Id),
-                Update = Update<User>.AddToSet(u => u.Projects, project.Id)
-            });
 
-            Sync(new SyncEventArgs<Project>("create", project));
+            Sync(new SyncEventArgs<Project>("save", project));
         }
 
         public void Remove(Project project, User user)
         {
             var query = Query<Project>.EQ(e => e.Id, project.Id);
             projects.Remove(query);
-            Sync(new SyncEventArgs<Project>("delete", project));
+            Sync(new SyncEventArgs<Project>("remove", project));
         }
 
         public void Update(ObjectId id, Project project)
         {
-            var query = Query<Project>.EQ(e => e.Id, id);
-            var update = Update<Project>.Set(e => e, project);
+            projects.FindAndModify(new FindAndModifyArgs{
+                Query = Query<Project>.EQ(e => e.Id, id),
+                Update = Update<Project>.Set(e => e.Name, project.Name)
+                                        .Set(e => e.Description, project.Description),
+            });
 
-            projects.FindAndModify(query, null, update);
-            Sync(new SyncEventArgs<Project>("update", project));
+            //Känns sjukt onödigt, men projektet tilldelas ett nytt id?
+            var modifiedProject = Find(id);
+
+            Sync(new SyncEventArgs<Project>("save", modifiedProject)); //project));
         }
     }
 }

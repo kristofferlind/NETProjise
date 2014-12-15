@@ -20,7 +20,7 @@
         <h2>Team users</h2>
         <table class="table table-horizontal">
             <tr ng-repeat="user in Team.Users.all()">
-                <td>{{user.name}}</td>
+                <td>{{user.userName}}</td>
                 <td>{{user.email}}</td>
                 <td class="button-group-inline"><button tooltip="Remove user" class="button button-small button-error" confirm-dialog confirm-id="teamId" confirm-message="Are you sure you want to remove this member?" on-confirm="Team.Users.remove(user)"><i class="fa fa-trash-o"></i></button></td>
             </tr>

@@ -199,8 +199,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Infrastructure\ApiControllerBase.cs" />
     <Compile Include="App_Infrastructure\ChatHub.cs" />
+    <Compile Include="App_Infrastructure\FilteredCamelCasePropertyNamesContractResolver.cs" />
+    <Compile Include="App_Infrastructure\ObjectIdBinder.cs" />
+    <Compile Include="App_Infrastructure\ObjectIdConverter.cs" />
     <Compile Include="App_Infrastructure\ProjectHub.cs" />
+    <Compile Include="App_Infrastructure\StringExtensions.cs" />
     <Compile Include="App_Start\ApplicationIdentityContext.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\EnsureAuthIndexes.cs" />
@@ -224,6 +229,8 @@
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\SprintsController.cs" />
+    <Compile Include="Controllers\StoriesController.cs" />
+    <Compile Include="Controllers\TasksController.cs" />
     <Compile Include="Controllers\TeamsController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -366,6 +373,7 @@
     <Content Include="Areas\Dashboard\Views\Dashboard\app\project\story\storyItem.partial.html" />
     <Content Include="Areas\Dashboard\Views\Dashboard\app\project\task\task.service.js" />
     <Content Include="Areas\Dashboard\Views\Dashboard\app\project\task\task.service.spec.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\fonts\fontawesome-webfont.svg" />
     <Content Include="Areas\Dashboard\Views\Dashboard\assets\images\yeoman.png" />
     <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-bootstrap\ui-bootstrap-tpls.js" />
     <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-bootstrap\ui-bootstrap-tpls.min.js" />
@@ -448,6 +456,7 @@
     <Content Include="Areas\Dashboard\Views\Dashboard\components\mongoose-error\mongoose-error.directive.js" />
     <Content Include="Areas\Dashboard\Views\Dashboard\components\panelswitch\panelswitch.service.js" />
     <Content Include="Areas\Dashboard\Views\Dashboard\components\session\session.service.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\components\socket\hub.provider.js" />
     <Content Include="Areas\Dashboard\Views\Dashboard\components\socket\socket.mock.js" />
     <Content Include="Areas\Dashboard\Views\Dashboard\components\socket\socket.service.js" />
     <Content Include="Areas\Dashboard\Views\Dashboard\components\uiRouter.mock.js" />
@@ -621,6 +630,10 @@
     <Content Include="Areas\Chatty\Views\Chat\Index.cshtml" />
     <Content Include="Areas\Traffic\Views\web.config" />
     <Content Include="Areas\Traffic\Views\Traffic\Index.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

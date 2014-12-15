@@ -21,7 +21,10 @@ angular.module('projiSeApp', [
         url: '',
         abstract: true,
         resolve: {
-            resolvedSession: ['Session', function(Session) {
+            resolvedSocket: ['socket', function (socket) {
+                return socket.checkHub;
+            }],
+            resolvedSession: ['Session', function (Session) {
                 return Session.promise;
             }]
         },

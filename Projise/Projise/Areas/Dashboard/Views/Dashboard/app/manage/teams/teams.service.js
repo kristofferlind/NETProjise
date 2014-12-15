@@ -30,7 +30,7 @@ angular.module('projiSeApp').factory('Team', function($http, $rootScope, TeamPro
          * @param {object} team Containing teamdata
          */
         activate: function(team) {
-            $http.put('/api/teams/' + team._id + '/active', team);
+            $http.put('/api/users/me/activate/team/' + team._id);
         },
         /**
          * @ngdoc function
@@ -130,7 +130,7 @@ angular.module('projiSeApp').factory('Team', function($http, $rootScope, TeamPro
              * @description Adds user to active team
              */
             add: function(user) {
-                return $http.put('/api/teams/' + _user.activeTeam + '/users', user);
+                return $http.put('/api/teams/users', user);
             },
             /**
              * @ngdoc function
@@ -163,7 +163,7 @@ angular.module('projiSeApp').factory('Team', function($http, $rootScope, TeamPro
              * @description Remove user from active team
              */
             remove: function(user) {
-                $http.delete('/api/teams/' + user._id + '/users');
+                $http.delete('/api/teams/users/' + user._id);
             }
         }
     };

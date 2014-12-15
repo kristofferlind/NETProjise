@@ -41,10 +41,12 @@ angular.module('projiSeApp').factory('Project', function($http, $modal, $timeout
              * @param {object} project Project data
              * @description Set project as active project locally and update in backend
              */
-            activate: function(project) {
+            activate: function (project) {
+                console.log(project);
                 _activeProjectId = project._id;
                 _activeProject = project;
-                $http.put('/api/projects/' + project._id + '/active');
+                //$http.put('/api/projects/' + project._id + '/active');
+                $http.put('/api/users/me/activate/project/' + project._id);
             },
             /**
              * @ngdoc function
@@ -107,7 +109,7 @@ angular.module('projiSeApp').factory('Project', function($http, $modal, $timeout
              * @param {object} project Project data
              * @description Updates metadata of project by opening up a modal and then saving changes to backend on submit
              */
-            update: function(project) {
+            update: function (project) {
                 //Open up a modal for user input
                 var editModal = $modal.open({
                     templateUrl: 'Areas/Dashboard/Views/Dashboard/app/manage/projects/edit/edit.html',
@@ -120,7 +122,7 @@ angular.module('projiSeApp').factory('Project', function($http, $modal, $timeout
                 });
 
                 //Save changes to backend on submit
-                editModal.result.then(function(project) {
+                editModal.result.then(function (project) {
                     $http.put('/api/projects/' + project._id, project);
                 });
 
