@@ -24,7 +24,7 @@ namespace Projise.DomainModel.Repositories
             collection = database.GetCollection<T>(collectionName);
         }
 
-        public event EventHandler<SyncEventArgs<T>> OnChange;
+        public virtual event EventHandler<SyncEventArgs<T>> OnChange;
         protected virtual void Sync(SyncEventArgs<T> e)
         {
             EventHandler<SyncEventArgs<T>> handler = OnChange;
@@ -41,7 +41,7 @@ namespace Projise.DomainModel.Repositories
             return CollectionItems().AsEnumerable<T>();
         }
 
-        public T FindById(ObjectId id)
+        public virtual T FindById(ObjectId id)
         {
             return collection.FindOneByIdAs<T>(id);
         }
@@ -53,13 +53,13 @@ namespace Projise.DomainModel.Repositories
         }
 
         //Ta bort?
-        public void Remove(T collectionItem)
+        public virtual void Remove(T collectionItem)
         {
             collection.Remove(Query<T>.Where(t => t.Id == collectionItem.Id));
             Sync(new SyncEventArgs<T>("remove", collectionItem));
         }
 
-        public void Remove(ObjectId collectionId)
+        public virtual void Remove(ObjectId collectionId)
         {
             var collectionItem = FindById(collectionId);
             collection.Remove(Query<T>.Where(t => t.Id == collectionItem.Id));

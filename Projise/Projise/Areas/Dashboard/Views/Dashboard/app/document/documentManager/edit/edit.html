@@ -1,0 +1,11 @@
+<h2>Edit document</h2>
+<form role="form" name="documentMeta_edit" ng-submit="update()">
+    <fieldset>
+        <label for="documentMeta_name">Name</label>
+        <input id="documentMeta_name" type="text" placeholder="Name" ng-model="documentMeta.name" maxlength="50" ng-maxlength="50" required>
+        <label for="documentMeta_description">Description</label>
+        <textarea id="documentMeta_description" type="text" placeholder="Description" ng-model="documentMeta.description" maxlength="250" ng-maxlength="250" required></textarea>
+    </fieldset>
+    <button class="button button-primary" ng-disabled="documentMeta_edit.$invalid" type="submit">Update</button>
+    <button class="button button-secondary" type="button" ng-click="cancel()">Cancel</button>
+</form>

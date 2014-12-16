@@ -79,7 +79,9 @@ angular.module('projiSeApp')
                                     _.remove(array, { _id: item._id });
                                 })
                             } else {
-                                array.splice(index, 1, item);
+                                $rootScope.$apply(function () {
+                                    array.splice(index, 1, item);
+                                })
                                 event = 'updated';
                             }
                         } else {

@@ -8,12 +8,12 @@ angular.module('projiSeApp').factory('DocumentManager', function($http, $q, $mod
     'use strict';
 
     //Fetch metadata for all documents on load
-    $http.get('/api/documentsMeta').success(function(documentManager) {
+    $http.get('/api/documents').success(function(documentManager) {
         //Update public array
         DocumentManager.all = angular.copy(documentManager);
 
         //Set up sync for public array (updates on documentMeta:save/remove)
-        socket.syncUpdates('documentMeta', DocumentManager.all);
+        socket.syncUpdates('document', DocumentManager.all);
     });
 
     var DocumentManager = {
@@ -36,13 +36,13 @@ angular.module('projiSeApp').factory('DocumentManager', function($http, $q, $mod
         create: function() {
             //Open modal
             var createModal = $modal.open({
-                templateUrl: 'app/document/documentManager/create/create.html',
+                templateUrl: 'Areas/Dashboard/Views/Dashboard/app/document/documentManager/create/create.html',
                 controller: 'documentCreateController'
             });
 
             //Make post on result from modal
             createModal.result.then(function(newDocument) {
-                $http.post('/api/documentsMeta', newDocument);
+                $http.post('/api/documents', newDocument);
             });
         },
 
@@ -51,10 +51,10 @@ angular.module('projiSeApp').factory('DocumentManager', function($http, $q, $mod
          * Open document in editor
          * @param documentMeta document metadata
          */
-        edit: function(documentMeta) {
+        edit: function(document) {
 
             //Fetch, set and view data for active document
-            DocumentManager.show(documentMeta).then(function() {
+            DocumentManager.show(document).then(function() {
 
                 //Open document editor
                 $state.go('dashboard.document.editor');
@@ -65,11 +65,20 @@ angular.module('projiSeApp').factory('DocumentManager', function($http, $q, $mod
         show: function(documentMeta) {
             //Defer, sometimes we'll need to know when it's done
             var deferred = $q.defer();
+
+            var doc = _.find(DocumentManager.all, { _id: documentMeta._id });
+
             DocumentManager.activeDocument = angular.copy(documentMeta);
-            $http.get('/api/documentsData/' + documentMeta._id).success(function(documentData) {
-                DocumentManager.activeDocumentData = angular.copy(documentData);
-                deferred.resolve();
-            });
+            DocumentManager.activeDocumentData = angular.copy(doc);
+
+            deferred.resolve();
+            console.log()
+
+            //DocumentManager.activeDocument = angular.copy(documentMeta);
+            //$http.get('/api/documentsData/' + documentMeta._id).success(function(documentData) {
+            //    DocumentManager.activeDocumentData = angular.copy(documentData);
+            //    deferred.resolve();
+            //});
 
             return deferred.promise;
         },
@@ -79,7 +88,7 @@ angular.module('projiSeApp').factory('DocumentManager', function($http, $q, $mod
 
             //Open modal
             var editModal = $modal.open({
-                templateUrl: 'app/document/documentManager/edit/edit.html',
+                templateUrl: 'Areas/Dashboard/Views/Dashboard/app/document/documentManager/edit/edit.html',
                 controller: 'documentEditController',
                 resolve: {
                     documentMeta: function() {
@@ -90,18 +99,18 @@ angular.module('projiSeApp').factory('DocumentManager', function($http, $q, $mod
 
             //Make post on submit
             editModal.result.then(function(editedDocument) {
-                $http.post('/api/documentsMeta', editedDocument);
+                $http.put('/api/documents', editedDocument);
             });
         },
 
         /** Updates document body */
         updateData: function(documentData) {
-            $http.put('/api/documentsData/' + documentData._id, documentData);
+            $http.put('/api/documents/', documentData);
         },
 
         /** Deletes document */
         delete: function(documentMeta) {
-            $http.delete('/api/documentsMeta/' + documentMeta._id);
+            $http.delete('/api/documents/' + documentMeta._id);
         }
     };
 

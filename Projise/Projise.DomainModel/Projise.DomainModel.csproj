@@ -98,6 +98,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ChattyDBContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Document.cs" />
+    <Compile Include="Entities\Idea.cs" />
     <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Entities\Message.cs" />
     <Compile Include="Entities\Project.cs" />
@@ -109,6 +111,8 @@
     <Compile Include="IEntityService.cs" />
     <Compile Include="ProjectService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\DocumentRepository.cs" />
+    <Compile Include="Repositories\IdeaRepository.cs" />
     <Compile Include="Repositories\IProjectRepository.cs" />
     <Compile Include="Events\SyncEventArgs.cs" />
     <Compile Include="Repositories\IRepository.cs" />
