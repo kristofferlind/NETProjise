@@ -19,13 +19,9 @@ namespace Projise.Controllers
         public SprintsController()
         {
             sprintRepository = new SprintRepository(SessionUser);
-            sprintRepository.OnChange += sprintRepository_OnChange;
+            sprintRepository.OnChange += SyncManager.OnChange;
         }
 
-        void sprintRepository_OnChange(object sender, SyncEventArgs<Sprint> e)
-        {
-            GlobalHost.ConnectionManager.GetHubContext<ProjectHub>().Clients.All.onChange(e.Operation, e.Type, e.Item);
-        }
         // GET: api/Sprint
         public IEnumerable<Sprint> Get()
         {

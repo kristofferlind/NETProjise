@@ -3,12 +3,15 @@
  * @name  Session
  * @description Handles session data
  */
-angular.module('projiSeApp').factory('Session', function($http, socket) {
+angular.module('projiSeApp').factory('Session', function($http, $rootScope, socket) {
     'use strict';
 
     var promise = $http.get('/api/users/me').success(function (user) {
+            $rootScope.user = {};
             angular.copy(user, _user);
             socket.syncUpdates('user', _user);
+            angular.copy(user, $rootScope.user);
+            socket.syncUpdates('user', $rootScope.user);
         }),
         _user = {},
         Session = {

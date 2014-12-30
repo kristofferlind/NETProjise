@@ -30,10 +30,24 @@ angular.module('projiSeApp')
                 /**
                  * Syncs item creation/updates on 'model:save'
                  */
+                var lastChange = 0;
 
-                var onChange = function (operation, type, item) {
+                var reSync = function () {
+                    //run client operations saved since going offline(
+
+                    //Dont do resync? signalr solves for reconnections.. might need it for longer disconnections
+                        //start sync from lastchange, fetching everything that happened on the server since going offline
+                        //possible to send this on the actual reconnect event?
+                };
+
+                $rootScope.$on('socket:save:' + modelName, function (event, data) {
+                    handleSave(data);
+                });
+
+                var onChange = function (operation, type, item, operationId) {
+                    //lastOperation = operationId;
+
                     if (modelName == type) {
-                        console.log(type, ": ", item);
                         switch (operation) {
                             case "save":
                                 handleSave(item);
@@ -72,22 +86,26 @@ angular.module('projiSeApp')
                         var index = array.indexOf(oldItem);
                         var event = 'created';
 
-
                         if (oldItem) {
                             if (modelName === 'story' && oldItem.sprintId && !item.sprintId && isSprintBacklog === true) {
                                 $rootScope.$apply(function () {
                                     _.remove(array, { _id: item._id });
                                 })
                             } else {
+                                //a bit of a hack, change isn't applied if $digest cycle is already running, do it twice to make sure =/
+                                //maybe apply should always be done without stuff inside, and the change done before?
+                                array.splice(index, 1, item);
                                 $rootScope.$apply(function () {
                                     array.splice(index, 1, item);
                                 })
                                 event = 'updated';
                             }
                         } else {
-                            $rootScope.$apply(function () {
-                                array.push(item);
-                            })
+                            if (!isSprintBacklog || (isSprintBacklog && item.sprintId)) {
+                                $rootScope.$apply(function () {
+                                    array.push(item);
+                                })
+                            }
                         }
 
                         cb(event, item, array);
@@ -104,11 +122,18 @@ angular.module('projiSeApp')
                     cb(event, item, array);
                 }
 
+                var handleError = function (error) {
+                    console.error(error);
+                }
 
                 var hub = new Hub('projectHub', {
                     listeners: {
                         'onChange': onChange
-                    }
+                        //'reconnecting': onReconnecting,
+                        //'reconnected': onReconnected,
+                        //'disconnected': onDisconnected
+                    },
+                    errorHandler: handleError
                 })
             },
 

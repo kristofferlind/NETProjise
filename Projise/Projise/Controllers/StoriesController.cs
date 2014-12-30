@@ -19,12 +19,7 @@ namespace Projise.Controllers
         public StoriesController()
         {
             storyRepository = new StoryRepository(SessionUser);
-            storyRepository.OnChange += storyRepository_OnChange;
-        }
-
-        void storyRepository_OnChange(object sender, DomainModel.Events.SyncEventArgs<Story> e)
-        {
-            GlobalHost.ConnectionManager.GetHubContext<ProjectHub>().Clients.All.onChange(e.Operation, e.Type, e.Item);
+            storyRepository.OnChange += SyncManager.OnChange;
         }
 
         // GET: api/Stories

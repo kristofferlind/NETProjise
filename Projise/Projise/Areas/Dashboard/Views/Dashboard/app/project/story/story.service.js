@@ -168,6 +168,7 @@ angular.module('projiSeApp').factory('Story', function($http, $modal, $rootScope
                     story.status = 'in progress';
                     //We're using userId to see which task is active
                     story.userId = _user._id;
+
                     //update
                     Story.update(story);
                 },
@@ -183,6 +184,7 @@ angular.module('projiSeApp').factory('Story', function($http, $modal, $rootScope
                     //Remove userId (noone is working on it)
                     story.userId = null;
                     //update
+
                     Story.update(story);
                     //Remove tasks from ui
                     Task.all.length = 0;
@@ -198,6 +200,7 @@ angular.module('projiSeApp').factory('Story', function($http, $modal, $rootScope
                     story.status = 'completed';
                     //Remove userId (noone is working on it)
                     story.userId = null;
+
                     //Update (backend)
                     Story.update(story);
                     //Remove tasks from ui

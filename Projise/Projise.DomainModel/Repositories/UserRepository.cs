@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
 using MongoDB.Driver.Builders;
 using Projise.DomainModel.Entities;
 using Projise.DomainModel.Events;
@@ -39,8 +40,18 @@ namespace Projise.DomainModel.Repositories
                 Query = Query<UserWithSessionVars>.EQ(e => e.Id, user.Id),
                 Update = Update<UserWithSessionVars>.Set(e => e.ActiveProject, user.ActiveProject)
                                                     .Set(e => e.ActiveTeam, user.ActiveTeam)
+                                                    .Set(e => e.GoogleAccessToken, user.GoogleAccessToken)
             });
             Sync(new SyncEventArgs<UserWithSessionVars>("save", user));
+        }
+
+        public void SetGoogleToken(UserWithSessionVars user)
+        {
+            collection.FindAndModify(new FindAndModifyArgs
+            {
+                Query = Query<UserWithSessionVars>.EQ(e => e.Id, user.Id),
+                Update = Update<UserWithSessionVars>.Set(e => e.GoogleAccessToken, user.GoogleAccessToken)
+            });
         }
 
         public User FindByEmail(string email)   //internal?

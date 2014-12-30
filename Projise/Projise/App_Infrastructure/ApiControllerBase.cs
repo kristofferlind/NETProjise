@@ -10,14 +10,18 @@ using Microsoft.AspNet.Identity;
 using AspNet.Identity.MongoDB;
 using MongoDB.Bson;
 using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin;
+using Microsoft.AspNet.SignalR;
 
 namespace Projise.App_Infrastructure
 {
-    [Authorize]
+    [System.Web.Http.Authorize]
     public class ApiControllerBase : ApiController
     {
         private ApplicationUserManager userManager;
         private UserWithSessionVars user;
+        private IOwinContext context;
+        protected SyncManager SyncManager;
 
         public User AppUser {
             get
@@ -48,7 +52,11 @@ namespace Projise.App_Infrastructure
                         UserName = applicationUser.UserName,
                         Email = applicationUser.Email,
                         ActiveProject = applicationUser.ActiveProject,
-                        ActiveTeam = applicationUser.ActiveTeam
+                        ActiveTeam = applicationUser.ActiveTeam,
+                        //AccessToken = context.Request.Cookies.Where(c => c.Key == ".AspNet.ApplicationCookie").SingleOrDefault().Value,
+                        //GoogleProviderKey = applicationUser.Logins.Where(l => l.LoginProvider == "Google").SingleOrDefault().ProviderKey
+                        //GoogleAccessToken = applicationUser.Claims.FirstOrDefault(c => c.Type == "urn:tokens:googleplus:accesstoken").Value
+                        GoogleAccessToken = applicationUser.GoogleAccessToken
                     };
                 }
 
@@ -58,8 +66,14 @@ namespace Projise.App_Infrastructure
 
         public ApiControllerBase()
         {
-            var context = HttpContext.Current.GetOwinContext();
+            context = HttpContext.Current.GetOwinContext();
             userManager = OwinContextExtensions.GetUserManager<ApplicationUserManager>(context);
+            SyncManager = new SyncManager(SessionUser);
+        }
+
+        protected virtual void repository_OnChange(object sender, DomainModel.Events.SyncEventArgs<IEntity> e)
+        {
+            SyncManager.OnChange(sender, e);
         }
     }
 }

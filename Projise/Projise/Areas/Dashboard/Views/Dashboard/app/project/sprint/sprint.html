@@ -20,7 +20,7 @@
         <div ng-repeat="pbStory in Story.backlog() | orderBy: 'priority':true | filter: filter.pbStatus | filter: filter.pbFilter">
             <div story-item ng-model="pbStory" drag drag-data="{{pbStory}}" drag-type="pb" drag-id="{{pbStory._id}}" >
                 <button tooltip="Edit story" class="button button-primary button-small" ng-click="Story.edit(pbStory)"><i class="fa fa-cog"></i></button>
-                <button tooltip="Delete story" class="button button-error button-small" confirm-dialog confirm-message="Are you sure you want to remove this story?" on-confirm="Story.delete(pbStory)"><i class="fa fa-trash-o"></i></button>
+                <button ng-disabled="!isOnline" tooltip="Delete story" class="button button-error button-small" confirm-dialog confirm-message="Are you sure you want to remove this story?" on-confirm="Story.delete(pbStory)"><i class="fa fa-trash-o"></i></button>
             </div>
         </div>
     </div>

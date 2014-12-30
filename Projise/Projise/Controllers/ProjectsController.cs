@@ -27,13 +27,8 @@ namespace Projise.Controllers
         public ProjectsController()
         {
             projectRepository = new ProjectRepository(AppUser);
-            projectRepository.OnChange += projectRepository_OnChange;
-            projectService = new ProjectService(AppUser);
-        }
-
-        void projectRepository_OnChange(object sender, DomainModel.Events.SyncEventArgs<Project> e)
-        {
-            GlobalHost.ConnectionManager.GetHubContext<ProjectHub>().Clients.All.onChange(e.Operation, e.Type, e.Item);
+            projectRepository.OnChange += SyncManager.OnChange;
+            projectService = new ProjectService(AppUser, projectRepository);
         }
 
         // GET: api/Project

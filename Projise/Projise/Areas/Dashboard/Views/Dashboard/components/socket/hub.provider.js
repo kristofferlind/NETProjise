@@ -1,5 +1,5 @@
 ﻿//Based on https://github.com/JustMaier/angular-signalr-hub
-angular.module("projiSeApp").factory("Hub", function ($q) {
+angular.module('projiSeApp').factory('Hub', function ($q, $rootScope, SyncManager) {
     'use strict';
 
     var connection = null,
@@ -58,6 +58,51 @@ angular.module("projiSeApp").factory("Hub", function ($q) {
         if (options && options.errorHandler) {
             Hub.connection.error(options.errorHandler);
         }
+
+        Hub.connection.disconnected = function () {
+            console.log('disconnected');
+        }
+
+        Hub.connection.reconnected = function () {
+            console.log('managed to reconnect');
+        }
+
+        Hub.connection.reconnecting = function () {
+            //console.log('trying to reconnect');
+        }
+
+        Hub.connection.stateChanged(function (state) {
+            var old = state.oldState,
+                current = state.newState,
+                states = $.signalR.connectionState;
+
+            switch (current) {
+                case states.connecting:
+                    //$rootScope.$apply(function () {
+                    //    $rootScope.isOnline = false;
+                    //})
+                    break;
+                case states.connected:
+                    //console.log('managed to connect');
+                    $rootScope.$apply(function () {
+                        $rootScope.isOnline = true;
+                        SyncManager.sync();
+                    })
+                    break;
+                case states.reconnecting:
+                    //console.log('trying to reconnect');
+                    $rootScope.$apply(function () {
+                        $rootScope.isOnline = false;
+                    })
+                    break;
+                case states.disconnected:
+                    //console.log('lost connection to server :(');
+                    $rootScope.$apply(function () {
+                        $rootScope.isOnline = false;
+                    })
+                    break;
+            }
+        })
 
         Hub.promise = Hub.connection.start();
     };

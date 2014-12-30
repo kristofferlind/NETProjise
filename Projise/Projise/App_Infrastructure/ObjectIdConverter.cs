@@ -12,6 +12,7 @@ namespace Projise.App_Infrastructure
     {
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
+            //                       000000000000000000000000
             if (value.ToString() != "000000000000000000000000")
             {
                 serializer.Serialize(writer, value.ToString());

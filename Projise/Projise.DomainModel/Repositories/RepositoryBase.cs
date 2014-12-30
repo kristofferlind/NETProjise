@@ -19,15 +19,15 @@ namespace Projise.DomainModel.Repositories
         public RepositoryBase()
         {
             var client = new MongoClient(System.Configuration.ConfigurationManager.ConnectionStrings["Mongo"].ConnectionString);
-            database = client.GetServer().GetDatabase("NETProjise-dev");
+            database = client.GetServer().GetDatabase("NETProjise");
             var collectionName = typeof(T).Name.ToLower() + "s";
             collection = database.GetCollection<T>(collectionName);
         }
 
-        public virtual event EventHandler<SyncEventArgs<T>> OnChange;
-        protected virtual void Sync(SyncEventArgs<T> e)
+        public virtual event EventHandler<SyncEventArgs<IEntity>> OnChange;
+        protected virtual void Sync(SyncEventArgs<IEntity> e)
         {
-            EventHandler<SyncEventArgs<T>> handler = OnChange;
+            EventHandler<SyncEventArgs<IEntity>> handler = OnChange;
             if (handler != null)
             {
                 handler(this, e);
@@ -49,21 +49,21 @@ namespace Projise.DomainModel.Repositories
         public virtual void Add(T collectionItem)
         {
             collection.Insert<T>(collectionItem);
-            Sync(new SyncEventArgs<T>("save", collectionItem));
+            Sync(new SyncEventArgs<IEntity>("save", collectionItem));
         }
 
         //Ta bort?
         public virtual void Remove(T collectionItem)
         {
             collection.Remove(Query<T>.Where(t => t.Id == collectionItem.Id));
-            Sync(new SyncEventArgs<T>("remove", collectionItem));
+            Sync(new SyncEventArgs<IEntity>("remove", collectionItem));
         }
 
         public virtual void Remove(ObjectId collectionId)
         {
             var collectionItem = FindById(collectionId);
             collection.Remove(Query<T>.Where(t => t.Id == collectionItem.Id));
-            Sync(new SyncEventArgs<T>("remove", collectionItem));
+            Sync(new SyncEventArgs<IEntity>("remove", collectionItem));
         }
 
         public virtual void Update(T collectionItem)
@@ -73,7 +73,7 @@ namespace Projise.DomainModel.Repositories
                 Query = Query<T>.Where(e => e.Id == collectionItem.Id),
                 Update = Update<T>.Replace(collectionItem)
             });
-            Sync(new SyncEventArgs<T>("save", collectionItem));
+            Sync(new SyncEventArgs<IEntity>("save", collectionItem));
         }
     }
 }

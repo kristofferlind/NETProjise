@@ -1,4 +1,5 @@
-﻿namespace Projise.App_Infrastructure
+﻿using System;
+namespace Projise.App_Infrastructure
 {
     public static class StringExtensions
     {
@@ -15,6 +16,17 @@
             }
             firstChar = char.ToLowerInvariant(firstChar);
             return firstChar + value.Substring(1);
+        }
+
+        public static DateTime? ToDate(this string date)
+        {
+            DateTime? result = null;
+            DateTime parsed;
+            if (DateTime.TryParse(date, out parsed))
+            {
+                result = parsed;
+            }
+            return result;
         }
     }
 }

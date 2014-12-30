@@ -19,12 +19,7 @@ namespace Projise.Controllers
         public DocumentsController()
         {
             documentRepository = new DocumentRepository(SessionUser);
-            documentRepository.OnChange += documentRepository_OnChange;
-        }
-
-        void documentRepository_OnChange(object sender, DomainModel.Events.SyncEventArgs<Document> e)
-        {
-            GlobalHost.ConnectionManager.GetHubContext<ProjectHub>().Clients.All.onChange(e.Operation, e.Type, e.Item);
+            documentRepository.OnChange += SyncManager.OnChange;
         }
 
         // GET: api/Documents

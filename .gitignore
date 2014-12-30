@@ -108,3 +108,9 @@ Backup*/
 UpgradeLog*.XML
 
 Projise/Projise/Areas/Dashboard/Views/Dashboard/bower_components/
+Projise/Projise/App_Data/projise_log.ldf
+Projise/Projise/App_Data/projise.mdf
+Projise/Projise/Properties/PublishProfiles/projise - FTP.pubxml
+Projise/Projise/Properties/PublishProfiles/projise - Web Deploy.pubxml
+Projise/Projise/App_Start/Startup.Auth.cs
+Projise/Projise/App_Start/Startup.Auth.cs

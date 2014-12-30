@@ -9,7 +9,7 @@
         <div ng-repeat="sprint in Sprint.all()">
             <div sprint-item ng-model="sprint">
                 <button tooltip="Edit sprint" class="button button-primary button-small" ng-click="Sprint.update(sprint)"><i class="fa fa-cog"></i></button>
-                <button tooltip="Delete sprint" class="button button-error button-small" dialog-confirm dialog-message="Removing this sprint will make all it's data unavailable, are you sure this is what you want to do?" on-confirm="Sprint.delete(sprint)"><i class="fa fa-trash-o"></i></button>
+                <button ng-disabled="!isOnline" tooltip="Delete sprint" class="button button-error button-small" dialog-confirm dialog-message="Removing this sprint will make all it's data unavailable, are you sure this is what you want to do?" on-confirm="Sprint.delete(sprint)"><i class="fa fa-trash-o"></i></button>
             </div>
         </div>
     </section>
@@ -33,7 +33,7 @@
         <div ng-repeat="story in Story.backlog() | orderBy: 'priority':true | filter: filter.pbStatus | filter: filter.pbFilter">
             <div story-item ng-model="story">
                 <button tooltip="Edit story" class="button button-primary button-small" ng-click="Story.edit(story)"><i class="fa fa-cog"></i></button>
-                <button tooltip="Delete story" class="button button-error button-small" confirm-dialog confirm-message="Are you sure you want to remove this story?" on-confirm="Story.delete(story)"><i class="fa fa-trash-o"></i></button>
+                <button ng-disabled="!isOnline" tooltip="Delete story" class="button button-error button-small" confirm-dialog confirm-message="Are you sure you want to remove this story?" on-confirm="Story.delete(story)"><i class="fa fa-trash-o"></i></button>
             </div>
         </div>
     </div>

@@ -47,6 +47,7 @@ angular.module('projiSeApp', [
 
     //$locationProvider.html5Mode(true);
     //$httpProvider.interceptors.push('authInterceptor');
+    $httpProvider.interceptors.push('offlineInterceptor');
 }])
 
 .config(['$tooltipProvider', function($tooltipProvider) {
@@ -58,6 +59,71 @@ angular.module('projiSeApp', [
         'mouseenter': 'mouseleave click'
     });
 }])
+
+.factory('offlineInterceptor', ['$q', '$rootScope', function ($q, $rootScope) {
+    'use strict';
+
+    var requestInterceptor = {
+        response: function (response) {
+            //cache data if get request
+            if (response.config.method === 'GET' && $rootScope.user && $rootScope.user.activeProject) {
+                var key = $rootScope.user.activeProject + ':' + response.config.url;
+                localStorage[key] = angular.toJson(response);
+            }
+
+            return response;
+        },
+        responseError: function (response) {
+            //try to load data from cache if GET
+            var deferred = $q.defer();
+
+            if (response.config.method === 'GET' && !$rootScope.isOnline && $rootScope.user && $rootScope.user.activeProject) {
+                var key = $rootScope.user.activeProject + ':' + response.config.url;
+                var data = localStorage[key];
+                if (data) {
+                    deferred.resolve(angular.fromJson(data));
+                } else {
+                    deferred.reject('no-cache');
+                }
+            } else {
+                deferred.reject();
+            }
+
+            //try to update ui and save request if offline (delete never allowed)
+            if (!$rootScope.isOnline && (response.config.method === 'POST' || response.config.method === 'PUT') && $rootScope.user && $rootScope.user.activeProject) {
+                var modelRe = /api\/(\w+)\//;
+                var matches = modelRe.exec(response.config.url);
+                var model = matches[1];
+
+                console.log(response);
+
+                if (matches) {
+                    model = model.substr(0, model.length - 1);
+                    model = model.replace('ie', 'y');
+                    console.log(model);
+
+                    response.config.data.notSynced = true;
+
+                    $rootScope.$broadcast('socket:save:' + model, response.config.data);
+                    var toBeSynced = angular.fromJson(localStorage['toBeSynced']) || [];
+                    var syncItem = {
+                        method: response.config.method,
+                        url: response.config.url,
+                        data: response.config.data
+                    }
+                    toBeSynced.push(syncItem);
+                    localStorage['toBeSynced'] = angular.toJson(toBeSynced);
+                }
+            }
+
+
+            return deferred.promise;
+        }
+    }
+
+    return requestInterceptor;
+}])
+
 
 //.factory('authInterceptor', ['$rootScope', '$q', '$cookieStore', '$location', function($rootScope, $q, $cookieStore, $location) {
 //    return {

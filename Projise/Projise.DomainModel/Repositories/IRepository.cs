@@ -11,7 +11,7 @@ namespace Projise.DomainModel.Repositories
 {
     public interface IRepository<T> where T : IEntity
     {
-        event EventHandler<SyncEventArgs<T>> OnChange;
+        event EventHandler<SyncEventArgs<IEntity>> OnChange;
         IEnumerable<T> All();
         T FindById(ObjectId id);
         void Add(T collectionItem);

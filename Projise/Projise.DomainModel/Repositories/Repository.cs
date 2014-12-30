@@ -43,10 +43,10 @@ namespace Projise.DomainModel.Repositories
         }
 
 
-        public event EventHandler<SyncEventArgs<T>> OnChange;
-        protected virtual void Sync(SyncEventArgs<T> e)
+        public event EventHandler<SyncEventArgs<IEntity>> OnChange;
+        protected virtual void Sync(SyncEventArgs<IEntity> e)
         {
-            EventHandler<SyncEventArgs<T>> handler = OnChange;
+            EventHandler<SyncEventArgs<IEntity>> handler = OnChange;
             if (handler != null)
             {
                 handler(this, e);
@@ -91,7 +91,7 @@ namespace Projise.DomainModel.Repositories
             //jsonrepresentation? skulle bli rätt i klienten också..
             //collectionItem.ParentID = parentId;
             collection.Insert<T>(collectionItem);
-            Sync(new SyncEventArgs<T>("save", collectionItem));
+            Sync(new SyncEventArgs<IEntity>("save", collectionItem));
         }
 
         //Som ovan
@@ -99,7 +99,7 @@ namespace Projise.DomainModel.Repositories
         {
             var query = Query<T>.EQ(e => e.Id, collectionItem.Id);
             collection.Remove(query);
-            Sync(new SyncEventArgs<T>("remove", collectionItem));
+            Sync(new SyncEventArgs<IEntity>("remove", collectionItem));
         }
 
         public void Update(T collectionItem)
@@ -109,7 +109,7 @@ namespace Projise.DomainModel.Repositories
                 Query = Query<T>.EQ(e => e.Id, collectionItem.Id),
                 Update = Update<T>.Set(e => e, collectionItem)
             });
-            Sync(new SyncEventArgs<T>("save", collectionItem));
+            Sync(new SyncEventArgs<IEntity>("save", collectionItem));
         }
     }
 }

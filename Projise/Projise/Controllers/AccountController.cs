@@ -10,6 +10,9 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using AspNet.Identity.MongoDB;
 using Projise.Models;
+using Projise.DomainModel.Entities;
+using MongoDB.Bson;
+using Projise.DomainModel.Repositories;
 
 namespace Projise.Controllers
 {
@@ -325,16 +328,42 @@ namespace Projise.Controllers
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
         {
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
+            //var loginInfo = AuthenticationManager.GetExternalLoginInfo();
             if (loginInfo == null)
             {
                 return RedirectToAction("Login");
             }
+
+            var claims = loginInfo.ExternalIdentity.Claims;
+            var token = claims.Where(c => c.Type == "urn:tokens:googleplus:accesstoken").SingleOrDefault();
+
+            //await UserManager.AddClaimAsync(User.Identity.GetUserId(), claims["urn:tokens:googleplus:accesstoken"]);
+
+
+
+
 
             // Sign in the user with this external login provider if the user already has a login
             var result = await SignInHelper.ExternalSignIn(loginInfo, isPersistent: false);
             switch (result)
             {
                 case Projise.Models.SignInStatus.Success:
+                    //Any better way to solve this?
+                    if (token != null)
+                    {
+                        var user = await UserManager.FindAsync(loginInfo.Login);
+                        var userId = user.Id;
+
+                        var appUser = new UserWithSessionVars
+                        {
+                            Id = ObjectId.Parse(userId),
+                            GoogleAccessToken = token.Value
+                        };
+
+                        var repo = new UserRepository();
+
+                        repo.SetGoogleToken(appUser);
+                    }
                     return RedirectToLocal(returnUrl);
                 case Projise.Models.SignInStatus.LockedOut:
                     return View("Lockout");

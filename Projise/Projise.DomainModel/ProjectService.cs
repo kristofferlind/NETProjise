@@ -15,9 +15,9 @@ namespace Projise.DomainModel
         private UserRepository userRepository;
         private TeamRepository teamRepository;
 
-        public ProjectService(User user)
+        public ProjectService(User user, ProjectRepository projectRepository)
         {
-            projectRepository = new ProjectRepository(user);
+            this.projectRepository = projectRepository;
             userRepository = new UserRepository();
             teamRepository = new TeamRepository(user);
         }

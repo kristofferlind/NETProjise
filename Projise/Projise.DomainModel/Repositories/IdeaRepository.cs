@@ -32,7 +32,7 @@ namespace Projise.DomainModel.Repositories
                                      .Pull(i => i.UsersDown, userId)
             });
             var idea = FindById(id);
-            Sync(new SyncEventArgs<Idea>("save", idea));
+            Sync(new SyncEventArgs<IEntity>("save", idea));
         }
 
         public void VoteDown(ObjectId id, ObjectId userId)
@@ -44,7 +44,7 @@ namespace Projise.DomainModel.Repositories
                                      .Pull(i => i.UsersUp, userId)
             });
             var idea = FindById(id);
-            Sync(new SyncEventArgs<Idea>("save", idea));
+            Sync(new SyncEventArgs<IEntity>("save", idea));
         }
     }
 }

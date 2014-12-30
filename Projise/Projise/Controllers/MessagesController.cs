@@ -18,12 +18,7 @@ namespace Projise.Controllers
         public MessagesController()
         {
             messageRepository = new MessageRepository(SessionUser);
-            messageRepository.OnChange += messageRepository_OnChange;
-        }
-
-        void messageRepository_OnChange(object sender, DomainModel.Events.SyncEventArgs<DomainModel.Entities.Message> e)
-        {
-            GlobalHost.ConnectionManager.GetHubContext<ProjectHub>().Clients.All.onChange(e.Operation, e.Type, e.Item);
+            messageRepository.OnChange += SyncManager.OnChange;
         }
 
         // GET: api/Message

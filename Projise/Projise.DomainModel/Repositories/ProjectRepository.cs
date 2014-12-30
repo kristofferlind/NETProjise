@@ -32,7 +32,7 @@ namespace Projise.DomainModel.Repositories
                 Update = Update<Project>.Set(p => p.Name, project.Name)
                                         .Set(p => p.Description, project.Description)
             });
-            Sync(new SyncEventArgs<Project>("save", project));
+            Sync(new SyncEventArgs<IEntity>("save", project));
         }
 
         public override void Add(Project collectionItem)
@@ -40,7 +40,7 @@ namespace Projise.DomainModel.Repositories
             collectionItem.Users.Clear();
             collectionItem.Users.Add(user);
             collection.Insert<Project>(collectionItem);
-            Sync(new SyncEventArgs<Project>("save", collectionItem));
+            Sync(new SyncEventArgs<IEntity>("save", collectionItem));
         }
 
         public void AddUser(ObjectId projectId, User user)
@@ -51,7 +51,7 @@ namespace Projise.DomainModel.Repositories
                 Update = Update<Project>.AddToSet(p => p.Users, user)
             });
             var project = FindById(projectId);
-            Sync(new SyncEventArgs<Project>("save", project));
+            Sync(new SyncEventArgs<IEntity>("save", project));
         }
 
         public void AddTeam(ObjectId projectId, Team team)
@@ -62,7 +62,7 @@ namespace Projise.DomainModel.Repositories
                 Update = Update<Project>.AddToSetEach<User>(p => p.Users, team.Users)
             });
             var project = FindById(projectId);
-            Sync(new SyncEventArgs<Project>("save", project));
+            Sync(new SyncEventArgs<IEntity>("save", project));
         }
 
         public void RemoveUser(ObjectId projectId, ObjectId userId)
@@ -72,7 +72,7 @@ namespace Projise.DomainModel.Repositories
                 Query = Query<Project>.Where(p => p.Users.All(u => u.Id == userId))
             });
             var project = FindById(projectId);
-            Sync(new SyncEventArgs<Project>("save", project));
+            Sync(new SyncEventArgs<IEntity>("save", project));
         }
     }
 }

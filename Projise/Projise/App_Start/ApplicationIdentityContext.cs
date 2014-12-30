@@ -15,8 +15,8 @@
 			// todo add settings where appropriate to switch server & database in your own application
             //var client = new MongoClient("mongodb://localhost:27017");
             var client = new MongoClient(System.Configuration.ConfigurationManager.ConnectionStrings["Mongo"].ConnectionString);
-			var database = client.GetServer().GetDatabase("NETProjise-dev");
-			var users = database.GetCollection<IdentityUser>("users");
+            var database = client.GetServer().GetDatabase("NETProjise");
+            var users = database.GetCollection<IdentityUser>("users");
 			var roles = database.GetCollection<IdentityRole>("roles");
 			return new ApplicationIdentityContext(users, roles);
 		}

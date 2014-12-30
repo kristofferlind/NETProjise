@@ -4,9 +4,11 @@
  * @description Controller for Project overview page
  */
 angular.module('projiSeApp')
-    .controller('OverviewController', function($scope, Idea) {
+    .controller('OverviewController', function($scope, Idea, Calendar) {
         'use strict';
 
         //Make Idea service available in the view
         $scope.Idea = Idea;
+
+        $scope.Calendar = Calendar;
     });

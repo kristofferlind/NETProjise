@@ -20,5 +20,6 @@ namespace Projise.Models {
         //public List<ObjectId> Teams { get; set; }         //Sätter index på arrayerna istället..
         public ObjectId ActiveProject { get; set; }
         public ObjectId ActiveTeam { get; set; }
+        public string GoogleAccessToken { get; set; }
     }
 }

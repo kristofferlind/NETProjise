@@ -42,8 +42,47 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Google.Apis">
+      <HintPath>..\packages\Google.Apis.1.9.0\lib\net40\Google.Apis.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Auth">
+      <HintPath>..\packages\Google.Apis.Auth.1.9.0\lib\net40\Google.Apis.Auth.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Auth.PlatformServices">
+      <HintPath>..\packages\Google.Apis.Auth.1.9.0\lib\net40\Google.Apis.Auth.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Calendar.v3">
+      <HintPath>..\packages\Google.Apis.Calendar.v3.1.9.0.1100\lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Calendar.v3.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Core">
+      <HintPath>..\packages\Google.Apis.Core.1.9.0\lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.PlatformServices">
+      <HintPath>..\packages\Google.Apis.1.9.0\lib\net40\Google.Apis.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.Client">
+      <HintPath>..\packages\Google.GData.Client.2.2.0.0\lib\Google.GData.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.Contacts">
+      <HintPath>..\packages\Google.GData.Contacts.2.2.0.0\lib\Google.GData.Contacts.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.Extensions">
+      <HintPath>..\packages\Google.GData.Extensions.2.2.0.0\lib\Google.GData.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\packages\HtmlAgilityPack.1.4.6\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Bson, Version=1.9.2.235, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -55,7 +94,7 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Remotion.Linq">
       <HintPath>..\packages\BrightstarDBLibs.1.7.1.0\lib\net45\Remotion.Linq.dll</HintPath>
@@ -70,6 +109,15 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.22\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.22\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -78,8 +126,12 @@
     <Reference Include="VDS.Common">
       <HintPath>..\packages\VDS.Common.1.3.0\lib\net40-client\VDS.Common.dll</HintPath>
     </Reference>
+    <Reference Include="Zlib.Portable">
+      <HintPath>..\packages\Zlib.Portable.1.10.0\lib\portable-net4+sl5+wp8+win8+wpa81+MonoTouch+MonoAndroid\Zlib.Portable.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProjiseService.cs" />
     <Compile Include="ChattyBrightStarModel\ChatMessage.cs" />
     <Compile Include="ChattyBrightStarModel\ChatMessageEventArgs.cs" />
     <Compile Include="ChattyBrightStarModel\ChatMessage_Metadata.cs" />
@@ -98,6 +150,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ChattyDBContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataModels\ProjiseContext.cs" />
+    <Compile Include="DataModels\CalendarEvent.cs" />
+    <Compile Include="DataModels\CalendarEventRepository.cs" />
+    <Compile Include="DataModels\Contact.cs" />
     <Compile Include="Entities\Document.cs" />
     <Compile Include="Entities\Idea.cs" />
     <Compile Include="Entities\IEntity.cs" />
@@ -132,6 +188,8 @@
     <Compile Include="TrafficInfoModel\SRTrafficService.cs" />
     <Compile Include="TrafficInfoModel\TrafficInfo.cs" />
     <Compile Include="TrafficInfoModel\Webservices\SRTrafficWebservice.cs" />
+    <Compile Include="Webservices\GoogleCalendar.cs" />
+    <Compile Include="Webservices\GoogleContacts.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -146,10 +204,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Abstract\" />
-    <Folder Include="DataModels\" />
-    <Folder Include="Webservices\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

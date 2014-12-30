@@ -19,13 +19,9 @@ namespace Projise.Controllers
         public TasksController()
         {
             taskRepository = new TaskRepository(SessionUser);
-            taskRepository.OnChange += taskRepository_OnChange;
+            taskRepository.OnChange += SyncManager.OnChange;
         }
 
-        void taskRepository_OnChange(object sender, DomainModel.Events.SyncEventArgs<Task> e)
-        {
-            GlobalHost.ConnectionManager.GetHubContext<ProjectHub>().Clients.All.onChange(e.Operation, e.Type, e.Item);
-        }
 
         // GET: api/Tasks
         public IEnumerable<Task> Get(string id)
@@ -34,13 +30,6 @@ namespace Projise.Controllers
             var storyId = ObjectId.Parse(id);
             return taskRepository.FindByStoryId(storyId);
         }
-
-        // GET: api/Tasks/5
-        //public Task Get(string id)
-        //{
-        //    var taskId = ObjectId.Parse(id);
-        //    return taskRepository.FindById(taskId);
-        //}
 
         // POST: api/Tasks
         public void Post([FromBody]Task task)

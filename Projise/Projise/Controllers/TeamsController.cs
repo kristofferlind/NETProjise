@@ -27,12 +27,7 @@ namespace Projise.Controllers
         {
             teamRepository = new TeamRepository(AppUser);
             teamService = new TeamService(AppUser);
-            teamRepository.OnChange += teamRepository_OnChange;
-        }
-
-        private void teamRepository_OnChange(object sender, DomainModel.Events.SyncEventArgs<Team> e)
-        {
-            GlobalHost.ConnectionManager.GetHubContext<ProjectHub>().Clients.All.onChange(e.Operation, e.Type, e.Item);
+            teamRepository.OnChange += SyncManager.OnChange;
         }
 
         // GET: api/Team

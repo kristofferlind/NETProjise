@@ -18,12 +18,7 @@ namespace Projise.Controllers
         public IdeasController()
         {
             ideaRepository = new IdeaRepository(SessionUser);
-            ideaRepository.OnChange += ideaRepository_OnChange;
-        }
-
-        void ideaRepository_OnChange(object sender, DomainModel.Events.SyncEventArgs<DomainModel.Entities.Idea> e)
-        {
-            GlobalHost.ConnectionManager.GetHubContext<ProjectHub>().Clients.All.onChange(e.Operation, e.Type, e.Item);
+            ideaRepository.OnChange += SyncManager.OnChange;
         }
 
         // GET: api/Ideas

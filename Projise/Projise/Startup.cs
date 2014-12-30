@@ -14,7 +14,7 @@ namespace Projise
 
         private static JsonSerializer GetJsonSerializer()
         {
-            return new JsonSerializer
+            var jsonSerializer = new JsonSerializer
             {
                 ContractResolver = new FilteredCamelCasePropertyNamesContractResolver
                 {
@@ -32,6 +32,10 @@ namespace Projise
                     //                }
                 }
             };
+
+            jsonSerializer.Converters.Add(new ObjectIdConverter());
+
+            return jsonSerializer;
         }
 
 
