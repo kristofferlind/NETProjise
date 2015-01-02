@@ -1,4 +1,7 @@
-@import "susy"; // Requires Susy 2.0.0 or later
+/*@import "susy"; // Requires Susy 2.0.0 or later*/
+
+/*@import "../vendor/compass/reset/_utilities.scss";*/
+@import "../vendor/susy";
 
 $susy: (
     columns: 12,

@@ -19,13 +19,16 @@ html, body {
 }
 
 .flex-height {
+    -ms-flex: 1;
     flex: 1;
     display: flex;
+    -ms-flex-flow: column;
     flex-flow: column;
 }
 
 .main {
     background-color: $white;
+    -ms-flex: 1;
     flex: 1;
     display: flex;
 }
@@ -44,6 +47,8 @@ html, body {
 .grid-1-3 {
     @include span(4 of 12);
     min-width: 300px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 

@@ -21,7 +21,7 @@ namespace Projise.DomainModel.Repositories
         public Repository(string parentIdName = null, string parentsName = null)
         {
             var client = new MongoClient(System.Configuration.ConfigurationManager.ConnectionStrings["Mongo"].ConnectionString);
-            database = client.GetServer().GetDatabase("NETProjise-dev");
+            database = client.GetServer().GetDatabase("NETProjise");
             var collectionName = typeof(T).ToString().ToLower() + "s";
             collection = database.GetCollection<T>(collectionName);
             if (parentIdName != null)

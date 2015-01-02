@@ -293,6 +293,7 @@
     <Compile Include="Controllers\IdeasController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
+    <Compile Include="Controllers\ProjectReportController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\SprintsController.cs" />
@@ -308,6 +309,7 @@
     <Compile Include="Models\AdminViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ProjectReportViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -334,7 +336,13 @@
     <Content Include="Areas\Dashboard\Views\Dashboard\app\account\signup\signup.controller.js" />
     <Content Include="Areas\Dashboard\Views\Dashboard\app\account\signup\signup.controller.spec.js" />
     <Content Include="Areas\Dashboard\Views\Dashboard\app\account\signup\signup.html" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\app.css">
+      <DependentUpon>app.scss</DependentUpon>
+    </Content>
     <Content Include="Areas\Dashboard\Views\Dashboard\app\app.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\app.min.css">
+      <DependentUpon>app.css</DependentUpon>
+    </Content>
     <Content Include="Areas\Dashboard\Views\Dashboard\app\chatpanel\chat.service.js" />
     <Content Include="Areas\Dashboard\Views\Dashboard\app\chatpanel\chat.service.spec.js" />
     <Content Include="Areas\Dashboard\Views\Dashboard\app\chatpanel\chatpanel.controller.js" />
@@ -450,6 +458,12 @@
     <Content Include="Areas\Dashboard\Views\Dashboard\app\project\task\task.service.spec.js" />
     <Content Include="Areas\Dashboard\Views\Dashboard\assets\fonts\fontawesome-webfont.svg" />
     <Content Include="Areas\Dashboard\Views\Dashboard\assets\images\yeoman.png" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\style.css">
+      <DependentUpon>style.scss</DependentUpon>
+    </Content>
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\style.min.css">
+      <DependentUpon>style.css</DependentUpon>
+    </Content>
     <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-bootstrap\ui-bootstrap-tpls.js" />
     <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-bootstrap\ui-bootstrap-tpls.min.js" />
     <Content Include="Areas\Dashboard\Views\Dashboard\bower_components\angular-bootstrap\ui-bootstrap.js" />
@@ -550,6 +564,8 @@
     <Content Include="Areas\Traffic\Scripts\trafficInfo.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\original\bootstrap.css" />
+    <Content Include="Content\original\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -560,18 +576,18 @@
     <Content Include="Areas\Dashboard\Views\Dashboard\Index.cshtml" />
     <Content Include="Areas\Dashboard\Views\Dashboard\.htaccess" />
     <Content Include="Areas\Dashboard\Views\Dashboard\.jshintrc" />
-    <Content Include="Areas\Dashboard\Views\Dashboard\app\account\login\login.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\account\login\_login.scss" />
     <Content Include="Areas\Dashboard\Views\Dashboard\app\app.scss" />
-    <Content Include="Areas\Dashboard\Views\Dashboard\app\chatpanel\chatpanel.scss" />
-    <Content Include="Areas\Dashboard\Views\Dashboard\app\document\document.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\chatpanel\_chatpanel.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\document\_document.scss" />
     <Content Include="Areas\Dashboard\Views\Dashboard\app\manage\projects\projects.scss" />
-    <Content Include="Areas\Dashboard\Views\Dashboard\app\manage\teams\teams.scss" />
-    <Content Include="Areas\Dashboard\Views\Dashboard\app\navbar\navbar.scss" />
-    <Content Include="Areas\Dashboard\Views\Dashboard\app\navpanel\navpanel.scss" />
-    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\idea\idea.scss" />
-    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\sprint\sprint.scss" />
-    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\story\story.scss" />
-    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\task\task.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\manage\teams\_teams.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\navbar\_navbar.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\navpanel\_navpanel.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\idea\_idea.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\sprint\_sprint.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\story\_story.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\project\task\_task.scss" />
     <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\meta\_colors.scss" />
     <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\meta\_grid.scss" />
     <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\meta\_typography.scss" />
@@ -715,6 +731,65 @@
     <Content Include="Areas\Dashboard\Views\.tmp\fonts\fontawesome-webfont.ttf" />
     <Content Include="Areas\Dashboard\Views\.tmp\fonts\fontawesome-webfont.woff" />
     <Content Include="Areas\Dashboard\Views\.tmp\fonts\FontAwesome.otf" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\app\app.css.map">
+      <DependentUpon>app.css</DependentUpon>
+    </Content>
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\style.css.map">
+      <DependentUpon>style.css</DependentUpon>
+    </Content>
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\language\susyone\_background.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\language\susyone\_functions.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\language\susyone\_grid.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\language\susyone\_isolation.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\language\susyone\_margin.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\language\susyone\_media.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\language\susyone\_padding.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\language\susyone\_settings.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\language\susy\_background.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\language\susy\_bleed.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\language\susy\_box-sizing.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\language\susy\_breakpoint-plugin.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\language\susy\_container.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\language\susy\_context.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\language\susy\_gallery.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\language\susy\_grids.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\language\susy\_gutters.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\language\susy\_isolate.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\language\susy\_margins.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\language\susy\_padding.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\language\susy\_rows.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\language\susy\_settings.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\language\susy\_span.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\language\susy\_validation.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\language\_susy.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\language\_susyone.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\math\su\_grid.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\math\su\_maps.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\math\su\_settings.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\math\su\_validation.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\math\_su.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\output\float\_container.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\output\float\_end.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\output\float\_isolate.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\output\float\_span.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\output\shared\_background.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\output\shared\_container.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\output\shared\_direction.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\output\shared\_inspect.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\output\shared\_margins.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\output\shared\_output.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\output\shared\_padding.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\output\support\_background.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\output\support\_box-sizing.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\output\support\_clearfix.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\output\support\_prefix.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\output\support\_rem.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\output\support\_support.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\output\_float.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\output\_shared.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\output\_support.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\susy\_math.scss" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\assets\scss\vendor\_susy.scss" />
     <None Include="Properties\PublishProfiles\projise - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\projise - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -779,6 +854,7 @@
     <Content Include="Views\UsersAdmin\Details.cshtml" />
     <Content Include="Views\UsersAdmin\Edit.cshtml" />
     <Content Include="Views\UsersAdmin\Index.cshtml" />
+    <Content Include="Views\ProjectReport\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

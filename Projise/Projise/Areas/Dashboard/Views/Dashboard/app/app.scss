@@ -1,9 +1,9 @@
 @import '../assets/scss/style';
 
-$fa-font-path: "//netdna.bootstrapcdn.com/font-awesome/4.1.0/fonts" !default;
-/*$fa-font-path:        "fonts" !default;*/
+$fa-font-path: "../bower_components/font-awesome/fonts" !default;
+/*@import "../bower_components/font-awesome/scss/font-awesome";*/
 
-@import 'font-awesome/scss/font-awesome';
+
 
 /**
  * App-wide Styles
@@ -25,15 +25,15 @@ $fa-font-path: "//netdna.bootstrapcdn.com/font-awesome/4.1.0/fonts" !default;
 
 // Component styles are injected through grunt
 // injector
-@import 'account/login/login.scss';
-@import 'chatpanel/chatpanel.scss';
-@import 'document/document.scss';
-@import 'manage/projects/projects.scss';
-@import 'manage/teams/teams.scss';
-@import 'navbar/navbar.scss';
-@import 'navpanel/navpanel.scss';
-@import 'project/idea/idea.scss';
-@import 'project/sprint/sprint.scss';
-@import 'project/story/story.scss';
-@import 'project/task/task.scss';
+@import 'account/login/login';
+@import 'chatpanel/chatpanel';
+/*@import 'document/document';*/
+/*@import 'manage/projects/projects';*/
+@import 'manage/teams/teams';
+/*@import 'navbar/navbar';*/
+/*@import 'navpanel/navpanel';*/
+/*@import 'project/idea/idea';*/
+@import 'project/sprint/sprint';
+/*@import 'project/story/story';*/
+/*@import 'project/task/task';*/
 // endinjector

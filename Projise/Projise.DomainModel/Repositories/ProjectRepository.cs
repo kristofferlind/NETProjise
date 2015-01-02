@@ -19,6 +19,12 @@ namespace Projise.DomainModel.Repositories
         {
             this.user = user;
         }
+
+        public ProjectRepository()
+        {
+
+        }
+
         protected override IQueryable<Project> CollectionItems()
         {
             return collection.FindAs<Project>(Query<Project>.Where(p => p.Users.Any(u => u.Id == user.Id))).AsQueryable<Project>();

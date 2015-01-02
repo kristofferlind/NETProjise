@@ -19,7 +19,7 @@ namespace Projise.DomainModel.Repositories
         public UserRepository()
         {
             var client = new MongoClient(System.Configuration.ConfigurationManager.ConnectionStrings["Mongo"].ConnectionString);
-            database = client.GetServer().GetDatabase("NETProjise-dev");
+            database = client.GetServer().GetDatabase("NETProjise");
             collection = database.GetCollection<User>("users");
         }
 

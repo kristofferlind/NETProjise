@@ -17,9 +17,19 @@ namespace Projise.DomainModel.Repositories
             this.user = user;
         }
 
+        public StoryRepository()
+        {
+
+        }
+
         protected override IQueryable<Story> CollectionItems()
         {
             return collection.FindAs<Story>(Query<Story>.Where(s => s.ProjectId == user.ActiveProject)).AsQueryable<Story>();
+        }
+
+        public IEnumerable<Story> FindByProjectId(MongoDB.Bson.ObjectId projectId)
+        {
+            return collection.FindAs<Story>(Query<Story>.Where(s => s.ProjectId == projectId));
         }
     }
 }

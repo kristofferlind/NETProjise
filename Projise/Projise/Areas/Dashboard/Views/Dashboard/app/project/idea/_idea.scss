@@ -1,25 +1,27 @@
 .idea-item {
     border: 1px solid black;
-    background-color: #eee;
+    background-color: #eeeeee;
     margin-top: -1px;
 }
 
 .idea-item-score {
-    background-color: #ddd;
+    background-color: #dddddd;
     vertical-align: middle;
     text-align: center;
     font-size: 2em;
-    color: #555;
+    color: #555555;
     line-height: 3em;
 }
 
 .idea-item-body {
     padding: 0 0.5em;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 
 .idea-item-voting {
-    background-color: #ddd;
+    background-color: #dddddd;
     text-align: center;
     font-size: 2em;
     vertical-align: middle;
