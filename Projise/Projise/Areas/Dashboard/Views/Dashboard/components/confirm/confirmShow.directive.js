@@ -12,7 +12,7 @@ angular.module('projiSeApp')
         restrict: 'EA', // E = Element, A = Attribute, C = Class, M = Comment
         templateUrl: 'Areas/Dashboard/Views/Dashboard/components/confirm/confirm.html',
         replace: false,
-        controller: function($scope, $rootScope) {
+        controller: ['$scope', '$rootScope', function($scope, $rootScope) {
             //Close dialog
             $scope.close = function(dialog) {
                 //Find index of dialog
@@ -41,6 +41,6 @@ angular.module('projiSeApp')
             $rootScope.$on('confirm:show', function(event, dialog) {
                 addDialog(dialog); //Add dialog
             });
-        }
+        }]
     };
 });

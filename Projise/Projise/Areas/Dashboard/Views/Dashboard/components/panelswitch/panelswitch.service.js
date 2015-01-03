@@ -4,7 +4,7 @@
  * @name  PanelSwitch
  * @description Manages states for panels
  */
-angular.module('projiSeApp').factory('PanelSwitch', function($rootScope) {
+angular.module('projiSeApp').factory('PanelSwitch', ['$rootScope', function($rootScope) {
     'use strict';
 
     var _navpanel = true,
@@ -53,4 +53,4 @@ angular.module('projiSeApp').factory('PanelSwitch', function($rootScope) {
         };
 
     return PanelSwitch;
-});
+}]);

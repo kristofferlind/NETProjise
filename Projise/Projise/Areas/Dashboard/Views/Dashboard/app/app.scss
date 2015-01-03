@@ -1,8 +1,12 @@
 @import '../assets/scss/style';
 
-$fa-font-path: "../bower_components/font-awesome/fonts" !default;
-/*@import "../bower_components/font-awesome/scss/font-awesome";*/
+/*
+    All of the commented imports makes sass compile crash
+    There are also commented imports in modules/all
+*/
 
+$fa-font-path: "//netdna.bootstrapcdn.com/font-awesome/4.1.0/fonts" !default; // for referencing Bootstrap CDN font files directly
+@import "../bower_components/font-awesome/scss/font-awesome";
 
 
 /**
@@ -27,13 +31,13 @@ $fa-font-path: "../bower_components/font-awesome/fonts" !default;
 // injector
 @import 'account/login/login';
 @import 'chatpanel/chatpanel';
-/*@import 'document/document';*/
-/*@import 'manage/projects/projects';*/
+@import 'document/document';
+@import 'manage/projects/projects';
 @import 'manage/teams/teams';
-/*@import 'navbar/navbar';*/
-/*@import 'navpanel/navpanel';*/
-/*@import 'project/idea/idea';*/
+@import 'navbar/navbar';
+@import 'navpanel/navpanel';
+@import 'project/idea/idea';
 @import 'project/sprint/sprint';
-/*@import 'project/story/story';*/
-/*@import 'project/task/task';*/
+@import 'project/story/story';
+@import 'project/task/task';
 // endinjector

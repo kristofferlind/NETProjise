@@ -3,7 +3,7 @@
  * @name  Story
  * @description Service for managing stories
  */
-angular.module('projiSeApp').factory('Story', function($http, $modal, $rootScope, StoryProvider, Sprint, Session, Task) {
+angular.module('projiSeApp').factory('Story', ['$http', '$modal', '$rootScope', 'StoryProvider', 'Sprint', 'Session', 'Task', function($http, $modal, $rootScope, StoryProvider, Sprint, Session, Task) {
     'use strict';
 
     var _user = Session.user(),
@@ -220,4 +220,4 @@ angular.module('projiSeApp').factory('Story', function($http, $modal, $rootScope
     }, true);
 
     return Story;
-});
+}]);

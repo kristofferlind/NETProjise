@@ -5,7 +5,7 @@
  * @description Manages routes for account states(pages)
  */
 angular.module('projiSeApp')
-    .config(function($stateProvider) {
+    .config(['$stateProvider', function($stateProvider) {
         $stateProvider
             .state('login', {
                 url: '/login',
@@ -35,4 +35,4 @@ angular.module('projiSeApp')
                     }
                 }
             });
-    });
+    }]);

@@ -8,7 +8,7 @@
  * @requires $modal
  * @description Service for managing team data
  */
-angular.module('projiSeApp').factory('Team', function($http, $rootScope, TeamProvider, Session, $modal) {
+angular.module('projiSeApp').factory('Team', ['$http', '$rootScope', 'TeamProvider', 'Session', '$modal', function($http, $rootScope, TeamProvider, Session, $modal) {
     'use strict';
 
     var _teams = TeamProvider.teams,
@@ -184,4 +184,4 @@ angular.module('projiSeApp').factory('Team', function($http, $rootScope, TeamPro
     }, true);
 
     return Team;
-});
+}]);

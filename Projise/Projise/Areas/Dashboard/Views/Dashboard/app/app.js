@@ -8,12 +8,11 @@ angular.module('projiSeApp', [
     'ngCookies',
     'ngResource',
     'ngSanitize',
-    'btford.socket-io',
     'ui.router',
     'ui.bootstrap',
     'btford.markdown'
 ])
-.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
         .otherwise('/');
 
@@ -50,7 +49,7 @@ angular.module('projiSeApp', [
     $httpProvider.interceptors.push('offlineInterceptor');
 }])
 
-.config(['$tooltipProvider', function($tooltipProvider) {
+.config(['$tooltipProvider', function ($tooltipProvider) {
     $tooltipProvider.options({
         animation: true,
         popupDelay: 450
@@ -122,7 +121,7 @@ angular.module('projiSeApp', [
     }
 
     return requestInterceptor;
-}])
+}]);
 
 
 //.factory('authInterceptor', ['$rootScope', '$q', '$cookieStore', '$location', function($rootScope, $q, $cookieStore, $location) {

@@ -3,7 +3,7 @@
  * @name  ProjectProvider
  * @description  Manages data for projects (to make sure its loaded and in sync)
  */
-angular.module('projiSeApp').factory('ProjectProvider', function($http, socket) {
+angular.module('projiSeApp').factory('ProjectProvider', ['$http', 'socket', function($http, socket) {
     'use strict';
 
     //Make fetching projects a promise so we can check that its done before loading a view that needs it
@@ -22,4 +22,4 @@ angular.module('projiSeApp').factory('ProjectProvider', function($http, socket) 
         };
 
     return ProjectProvider;
-});
+}]);

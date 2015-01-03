@@ -4,7 +4,7 @@
  * @description Handles modal for creating sprints
  */
 angular.module('projiSeApp')
-    .controller('sprintCreateController', function($scope, $modalInstance) {
+    .controller('sprintCreateController', ['$scope', '$modalInstance', function($scope, $modalInstance) {
         'use strict';
 
         $scope.sprint = {};
@@ -16,4 +16,4 @@ angular.module('projiSeApp')
         $scope.cancel = function() {
             $modalInstance.dismiss('cancel');
         };
-    });
+    }]);

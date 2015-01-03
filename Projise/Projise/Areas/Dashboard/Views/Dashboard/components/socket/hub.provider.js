@@ -1,5 +1,5 @@
 ﻿//Based on https://github.com/JustMaier/angular-signalr-hub
-angular.module('projiSeApp').factory('Hub', function ($q, $rootScope, SyncManager) {
+angular.module('projiSeApp').factory('Hub', ['$q', '$rootScope', 'SyncManager', function ($q, $rootScope, SyncManager) {
     'use strict';
 
     var connection = null,
@@ -106,5 +106,6 @@ angular.module('projiSeApp').factory('Hub', function ($q, $rootScope, SyncManage
 
         Hub.promise = Hub.connection.start();
     };
+
     return Hub;
-})
+}])

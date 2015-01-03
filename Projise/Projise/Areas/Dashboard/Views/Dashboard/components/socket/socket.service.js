@@ -7,7 +7,7 @@
  * @description Manages socket operations.
  */
 angular.module('projiSeApp')
-    .factory('socket', function($q, Hub, $rootScope) {
+    .factory('socket', ['$q', 'Hub', '$rootScope', function($q, Hub, $rootScope) {
         'use strict';
 
         //$scope = $rootScope.new();
@@ -151,4 +151,4 @@ angular.module('projiSeApp')
         };
 
         return socket;
-    });
+    }]);

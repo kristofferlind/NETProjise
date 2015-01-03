@@ -3,7 +3,7 @@
  * @name  Project
  * @description Service to manage projects
  */
-angular.module('projiSeApp').factory('Project', function($http, $modal, $timeout, $rootScope, ProjectProvider, Session) {
+angular.module('projiSeApp').factory('Project', ['$http', '$modal', '$timeout', '$rootScope', 'ProjectProvider', 'Session', function($http, $modal, $timeout, $rootScope, ProjectProvider, Session) {
     'use strict';
 
     var _user = Session.user(),
@@ -208,4 +208,4 @@ angular.module('projiSeApp').factory('Project', function($http, $modal, $timeout
     }, true);
 
     return Project;
-});
+}]);

@@ -4,7 +4,7 @@
  * @description Viewlogic for managing teams
  */
 angular.module('projiSeApp')
-    .controller('TeamsController', function($scope, Team) {
+    .controller('TeamsController', ['$scope', 'Team', function($scope, Team) {
         'use strict';
 
         $scope.Team = Team;
@@ -20,4 +20,4 @@ angular.module('projiSeApp')
             $scope.model.newUser = '';
         };
 
-    });
+    }]);

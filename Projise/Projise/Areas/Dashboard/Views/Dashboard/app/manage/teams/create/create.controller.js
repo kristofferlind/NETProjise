@@ -4,7 +4,7 @@
  * @description Viewlogic for creating teams
  */
 angular.module('projiSeApp')
-    .controller('teamCreateController', function($scope, $modalInstance) {
+    .controller('teamCreateController', ['$scope', '$modalInstance', function($scope, $modalInstance) {
         'use strict';
 
         $scope.model = {
@@ -18,4 +18,4 @@ angular.module('projiSeApp')
         $scope.cancel = function() {
             $modalInstance.dismiss('cancel');
         };
-    });
+    }]);

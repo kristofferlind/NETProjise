@@ -4,7 +4,7 @@
  * @description Controller for Plan project view
  */
 angular.module('projiSeApp')
-    .controller('ProjectController', function($scope, Sprint, Story) {
+    .controller('ProjectController', ['$scope', 'Sprint', 'Story', function($scope, Sprint, Story) {
         'use strict';
 
         //Make Sprint service available in view
@@ -16,4 +16,4 @@ angular.module('projiSeApp')
         $scope.filter = {
             pbStatus: 'not started'
         };
-    });
+    }]);

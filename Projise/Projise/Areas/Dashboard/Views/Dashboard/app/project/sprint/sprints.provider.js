@@ -3,7 +3,7 @@
  * @name  SprintProvider
  * @description Manages data for sprints, to make sure its loaded when needed and syncing with backend
  */
-angular.module('projiSeApp').factory('SprintProvider', function($http, socket) {
+angular.module('projiSeApp').factory('SprintProvider', ['$http', 'socket', function($http, socket) {
     'use strict';
 
     //Promise so we can make sure its done during statechange
@@ -18,4 +18,4 @@ angular.module('projiSeApp').factory('SprintProvider', function($http, socket) {
         };
 
     return SprintProvider;
-});
+}]);

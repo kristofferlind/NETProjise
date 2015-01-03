@@ -4,7 +4,7 @@
  * @name  DocumentManager
  * @description Service for managing documents
  */
-angular.module('projiSeApp').factory('DocumentManager', function($http, $q, $modal, $state, socket) {
+angular.module('projiSeApp').factory('DocumentManager', ['$http', '$q', '$modal', '$state', 'socket', function($http, $q, $modal, $state, socket) {
     'use strict';
 
     //Fetch metadata for all documents on load
@@ -115,4 +115,4 @@ angular.module('projiSeApp').factory('DocumentManager', function($http, $q, $mod
     };
 
     return DocumentManager;
-});
+}]);

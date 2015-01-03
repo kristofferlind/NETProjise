@@ -4,7 +4,7 @@
  * @description Viewlogic for editing team metadata
  */
 angular.module('projiSeApp')
-    .controller('teamEditController', function($scope, $modalInstance, team) {
+    .controller('teamEditController', ['$scope', '$modalInstance', 'team', function($scope, $modalInstance, team) {
         'use strict';
 
         $scope.model = {
@@ -18,4 +18,4 @@ angular.module('projiSeApp')
         $scope.cancel = function() {
             $modalInstance.dismiss('cancel');
         };
-    });
+    }]);

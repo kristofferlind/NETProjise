@@ -4,7 +4,7 @@
  * @description Viewlogic for editing document metadata
  */
 angular.module('projiSeApp')
-    .controller('documentEditController', function($scope, $modalInstance, documentMeta) {
+    .controller('documentEditController', ['$scope', '$modalInstance', 'documentMeta', function($scope, $modalInstance, documentMeta) {
         'use strict';
 
         $scope.documentMeta = documentMeta;
@@ -16,4 +16,4 @@ angular.module('projiSeApp')
         $scope.cancel = function() {
             $modalInstance.dismiss('cancel');
         };
-    });
+    }]);

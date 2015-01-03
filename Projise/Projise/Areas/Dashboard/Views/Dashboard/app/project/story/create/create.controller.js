@@ -4,7 +4,7 @@
  * @description Handles modal for creating stories
  */
 angular.module('projiSeApp')
-    .controller('storyCreateController', function($scope, $modalInstance) {
+    .controller('storyCreateController', ['$scope', '$modalInstance', function($scope, $modalInstance) {
         'use strict';
 
         $scope.story = {};
@@ -16,4 +16,4 @@ angular.module('projiSeApp')
         $scope.cancel = function() {
             $modalInstance.dismiss('cancel');
         };
-    });
+    }]);

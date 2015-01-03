@@ -1,4 +1,4 @@
-﻿angular.module('projiSeApp').factory('SyncManager', function ($http) {
+﻿angular.module('projiSeApp').factory('SyncManager', ['$http', function ($http) {
     'use strict';
 
     var SyncManager = {
@@ -22,4 +22,4 @@
     }
 
     return SyncManager;
-})
+}])

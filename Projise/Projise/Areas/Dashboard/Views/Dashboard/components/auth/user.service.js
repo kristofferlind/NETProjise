@@ -4,7 +4,7 @@
  * @description Manages userdata
  */
 angular.module('projiSeApp')
-    .factory('User', function($http, socket, $resource) {
+    .factory('User', ['$http', 'socket', '$resource', function($http, socket, $resource) {
     'use strict';
 
     return $resource('/api/users/:id/:controller', {
@@ -23,4 +23,4 @@ angular.module('projiSeApp')
             }
         }
     });
-});
+}]);

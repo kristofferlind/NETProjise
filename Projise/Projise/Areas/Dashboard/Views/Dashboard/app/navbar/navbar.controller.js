@@ -4,7 +4,7 @@
  * @description  Viewlogic for Navbar
  */
 angular.module('projiSeApp')
-    .controller('NavbarController', function($scope, $location, Auth, PanelSwitch, Project) {
+    .controller('NavbarController', ['$scope', '$location', 'Auth', 'PanelSwitch', 'Project', function($scope, $location, Auth, PanelSwitch, Project) {
     'use strict';
 
     $scope.Project = Project;
@@ -29,4 +29,4 @@ angular.module('projiSeApp')
     $scope.isActive = function(route) {
         return route === $location.path();
     };
-});
+}]);

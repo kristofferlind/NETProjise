@@ -4,7 +4,7 @@
  * @description Controller for view: My story
  */
 angular.module('projiSeApp')
-    .controller('StoryController', function($scope, Story, Task) {
+    .controller('StoryController', ['$scope', 'Story', 'Task', function($scope, Story, Task) {
         'use strict';
 
         $scope.filter = {
@@ -13,4 +13,4 @@ angular.module('projiSeApp')
 
         $scope.Story = Story;
         $scope.Task = Task;
-    });
+    }]);

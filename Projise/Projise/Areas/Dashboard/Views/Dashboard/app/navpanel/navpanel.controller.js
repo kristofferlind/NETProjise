@@ -3,7 +3,7 @@
  * @name  NavpanelController
  * @description  Viewlogic for navpanel (menu in left sidebar)
  */
-angular.module('projiSeApp').controller('NavpanelController', function($scope, PanelSwitch, Auth, $timeout) {
+angular.module('projiSeApp').controller('NavpanelController', ['$scope', 'PanelSwitch', 'Auth', '$timeout', function($scope, PanelSwitch, Auth, $timeout) {
     'use strict';
 
     $scope.Auth = Auth;
@@ -17,4 +17,4 @@ angular.module('projiSeApp').controller('NavpanelController', function($scope, P
             });
         }
     });
-});
+}]);

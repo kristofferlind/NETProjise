@@ -43,7 +43,7 @@ angular.module('projiSeApp')
 angular.module('projiSeApp')
 
 
-.directive('drop', function($parse) {
+.directive('drop', ['$parse', function($parse) {
     'use strict';
     // Runs during compile
     return {
@@ -80,4 +80,4 @@ angular.module('projiSeApp')
             });
         }
     };
-});
+}]);

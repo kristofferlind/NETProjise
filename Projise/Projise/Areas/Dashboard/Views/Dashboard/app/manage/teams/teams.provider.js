@@ -3,7 +3,7 @@
  * @name TeamProvider
  * @description Provides teamdata for Teamservice and manages sync with backend
  */
-angular.module('projiSeApp').factory('TeamProvider', function($http, socket) {
+angular.module('projiSeApp').factory('TeamProvider', ['$http', 'socket', function($http, socket) {
     'use strict';
 
     var promise = $http.get('/api/teams').success(function(teams) {
@@ -17,4 +17,4 @@ angular.module('projiSeApp').factory('TeamProvider', function($http, socket) {
         };
 
     return TeamProvider;
-});
+}]);

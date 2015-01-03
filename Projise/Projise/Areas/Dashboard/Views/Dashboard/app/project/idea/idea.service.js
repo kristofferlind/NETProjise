@@ -3,7 +3,7 @@
  * @name  Idea
  * @description Service for managing ideas
  */
-angular.module('projiSeApp').factory('Idea', function($http, $modal, socket) {
+angular.module('projiSeApp').factory('Idea', ['$http', '$modal', 'socket', function($http, $modal, socket) {
     'use strict';
 
     //Fetch ideas from server on load
@@ -72,4 +72,4 @@ angular.module('projiSeApp').factory('Idea', function($http, $modal, socket) {
     };
 
     return Idea;
-});
+}]);

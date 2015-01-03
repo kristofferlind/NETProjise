@@ -4,7 +4,7 @@
  * @description Viewlogic for adding users to a project
  */
 angular.module('projiSeApp')
-    .controller('projectAddUserController', function($scope, $modalInstance) {
+    .controller('projectAddUserController', ['$scope', '$modalInstance', function($scope, $modalInstance) {
         'use strict';
 
         $scope.newUser = {};
@@ -16,4 +16,4 @@ angular.module('projiSeApp')
         $scope.cancel = function() {
             $modalInstance.dismiss('cancel');
         };
-    });
+    }]);

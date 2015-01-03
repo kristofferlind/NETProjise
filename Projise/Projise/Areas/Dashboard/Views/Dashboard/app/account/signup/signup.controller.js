@@ -9,7 +9,7 @@
  * @description Controller for signup view
  */
 angular.module('projiSeApp')
-    .controller('SignupCtrl', function($scope, Auth, $location, $window) {
+    .controller('SignupCtrl', ['$scope', 'Auth', '$location', '$window', function($scope, Auth, $location, $window) {
         $scope.user = {};
         $scope.errors = {};
 
@@ -52,4 +52,4 @@ angular.module('projiSeApp')
         $scope.loginOauth = function(provider) {
             $window.location.href = '/auth/' + provider;
         };
-    });
+    }]);

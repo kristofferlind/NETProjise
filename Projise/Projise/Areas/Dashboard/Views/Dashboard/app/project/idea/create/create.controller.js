@@ -4,7 +4,7 @@
  * @description Controller for modal to create an idea
  */
 angular.module('projiSeApp')
-    .controller('ideaCreateController', function($scope, $modalInstance) {
+    .controller('ideaCreateController', ['$scope', '$modalInstance', function($scope, $modalInstance) {
         'use strict';
 
         $scope.idea = {};
@@ -16,4 +16,4 @@ angular.module('projiSeApp')
         $scope.cancel = function() {
             $modalInstance.dismiss('cancel');
         };
-    });
+    }]);

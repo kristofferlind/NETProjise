@@ -7,7 +7,7 @@
  * @todo clear newMessage on send (needs to wait until post is sent)
  * @description Viewlogic for Chatpanel, manages panelstate and sending messages
  */
-angular.module('projiSeApp').controller('ChatpanelController', function($scope, PanelSwitch, $timeout, Chat) {
+angular.module('projiSeApp').controller('ChatpanelController', ['$scope', 'PanelSwitch', '$timeout', 'Chat', function($scope, PanelSwitch, $timeout, Chat) {
     'use strict';
 
     //Make Chat service available in view
@@ -49,4 +49,4 @@ angular.module('projiSeApp').controller('ChatpanelController', function($scope, 
             }
         }
     };
-});
+}]);

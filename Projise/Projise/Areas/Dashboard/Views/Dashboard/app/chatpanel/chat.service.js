@@ -3,7 +3,7 @@
  * @name Chat
  * @description Service for Chat, manages messages
  */
-angular.module('projiSeApp').factory('Chat', function($http, socket) {
+angular.module('projiSeApp').factory('Chat', ['$http', 'socket', function($http, socket) {
     'use strict';
 
     //Fetch messages on load
@@ -22,4 +22,4 @@ angular.module('projiSeApp').factory('Chat', function($http, socket) {
     };
 
     return Chat;
-});
+}]);

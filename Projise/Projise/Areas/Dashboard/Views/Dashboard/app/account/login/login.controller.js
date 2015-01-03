@@ -10,7 +10,7 @@
  * @description Handles logic for login view.
  */
 angular.module('projiSeApp')
-    .controller('LoginCtrl', function($scope, Auth, $location, $window, $state) {
+    .controller('LoginCtrl', ['$scope', 'Auth', '$location', '$window', '$state', function($scope, Auth, $location, $window, $state) {
         'use strict';
 
         // Auth.isLoggedInAsync(function(isLoggedIn) {
@@ -58,4 +58,4 @@ angular.module('projiSeApp')
         $scope.loginOauth = function(provider) {
             $window.location.href = '/auth/' + provider;
         };
-    });
+    }]);

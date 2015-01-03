@@ -4,7 +4,7 @@
  * @description Viewlogic for creating projects
  */
 angular.module('projiSeApp')
-    .controller('projectCreateController', function($scope, $modalInstance) {
+    .controller('projectCreateController', ['$scope', '$modalInstance', function($scope, $modalInstance) {
         'use strict';
 
         $scope.newProject = {};
@@ -16,4 +16,4 @@ angular.module('projiSeApp')
         $scope.cancel = function() {
             $modalInstance.dismiss('cancel');
         };
-    });
+    }]);

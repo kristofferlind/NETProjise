@@ -4,7 +4,7 @@
  * @description Handles modal for editing stories
  */
 angular.module('projiSeApp')
-    .controller('storyEditController', function($scope, $modalInstance, story) {
+    .controller('storyEditController', ['$scope', '$modalInstance', 'story', function($scope, $modalInstance, story) {
         'use strict';
 
         $scope.story = story;
@@ -16,4 +16,4 @@ angular.module('projiSeApp')
         $scope.cancel = function() {
             $modalInstance.dismiss('cancel');
         };
-    });
+    }]);

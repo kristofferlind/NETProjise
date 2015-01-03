@@ -3,7 +3,7 @@
  * @name  Session
  * @description Handles session data
  */
-angular.module('projiSeApp').factory('Session', function($http, $rootScope, socket) {
+angular.module('projiSeApp').factory('Session', ['$http', '$rootScope', 'socket', function($http, $rootScope, socket) {
     'use strict';
 
     var promise = $http.get('/api/users/me').success(function (user) {
@@ -22,4 +22,4 @@ angular.module('projiSeApp').factory('Session', function($http, $rootScope, sock
         };
 
     return Session;
-});
+}]);

@@ -1,4 +1,4 @@
-﻿angular.module('projiSeApp').factory('Calendar', function ($http) {
+﻿angular.module('projiSeApp').factory('Calendar', ['$http', function ($http) {
     'use strict';
 
     $http.get('api/events').success(function (events) {
@@ -10,4 +10,4 @@
     }
 
     return Calendar;
-})
+}])

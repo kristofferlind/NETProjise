@@ -3,7 +3,7 @@
  * @name  StoryProvider
  * @description Manages data for stories and makes sure local instance is in sync with backend
  */
-angular.module('projiSeApp').factory('StoryProvider', function($http, socket, Sprint, $timeout) {
+angular.module('projiSeApp').factory('StoryProvider', ['$http', 'socket', 'Sprint', '$timeout', function($http, socket, Sprint, $timeout) {
     'use strict';
 
     var tries = 0,
@@ -61,4 +61,4 @@ angular.module('projiSeApp').factory('StoryProvider', function($http, socket, Sp
     //sprintBacklog();
 
     return StoryProvider;
-});
+}]);

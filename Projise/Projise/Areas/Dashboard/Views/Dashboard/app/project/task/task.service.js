@@ -3,7 +3,7 @@
  * @name  Task
  * @description Manages tasks
  */
-angular.module('projiSeApp').factory('Task', function($http, $modal, socket) {
+angular.module('projiSeApp').factory('Task', ['$http', '$modal', 'socket', function($http, $modal, socket) {
     'use strict';
 
     var _story = {},
@@ -88,4 +88,4 @@ angular.module('projiSeApp').factory('Task', function($http, $modal, socket) {
     };
 
     return Task;
-});
+}]);

@@ -152,7 +152,7 @@
     "OutputStyle": "Compact",
     "ProcessSourceMapsForEditorEnhancements": true,
     "ShowPreviewPane": false,
-    "UseRubyRuntime": true
+    "UseRubyRuntime": false
   },
   "Sprite": {
     "CssOutputDirectory": null,

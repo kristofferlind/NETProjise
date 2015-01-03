@@ -4,7 +4,7 @@
  * @description Controller for view: plan sprint
  */
 angular.module('projiSeApp')
-    .controller('SprintController', function($scope, Story) {
+    .controller('SprintController', ['$scope', 'Story', function($scope, Story) {
         'use strict';
 
         $scope.filter = {
@@ -13,4 +13,4 @@ angular.module('projiSeApp')
 
         $scope.Story = Story;
 
-    });
+    }]);

@@ -4,7 +4,7 @@
  * @description  Viewlogic for creating documents
  */
 angular.module('projiSeApp')
-    .controller('documentCreateController', function($scope, $modalInstance) {
+    .controller('documentCreateController', ['$scope', '$modalInstance', function($scope, $modalInstance) {
         'use strict';
 
         $scope.documentMeta = {};
@@ -16,4 +16,4 @@ angular.module('projiSeApp')
         $scope.cancel = function() {
             $modalInstance.dismiss('cancel');
         };
-    });
+    }]);
