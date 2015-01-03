@@ -1,15 +1,13 @@
 #Projise
-##New
+Projise is a realtime collaborative project management system with project, sprint, story and task management aswell as team management, document management, chat and ideas with voting. I also want to add calendar functionality, remote management from IDE, voice chat, charts and more statistics aswell as improvements to assessments by analyzing statistics.
+
 Site: (http://projise.azurewebsites.net)
 
-##Old
+##Project Description
 This is going to be a rebuild of projise with a few modifications and additional features.  
-Demo: [Link](http://projise-klind.rhcloud.com/) - test@test.com/test, free account on openshift which puts it to sleep, sometimes needs a refresh.  
-Domain model and design: [Link](https://github.com/kristofferlind/projise/blob/master/documentation/domain.md)  
-Source: [Link](https://github.com/kristofferlind/projise)
-
-##Description
-Projise is a realtime multiuser project management system with project, sprint, story and task management aswell as team management, document management, chat and ideas with voting. I also want to add calendar functionality, remote management from IDE, voice chat, charts and more statistics aswell as improvements to assessments by analyzing statistics.
+Demo: (http://projise-klind.rhcloud.com/) - test@test.com/test, free account on openshift which puts it to sleep, sometimes needs a refresh.  
+Domain model and design: (https://github.com/kristofferlind/projise/blob/master/documentation/domain.md)  
+Source: (https://github.com/kristofferlind/projise)
 
 ##Technology
 Current application uses mongodb, node, express, angular and socket.io
@@ -29,7 +27,7 @@ Node, grunt, karma and protractor will be used for client and e2e testing.
 Google calendar and contacts used for now.
 
 ##Bonus tasks
-* add configurable public project reports using mvc (configuration in spa, public page in mvc)
+* add configurable public project reports using mvc (configuration in spa, public page in mvc) - added, but not configurable yet
 * add private messages and voice chat to chatpanel
 * add IDE remote
 * make current travis tasks work with .net (if it's even possible)
