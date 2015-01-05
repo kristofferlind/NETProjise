@@ -5,6 +5,10 @@ using Microsoft.Owin.Security.Cookies;
 using Projise.Models;
 using Owin;
 using System;
+using Microsoft.Owin.Security.Google;
+using Microsoft.Owin.Security;
+using Google.Apis.Calendar.v3;
+using System.Security.Claims;
 
 namespace Projise
 {
@@ -57,7 +61,28 @@ namespace Projise
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication();
+            var googleOptions = new GoogleOAuth2AuthenticationOptions
+            {
+                ClientId = "secret",
+                ClientSecret = "secret",
+                Provider = new GoogleOAuth2AuthenticationProvider
+                {
+                    OnAuthenticated = async user =>
+                    {
+                        user.Identity.AddClaim(new Claim("urn:tokens:googleplus:accesstoken", user.AccessToken));
+                        //user.Identity.AddClaim(new Claim("code", user.Code));
+                    }
+                }
+            };
+
+            googleOptions.Scope.Add("openid");
+            googleOptions.Scope.Add("profile");
+            googleOptions.Scope.Add("email");
+            googleOptions.Scope.Add(CalendarService.Scope.CalendarReadonly);
+            //googleOptions.Scope.Add(CalendarService.Scope.Calendar);
+            googleOptions.Scope.Add("https://www.googleapis.com/auth/contacts.readonly");
+
+            app.UseGoogleAuthentication(googleOptions);
         }
     }
 }
