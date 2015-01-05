@@ -192,7 +192,7 @@
     <Compile Include="Webservices\GoogleContacts.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config.bak" />
     <None Include="ChattyBrightStarModel\DataModels\ChattyDBContext.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ChattyDBContext.cs</LastGenOutput>

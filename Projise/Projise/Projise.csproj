@@ -264,6 +264,7 @@
     <Compile Include="App_Infrastructure\ApiControllerBase.cs" />
     <Compile Include="App_Infrastructure\ChatHub.cs" />
     <Compile Include="App_Infrastructure\FilteredCamelCasePropertyNamesContractResolver.cs" />
+    <Compile Include="App_Infrastructure\ManifestResult.cs" />
     <Compile Include="App_Infrastructure\ObjectIdBinder.cs" />
     <Compile Include="App_Infrastructure\ObjectIdConverter.cs" />
     <Compile Include="App_Infrastructure\PartialsTransform.cs" />

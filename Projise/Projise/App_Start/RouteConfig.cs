@@ -13,6 +13,8 @@ namespace Projise
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute("manifest", "manifest", new { controller = "Home", action = "Manifest" });
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

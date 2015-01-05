@@ -65,7 +65,7 @@ namespace Projise
                 .IncludeDirectory("~/Areas/Dashboard/Views/Dashboard/app", "*.html", true)
                 .IncludeDirectory("~/Areas/Dashboard/Views/Dashboard/components", "*.html", true));
 
-            BundleTable.EnableOptimizations = true; //bool.Parse(ConfigurationManager.AppSettings["BundleOptimisation"]);
+            BundleTable.EnableOptimizations = bool.Parse(ConfigurationManager.AppSettings["BundleOptimization"]);
         }
     }
 }
