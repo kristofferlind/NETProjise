@@ -35,6 +35,7 @@ namespace Projise.Controllers
         }
 
         // POST: api/Ideas
+        [ValidateModel]
         public void Post([FromBody]Idea idea)
         {
             idea.ProjectId = SessionUser.ActiveProject;
@@ -42,6 +43,7 @@ namespace Projise.Controllers
         }
 
         // PUT: api/Ideas/5
+        [ValidateModel]
         public void Put(string id, [FromBody]Idea idea)
         {
             ideaRepository.Update(idea);

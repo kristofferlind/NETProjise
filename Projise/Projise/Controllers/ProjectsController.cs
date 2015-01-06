@@ -45,12 +45,14 @@ namespace Projise.Controllers
         }
 
         // POST: api/Project
+        [ValidateModel]
         public void Post([FromBody]Project project)
         {
             projectRepository.Add(project);
         }
 
         // PUT: api/Project/5
+        [ValidateModel]
         public void Put(string id, [FromBody]Project project)
         {
             var projectId = ObjectId.Parse(id);
@@ -68,6 +70,7 @@ namespace Projise.Controllers
 
         [HttpPut]
         [Route("api/projects/{id}/users")]
+        [ValidateModel]
         public void AddUser(string id, [FromBody]User user)
         {
             var projectId = ObjectId.Parse(id);

@@ -279,6 +279,7 @@
     <Compile Include="App_Infrastructure\ProjectHub.cs" />
     <Compile Include="App_Infrastructure\StringExtensions.cs" />
     <Compile Include="App_Infrastructure\SyncManager.cs" />
+    <Compile Include="App_Infrastructure\ValidateModelAttribute.cs" />
     <Compile Include="App_Start\ApplicationIdentityContext.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\EnsureAuthIndexes.cs" />
@@ -549,6 +550,9 @@
     <Content Include="Areas\Dashboard\Views\Dashboard\components\filters\toCSSName.filter.js" />
     <Content Include="Areas\Dashboard\Views\Dashboard\components\filters\toCSSName.filter.spec.js" />
     <Content Include="Areas\Dashboard\Views\Dashboard\components\mongoose-error\mongoose-error.directive.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\components\notify\notify.directive.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\components\notify\notify.partial.html" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\components\notify\notify.service.js" />
     <Content Include="Areas\Dashboard\Views\Dashboard\components\panelswitch\panelswitch.service.js" />
     <Content Include="Areas\Dashboard\Views\Dashboard\components\session\session.service.js" />
     <Content Include="Areas\Dashboard\Views\Dashboard\components\socket\hub.provider.js" />
@@ -794,6 +798,7 @@
       <DependentUpon>font-awesome.css</DependentUpon>
     </Content>
     <Content Include="Areas\Dashboard\Views\Dashboard\app\app.css.map" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\components\notify\_notify.scss" />
     <None Include="Areas\Dashboard\Views\web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

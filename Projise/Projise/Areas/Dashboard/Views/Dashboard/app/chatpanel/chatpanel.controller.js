@@ -43,9 +43,10 @@ angular.module('projiSeApp').controller('ChatpanelController', ['$scope', 'Panel
                 }
                 $event.preventDefault(); //no newline
                 //add message to firebase
-                Chat.sendMessage($scope.newMessage);
-                //clear input field
-                // $scope.newMessage.message.focus();   //for some reason this sends an empty message.. need to make sure post is sent before emptying
+                Chat.sendMessage($scope.newMessage).then(function () {
+                    //clear input field
+                    $scope.newMessage.message = '';
+                });
             }
         }
     };

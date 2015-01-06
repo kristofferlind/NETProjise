@@ -926,6 +926,9 @@ td.td-wide {
 /*************************
     JS-based classes
 *************************/
+.nosync {
+  opacity: 0.8; }
+
 /*************************
     Vendor classes
 *************************/
@@ -2905,5 +2908,43 @@ td.task-td-description {
   padding-left: 0;
   padding-right: 0;
   width: 100%; }
+
+.notify {
+  position: fixed;
+  bottom: 5px;
+  left: 10px;
+  width: 300px;
+  z-index: 9999; }
+
+.notify-item {
+  z-index: 1000;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 10px;
+  border: 1px solid transparent; }
+
+.notify-item .close {
+  float: right; }
+
+/* Styling from bootstrap */
+.notify-item-success {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6; }
+
+.notify-item-error {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1; }
+
+.notify-item-warning {
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc; }
+
+.notify-item-info {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1; }
 
 /*# sourceMappingURL=app.css.map */

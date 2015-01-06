@@ -34,6 +34,7 @@ namespace Projise.Controllers
         //}
 
         // POST: api/Message
+        [ValidateModel]
         public void Post([FromBody]Message message)
         {
             message.ProjectId = SessionUser.ActiveProject;

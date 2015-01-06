@@ -36,6 +36,7 @@ namespace Projise.Controllers
         }
 
         // POST: api/Documents
+        [ValidateModel]
         public void Post([FromBody]Document document)
         {
             document.ProjectId = SessionUser.ActiveProject;
@@ -43,6 +44,7 @@ namespace Projise.Controllers
         }
 
         // PUT: api/Documents/5
+        [ValidateModel]
         public void Put([FromBody]Document document)
         {
             documentRepository.Update(document);

@@ -15,10 +15,6 @@ namespace Projise.DomainModel.Entities
         public ObjectId Id { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
-        //public List<ObjectId> Projects { get; set; }      //Projects/Teams här skulle vara rejält mycket effektivare(prestandamässigt), men försvårar generiskt repo
-        //public List<ObjectId> Teams { get; set; }         //Sätter index på arrayerna istället..
-        //public ObjectId ActiveProject { get; set; }
-        //public ObjectId ActiveTeam { get; set; }
     }
 
     [BsonIgnoreExtraElements]
@@ -27,8 +23,6 @@ namespace Projise.DomainModel.Entities
         public ObjectId Id { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
-        //public List<ObjectId> Projects { get; set; }      //Projects/Teams här skulle vara rejält mycket effektivare(prestandamässigt), men försvårar generiskt repo
-        //public List<ObjectId> Teams { get; set; }         //Sätter index på arrayerna istället..
         public ObjectId ActiveProject { get; set; }
         public ObjectId ActiveTeam { get; set; }
         public string GoogleAccessToken { get; set; }

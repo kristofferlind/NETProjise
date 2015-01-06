@@ -35,6 +35,7 @@ namespace Projise.Controllers
         //}
 
         // POST: api/Sprint
+        [ValidateModel]
         public void Post([FromBody]Sprint sprint)
         {
             sprint.ProjectId = SessionUser.ActiveProject;
@@ -42,6 +43,7 @@ namespace Projise.Controllers
         }
 
         // PUT: api/Sprint/5
+        [ValidateModel]
         public void Put([FromBody]Sprint sprint)
         {
             sprint.ProjectId = SessionUser.ActiveProject;

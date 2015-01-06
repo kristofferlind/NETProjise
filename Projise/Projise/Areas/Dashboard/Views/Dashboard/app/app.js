@@ -59,7 +59,7 @@ angular.module('projiSeApp', [
     });
 }])
 
-.factory('offlineInterceptor', ['$q', '$rootScope', function ($q, $rootScope) {
+.factory('offlineInterceptor', ['$q', '$rootScope', 'Notify', function ($q, $rootScope, Notify) {
     'use strict';
 
     var requestInterceptor = {
@@ -94,12 +94,10 @@ angular.module('projiSeApp', [
                 var matches = modelRe.exec(response.config.url);
                 var model = matches[1];
 
-                console.log(response);
-
                 if (matches) {
                     model = model.substr(0, model.length - 1);
                     model = model.replace('ie', 'y');
-                    console.log(model);
+                    //console.log(model);
 
                     response.config.data.notSynced = true;
 
@@ -112,6 +110,37 @@ angular.module('projiSeApp', [
                     }
                     toBeSynced.push(syncItem);
                     localStorage['toBeSynced'] = angular.toJson(toBeSynced);
+                }
+            }
+
+            //Error notifications (if we're online and still get an error)
+            if ($rootScope.isOnline) {
+
+                /*
+                 * There actually is no need to show normal validation errors, there is no scenario where a user can
+                 * view the site but not see the validations that are already in place
+                 * But it's a bit interesting to add, and we might need this for validations that can't be done in the client
+                 */
+
+
+                //do a switch based on status?
+                //if response.status === 401, throw user to login (is this handled by .net?)
+                
+
+
+                //Is this a validationerror?
+                if (response.data.modelState) {
+                    var details;
+
+                    var modelErrors = response.data.modelState;
+                    for (var prop in response.data.modelState) {
+                        var property = modelErrors[prop];
+                        for (var err in property) {
+                            var error = property[err];
+                            //console.log(error);
+                            Notify.error(prop + ': ' + error);
+                        }
+                    }
                 }
             }
 

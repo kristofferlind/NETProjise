@@ -7,7 +7,7 @@
  * @description Manages socket operations.
  */
 angular.module('projiSeApp')
-    .factory('socket', ['$q', 'Hub', '$rootScope', function($q, Hub, $rootScope) {
+    .factory('socket', ['$q', 'Hub', '$rootScope', 'Notify', function($q, Hub, $rootScope, Notify) {
         'use strict';
 
         //$scope = $rootScope.new();
@@ -31,6 +31,9 @@ angular.module('projiSeApp')
                  * Syncs item creation/updates on 'model:save'
                  */
                 var lastChange = 0;
+
+                var isSkippedNotification = (modelName === 'document' || modelName === 'message' || isSprintBacklog === true);
+
 
                 var reSync = function () {
                     //run client operations saved since going offline(
@@ -110,6 +113,9 @@ angular.module('projiSeApp')
 
                         cb(event, item, array);
                     }
+                    if (!isSkippedNotification) {
+                        Notify.success(modelName + ': ' + item.name + ' ' + event);
+                    }
                 }
 
                 var handleRemove = function (item) {
@@ -120,6 +126,9 @@ angular.module('projiSeApp')
                         });
                     });
                     cb(event, item, array);
+                    if (!isSkippedNotification) {
+                        Notify.success(modelName + ': ' + item.name + ' ' + event)
+                    }
                 }
 
                 var handleError = function (error) {

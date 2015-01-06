@@ -28,7 +28,7 @@ namespace Projise.DomainModel
         public async Task<IEnumerable<CalendarEvent>> Get()
         {
             var lastChanged = _repository.LastChanged();
-            if (lastChanged != null && (DateTime.Now - lastChanged.CachedAt).Days < 0)
+            if (lastChanged != null && (DateTime.Now - lastChanged.CachedAt).Days < 1)
             {
                 return _repository.Get();
             }
@@ -40,7 +40,7 @@ namespace Projise.DomainModel
                     if (events != null)
                     {
                         //var days = (DateTime.Now - lastChanged.CachedAt).TotalDays;
-                        //if ((DateTime.Now - lastChanged.CachedAt).TotalDays < 30)
+                        //if ((DateTime.Now - lastChanged.CachedAt).TotalDays < 1)
                         //{
                             _repository.ClearUserEvents();
                             UpdateBirthdays();

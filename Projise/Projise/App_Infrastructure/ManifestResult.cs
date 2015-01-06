@@ -73,7 +73,7 @@ namespace Projise.App_Infrastructure
 
 #if DEBUG
             manifest.AppendLine();
-            manifest.AppendLine(DateTime.Now.ToString());
+            manifest.AppendLine(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss").Substring(0,18));
 #endif
 
             response.Output.Write(manifest.ToString());

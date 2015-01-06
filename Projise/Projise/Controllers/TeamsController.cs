@@ -43,12 +43,14 @@ namespace Projise.Controllers
         }
 
         // POST: api/Team
+        [ValidateModel]
         public void Post([FromBody]Team team)
         {
             teamRepository.Add(team);
         }
 
         // PUT: api/Team/5
+        [ValidateModel]
         public void Put(string id, [FromBody]Team team)
         {
             teamRepository.Update(team);
@@ -63,6 +65,7 @@ namespace Projise.Controllers
 
         [HttpPut]
         [Route("api/teams/users/")]
+        [ValidateModel]
         public void AddUser([FromBody]User user)
         {
             teamService.AddUser(SessionUser.ActiveTeam, user.Email);

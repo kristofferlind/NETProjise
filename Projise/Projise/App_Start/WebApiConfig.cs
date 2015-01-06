@@ -19,6 +19,8 @@ namespace Projise
 
             config.Formatters.JsonFormatter.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
 
+            config.Filters.Add(new ValidateModelAttribute());
+
             // Web API routes
             config.MapHttpAttributeRoutes();
 

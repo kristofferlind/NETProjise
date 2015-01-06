@@ -36,6 +36,7 @@ namespace Projise.Controllers
         }
 
         // POST: api/Stories
+        [ValidateModel]
         public void Post([FromBody]Story story)
         {
             story.ProjectId = SessionUser.ActiveProject;
@@ -43,6 +44,7 @@ namespace Projise.Controllers
         }
 
         // PUT: api/Stories/5
+        [ValidateModel]
         public void Put([FromBody]Story story)
         {
             storyRepository.Update(story);

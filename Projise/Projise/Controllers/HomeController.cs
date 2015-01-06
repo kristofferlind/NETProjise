@@ -30,7 +30,7 @@ namespace Projise.Controllers
 
         public ActionResult Manifest()
         {
-            return new ManifestResult("3")
+            return new ManifestResult("4")
             {
                 Cache = new List<string>()
                 {

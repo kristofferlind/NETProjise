@@ -17,7 +17,7 @@ angular.module('projiSeApp').factory('Chat', ['$http', 'socket', function($http,
     var Chat = {
         messages: [],
         sendMessage: function(message) {
-            $http.post('/api/messages', message);
+            return $http.post('/api/messages', message);
         }
     };
 
