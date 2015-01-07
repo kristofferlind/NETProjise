@@ -8,7 +8,7 @@ This is going to be a rebuild of projise with a few modifications and additional
 Demo: (http://projise-klind.rhcloud.com/) - test@test.com/test, free account on openshift which puts it to sleep, sometimes needs a refresh.  
 Domain model and design: (https://github.com/kristofferlind/projise/blob/master/documentation/domain.md)  
 Source: (https://github.com/kristofferlind/projise)  
-Report: (report.md) - Swedish
+Report: [link](report.md) - Swedish
 
 ##Technology
 Current application uses mongodb, node, express, angular and socket.io
