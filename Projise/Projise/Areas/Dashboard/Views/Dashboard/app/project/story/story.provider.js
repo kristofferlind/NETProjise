@@ -8,17 +8,18 @@ angular.module('projiSeApp').factory('StoryProvider', ['$http', 'socket', 'Sprin
 
     var tries = 0,
         //Promise so we can make sure its loaded at statechange
-        backlog = $http.get('/api/stories').success(function(stories) {
-                    StoryProvider.backlog.length = 0;
-                    angular.copy(stories, StoryProvider.backlog);
-                    socket.syncUpdates('story', StoryProvider.backlog);
-                    //Sprintbacklog
-                    var storiesInSprint = stories.filter(function (story) {
-                        return story.sprintId == StoryProvider.sprintId;
-                    });
-                    angular.copy(storiesInSprint, StoryProvider.sprintBacklog);
-                    socket.syncUpdates('story', StoryProvider.sprintBacklog, true);
-                }),
+        backlog = $http.get('/api/stories').success(function (stories) {
+            StoryProvider.backlog.length = 0;
+            angular.copy(stories, StoryProvider.backlog);
+            socket.syncUpdates('story', StoryProvider.backlog);
+            //Sprintbacklog
+            var storiesInSprint = stories.filter(function (story) {
+                return story.sprintId == StoryProvider.sprintId;
+            });
+            angular.copy(storiesInSprint, StoryProvider.sprintBacklog);
+            socket.syncUpdates('story', StoryProvider.sprintBacklog, true);
+        }),
+
         //Promise so we can make sure its loaded at statechange also retries because sprintId might not be ready
         //Change this so we can work based on a promise instead
         //sprintBacklog = function() {

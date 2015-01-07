@@ -74,7 +74,7 @@ angular.module('projiSeApp').factory('Project', ['$http', '$modal', '$timeout', 
                     $http.post('/api/projects', {
                         name: project.name,
                         description: project.description,
-                        users: [_user._id]
+                        users: [_user]
                     });
                 });
             },

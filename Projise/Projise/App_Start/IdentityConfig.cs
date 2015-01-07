@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web;
 using AspNet.Identity.MongoDB;
+using Projise.App_Infrastructure;
 
 namespace Projise.Models
 {
@@ -239,6 +240,9 @@ namespace Projise.Models
                 // When token is verified correctly, clear the access failed count used for lockout
                 await UserManager.ResetAccessFailedCountAsync(user.Id);
                 await SignInAsync(user, isPersistent, rememberBrowser);
+
+                SetCsrfCookie();
+
                 return SignInStatus.Success;
             }
             // If the token is incorrect, record the failure which also may cause the user to be locked out
@@ -271,6 +275,9 @@ namespace Projise.Models
                 return SignInStatus.RequiresTwoFactorAuthentication;
             }
             await SignInAsync(user, isPersistent, false);
+
+            SetCsrfCookie();
+
             return SignInStatus.Success;
 
         }
@@ -300,6 +307,19 @@ namespace Projise.Models
                 }
             }
             return SignInStatus.Failure;
+        }
+
+        private void SetCsrfCookie()
+        {
+            //var cookie1 = HttpContext.Current.Response.Cookies.Get(".AspNet.ApplicationCookie");
+            //var cookie2 = HttpContext.Current.Request.Cookies;
+            
+
+            //var authCookie = HttpContext.Current.Response.Cookies.Get(".AspNet.ApplicationCookie");
+
+            //var csrfToken = new CSRFToken().GenerateCsrfTokenFromAuthToken(authCookie.Value);
+            //var csrfCookie = new HttpCookie("XSRF-TOKEN", csrfToken) { HttpOnly = false };
+            //HttpContext.Current.Response.Cookies.Add(csrfCookie);
         }
     }
 }

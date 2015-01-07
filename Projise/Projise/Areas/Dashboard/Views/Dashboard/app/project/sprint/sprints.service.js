@@ -6,23 +6,19 @@
  * @required SprintProvider
  * @description Service for managing sprints
  */
-angular.module('projiSeApp').factory('Sprint', ['$http', '$modal', 'SprintProvider', function($http, $modal, SprintProvider) {
+angular.module('projiSeApp').factory('Sprint', ['$http', '$modal', 'SprintProvider', '$rootScope', 'Notify', '$q', function($http, $modal, SprintProvider, $rootScope, Notify, $q) {
     'use strict';
 
-    var _sprints = SprintProvider.sprints,
+    var _sprints = SprintProvider.sprints, _activeSprint,
         Sprint = {
-            /**
-             * @ngdoc method
-             * @name  activeSprint
-             * @returns {object} Current sprint based on date
-             * @description Figures out which sprint is active based on date and returns it
-             */
-            activeSprint: function() {
+            setActiveSprint: function () {
+                var deferred = $q.defer();
                 var now = new Date().getTime();
-                _sprints.forEach(function(sprint) {
+                var found = false;
+
+                _sprints.forEach(function (sprint) {
                     var start = new Date(sprint.start),
-                        end = new Date(sprint.end),
-                        found = false;
+                        end = new Date(sprint.end)
 
                     //Set starting time to 00:00:00
                     start.setHours(0);
@@ -41,11 +37,26 @@ angular.module('projiSeApp').factory('Sprint', ['$http', '$modal', 'SprintProvid
                     if (now > start && now < end) {
                         found = true;
                         Sprint.activeSprintId = sprint._id;
-                        return sprint;
+                        _activeSprint = sprint;
+                        deferred.resolve();
                     }
                 });
-
-                //NOTIFY no active sprint,
+                if (!found) {
+                    Notify.warning('Could not find active sprint, please create one.');
+                    deferred.reject();
+                }
+                return deferred.promise;
+            },
+            /**
+             * @ngdoc method
+             * @name  activeSprint
+             * @returns {object} Current sprint based on date
+             * @description Figures out which sprint is active based on date and returns it
+             */
+            activeSprint: function () {
+                Sprint.setActiveSprint().then(function () {
+                    return _activeSprint;
+                });
             },
             /**
              * @ngdoc property
@@ -115,7 +126,9 @@ angular.module('projiSeApp').factory('Sprint', ['$http', '$modal', 'SprintProvid
             }
         };
 
-    Sprint.activeSprint();
+    Sprint.setActiveSprint();
+
+    $rootScope.$on('sprints:updated', Sprint.setActiveSPrint);
 
     return Sprint;
 }]);

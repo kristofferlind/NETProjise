@@ -13,6 +13,7 @@ using Projise.Models;
 using Projise.DomainModel.Entities;
 using MongoDB.Bson;
 using Projise.DomainModel.Repositories;
+using Projise.App_Infrastructure;
 
 namespace Projise.Controllers
 {
@@ -82,6 +83,7 @@ namespace Projise.Controllers
             switch (result)
             {
                 case Projise.Models.SignInStatus.Success:
+                    //SetCsrfCookie();
                     return RedirectToLocal(returnUrl);
                 case Projise.Models.SignInStatus.LockedOut:
                     return View("Lockout");
@@ -362,8 +364,10 @@ namespace Projise.Controllers
 
                         var repo = new UserRepository();
 
-                        repo.SetGoogleToken(appUser);
+                        repo.SetGoogleToken(appUser);                        
                     }
+                    //SetCsrfCookie();
+
                     return RedirectToLocal(returnUrl);
                 case Projise.Models.SignInStatus.LockedOut:
                     return View("Lockout");
@@ -423,6 +427,7 @@ namespace Projise.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
+            HttpContext.Response.Cookies.Remove("XSRF-TOKEN");
             return RedirectToAction("Index", "Home");
         }
 
@@ -466,6 +471,7 @@ namespace Projise.Controllers
 
         private ActionResult RedirectToLocal(string returnUrl)
         {
+            SetCsrfCookie();
             if (Url.IsLocalUrl(returnUrl))
             {
                 return Redirect(returnUrl);
@@ -500,6 +506,23 @@ namespace Projise.Controllers
                 }
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
+        }
+
+        private void SetCsrfCookie()
+        {
+            //var cookie1 = Request.Cookies.Get(".AspNet.ApplicationCookie");
+            //var cookie2 = Response.Cookies.Get(".AspNet.ApplicationCookie");
+            //var cookie3 = ControllerContext.RequestContext.HttpContext.Response.Headers;
+            //var cookie4 = HttpContext.GetOwinContext().Response.Cookies;
+            //var cookie5 = HttpContext.GetOwinContext().Request.Cookies;
+            //var cookie6 = HttpContext.GetOwinContext().Response.Headers;
+            //var cookie7 = HttpContext.GetOwinContext().Request.Headers;
+
+            //var authCookie = Response.Cookies.Get(".AspNet.ApplicationCookie");
+
+            //var csrfToken = new CSRFToken().GenerateCsrfTokenFromAuthToken(authCookie.Value);
+            //var csrfCookie = new HttpCookie("XSRF-TOKEN", csrfToken) { HttpOnly = false };
+            //HttpContext.Response.Cookies.Add(csrfCookie);
         }
         #endregion
     }

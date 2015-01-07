@@ -59,15 +59,28 @@ angular.module('projiSeApp', [
     });
 }])
 
+.config(['$httpProvider', function($httpProvider) {
+    $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
+}])
+
 .factory('offlineInterceptor', ['$q', '$rootScope', 'Notify', function ($q, $rootScope, Notify) {
     'use strict';
 
     var requestInterceptor = {
+        //request: function (config) {
+        //    config.headers = config.headers || {};
+        //    config.headers.X-Requested-With = 'XMLHttpRequest';
+        //},
         response: function (response) {
             //cache data if get request
             if (response.config.method === 'GET' && $rootScope.user && $rootScope.user.activeProject) {
                 var key = $rootScope.user.activeProject + ':' + response.config.url;
                 localStorage[key] = angular.toJson(response);
+            }
+
+            //kinda weird that this is a 200.. (should be status 401, which should end up in responseError, how to fix?)
+            if (response.data.message && response.data.message === 'Authorization has been denied for this request.') {
+                window.location.href = "/";
             }
 
             return response;
