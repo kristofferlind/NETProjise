@@ -83,7 +83,7 @@ describe('Service: Project', function () {
 
     describe('Method: activate', function() {
         it('should set active project on backend', function() {
-            $httpBackend.expectPUT('/api/projects/id/active').respond(201);
+            $httpBackend.expectPUT('/api/users/me/activate/project/id').respond(201);
             Project.activate(project);
             $httpBackend.flush();
         });
@@ -100,7 +100,7 @@ describe('Service: Project', function () {
             var insertProject = {
                 name:'name',
                 description:'description',
-                users:['id']
+                users: [{_id: 'id', activeProject: 'id'}]
             };
 
             spyOn($modal, 'open').and.returnValue(fakeModal);

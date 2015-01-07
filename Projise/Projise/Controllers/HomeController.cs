@@ -50,11 +50,11 @@ namespace Projise.Controllers
                 },
                 Bundles = new List<string>()
                 {
-                    "~/bundles/jquery",
-                    "~/bundles/jqueryval",
-                    "~/bundles/modernizr",
-                    "~/bundles/bootstrap",
-                    "~/Content/css",
+                    //"~/bundles/jquery",
+                    //"~/bundles/jqueryval",
+                    //"~/bundles/modernizr",
+                    //"~/bundles/bootstrap",
+                    //"~/Content/css",
                     "~/bundles/app",
                     "~/bundles/style",
                     "~/bundles/partials"    //only works in release mode

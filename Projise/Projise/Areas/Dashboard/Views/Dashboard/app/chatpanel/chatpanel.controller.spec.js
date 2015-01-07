@@ -5,17 +5,24 @@ describe('Controller: ChatpanelController', function () {
     beforeEach(module('projiSeApp'));
     beforeEach(module('socketMock'));
 
-    var ChatpanelController,
+    var ChatpanelController, q,
         scope,
         Chat = {
-            sendMessage: function() {}
+            sendMessage: function () {
+                var deferred = q.defer();
+                deferred.resolve();
+                return deferred.promise;
+            }
         };
 
       // Initialize the controller and a mock scope
-    beforeEach(inject(function ($controller, $rootScope) {
+    beforeEach(inject(function ($controller, $rootScope, PanelSwitch, $timeout, $q) {
         scope = $rootScope.$new();
+        q = $q;
         ChatpanelController = $controller('ChatpanelController', {
             $scope: scope,
+            PanelSwitch: PanelSwitch, 
+            $timeout: $timeout,
             Chat: Chat
         });
     }));

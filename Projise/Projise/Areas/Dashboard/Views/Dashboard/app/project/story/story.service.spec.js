@@ -180,7 +180,8 @@ describe('Service: Story', function () {
                     _id: 'id',
                     name: 'name',
                     description: 'description',
-                    status: 'not started'
+                    status: 'not started',
+                    userId: null
                 };
 
                 $httpBackend.expectPUT('/api/stories/id', editedStory).respond(201);
@@ -195,8 +196,9 @@ describe('Service: Story', function () {
                     _id: 'id',
                     name: 'name',
                     description: 'description',
-                    status: 'completed'
-                };
+                    status: 'completed',
+                    userId: null
+            };
 
                 $httpBackend.expectPUT('/api/stories/id', editedStory).respond(null);
                 Story.User.finish(story2);

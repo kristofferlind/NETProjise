@@ -79,7 +79,7 @@ angular.module('projiSeApp', [
             }
 
             //kinda weird that this is a 200.. (should be status 401, which should end up in responseError, how to fix?)
-            if (response.data.message && response.data.message === 'Authorization has been denied for this request.') {
+            if (response.data && response.data.message && response.data.message === 'Authorization has been denied for this request.') {
                 window.location.href = "/";
             }
 

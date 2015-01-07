@@ -40,7 +40,7 @@ describe('Service: DocumentManager', function () {
         DocumentManager = _DocumentManager_;
         $httpBackend = _$httpBackend_;
         $modal = _$modal_;
-        $httpBackend.expectGET('/api/documentsMeta').respond(docs);
+        $httpBackend.expectGET('/api/documents').respond(docs);
         fakeModal = fakeModal;
     }));
 
@@ -57,7 +57,7 @@ describe('Service: DocumentManager', function () {
     describe('Method: create', function() {
         it('should request user input and save to backend', function() {
             spyOn($modal, 'open').and.returnValue(fakeModal);
-            $httpBackend.expectPOST('/api/documentsMeta', doc).respond(null);
+            $httpBackend.expectPOST('/api/documents', doc).respond(null);
             DocumentManager.create();
             fakeModal.close(doc);
             $httpBackend.flush();
@@ -75,7 +75,7 @@ describe('Service: DocumentManager', function () {
     describe('Method: update', function() {
         it('should request user input and save to backend', function() {
             spyOn($modal, 'open').and.returnValue(fakeModal);
-            $httpBackend.expectPOST('/api/documentsMeta', doc).respond(null);
+            $httpBackend.expectPOST('/api/documents', doc).respond(null);
             DocumentManager.create();
             fakeModal.close(doc);
             $httpBackend.flush();
@@ -89,7 +89,7 @@ describe('Service: DocumentManager', function () {
                 data: 'data'
             };
 
-            $httpBackend.expectPUT('/api/documentsData/id', doc).respond(201);
+            $httpBackend.expectPUT('/api/documents', doc).respond(201);
             DocumentManager.updateData(doc);
             $httpBackend.flush();
         });
@@ -102,7 +102,7 @@ describe('Service: DocumentManager', function () {
                 data: 'data'
             };
 
-            $httpBackend.expectPUT('/api/documentsData/id', doc).respond(201);
+            $httpBackend.expectPUT('/api/documents', doc).respond(201);
             DocumentManager.updateData(doc);
             $httpBackend.flush();
         });

@@ -1,4 +1,4 @@
-describe('Controller: SettingsCtrl', function () {
+xdescribe('Controller: SettingsCtrl', function () {
     'use strict';
 
     // load the controller's module

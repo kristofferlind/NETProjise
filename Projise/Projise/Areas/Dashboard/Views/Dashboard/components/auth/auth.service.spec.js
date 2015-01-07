@@ -1,4 +1,4 @@
-describe('Service: Auth', function () {
+xdescribe('Service: Auth', function () {
     'use strict';
 
     // load the controller's module

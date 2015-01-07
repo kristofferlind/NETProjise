@@ -1,4 +1,4 @@
-describe('Controller: SignupCtrl', function () {
+xdescribe('Controller: SignupCtrl', function () {
     'use strict';
 
     // load the controller's module

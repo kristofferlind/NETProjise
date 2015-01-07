@@ -76,7 +76,7 @@ describe('Service: Team', function () {
 
     describe('Method: activate', function() {
         it('should set active team on backend', function() {
-            $httpBackend.expectPUT('/api/teams/id/active', team).respond(201);
+            $httpBackend.expectPUT('/api/users/me/activate/team/id').respond(201);
             Team.activate(team);
             $httpBackend.flush();
         });
@@ -137,7 +137,7 @@ describe('Service: Team', function () {
     describe('Users:', function() {
         describe('Method: add', function() {
             it('should make a request to add user', function() {
-                $httpBackend.expectPUT('/api/teams/id/users', user).respond(201);
+                $httpBackend.expectPUT('/api/teams/users', user).respond(201);
                 Team.Users.add(user);
                 $httpBackend.flush();
             });
@@ -152,7 +152,7 @@ describe('Service: Team', function () {
 
         describe('Method: remove', function() {
             it('should send request to remove on backend', function() {
-                $httpBackend.expectDELETE('/api/teams/id/users').respond(204);
+                $httpBackend.expectDELETE('/api/teams/users/id').respond(204);
                 Team.Users.remove(user);
                 $httpBackend.flush();
             });

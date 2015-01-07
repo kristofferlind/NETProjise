@@ -105,7 +105,7 @@ angular.module('projiSeApp').factory('DocumentManager', ['$http', '$q', '$modal'
 
         /** Updates document body */
         updateData: function(documentData) {
-            $http.put('/api/documents/', documentData);
+            $http.put('/api/documents', documentData);
         },
 
         /** Deletes document */
