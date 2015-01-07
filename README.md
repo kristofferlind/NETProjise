@@ -1,13 +1,13 @@
 #Projise
 Projise is a realtime collaborative project management system with project, sprint, story and task management aswell as team management, document management, chat and ideas with voting. I also want to add calendar functionality, remote management from IDE, voice chat, charts and more statistics aswell as improvements to assessments by analyzing statistics.
 
-Site: (http://projise.azurewebsites.net)
+Site: http://projise.azurewebsites.net
 
 ##Project Description
 This is going to be a rebuild of projise with a few modifications and additional features.  
-Demo: (http://projise-klind.rhcloud.com/) - test@test.com/test, free account on openshift which puts it to sleep, sometimes needs a refresh.  
-Domain model and design: (https://github.com/kristofferlind/projise/blob/master/documentation/domain.md)  
-Source: (https://github.com/kristofferlind/projise)  
+Demo: http://projise-klind.rhcloud.com/ - test@test.com/test, free account on openshift which puts it to sleep, sometimes needs a refresh.  
+Domain model and design: [link](https://github.com/kristofferlind/projise/blob/master/documentation/domain.md)  
+Source: [link](https://github.com/kristofferlind/projise)  
 Report: [link](report.md) - Swedish
 
 ##Technology
