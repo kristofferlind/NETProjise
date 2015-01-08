@@ -110,8 +110,8 @@ angular.module('projiSeApp').factory('Story', ['$http', '$modal', '$rootScope', 
                  */
                 add: function(story) {
                     story.sprintId = _sprintId;
-                    console.log(story);
-                    console.log(_sprintId);
+                    //console.log(story);
+                    //console.log(_sprintId);
                     Story.update(story);
                 },
                 /**

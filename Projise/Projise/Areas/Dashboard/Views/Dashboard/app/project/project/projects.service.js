@@ -3,7 +3,7 @@
  * @name  Project
  * @description Service to manage projects
  */
-angular.module('projiSeApp').factory('Project', ['$http', '$modal', '$timeout', '$rootScope', 'ProjectProvider', 'Session', function($http, $modal, $timeout, $rootScope, ProjectProvider, Session) {
+angular.module('projiSeApp').factory('Project', ['$http', '$modal', '$timeout', '$rootScope', 'ProjectProvider', 'Session', '$state', '$stateParams', function ($http, $modal, $timeout, $rootScope, ProjectProvider, Session, $state, $stateParams) {
     'use strict';
 
     var _user = Session.user(),
@@ -42,11 +42,18 @@ angular.module('projiSeApp').factory('Project', ['$http', '$modal', '$timeout', 
              * @description Set project as active project locally and update in backend
              */
             activate: function (project) {
-                console.log(project);
                 _activeProjectId = project._id;
                 _activeProject = project;
-                //$http.put('/api/projects/' + project._id + '/active');
-                $http.put('/api/users/me/activate/project/' + project._id);
+
+                //Since only active project is synced, we need to reload all data resolved for routes
+                //We also need to switch group in signalr so that this project is synced instead.
+                $http.put('/api/users/me/activate/project/' + project._id).then(function () {
+                    //This forces resolve to reload for one route, we need all of them
+                    //$state.transitionTo('dashboard.project.sprint', $stateParams, { reload: true, inherit: true, notify: true });
+
+                    //This solution is crap, but it works until we solve how to do it correctly
+                    document.location.reload();
+                })
             },
             /**
              * @ngdoc function

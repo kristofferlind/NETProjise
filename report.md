@@ -44,10 +44,10 @@ När koppling till servern sedan upptäcks gås listan från localstorage igenom
 Samtliga knappar som utför någon form av radering är satt till disabled vid arbete offline.
 
 ###Synkronisering
-Om SignalR har varit anslutet buffras meddelanden som skulle ha skickats till klienten och skickas vid återanslutning.
+Om SignalR har varit anslutet buffras meddelanden som skulle ha skickats till klienten och skickas vid återanslutning. Har det gått mer än 5min sedan anslutningen fanns eller ingen anslutning har funnits görs en refresh vid connect för att tvinga att allt laddas från server igen.
 
 ####Problem
-Om SignalR inte varit anslutet innan arbete offline kommer data från andra användare att saknas och systemet är ur synk. Min tanke här är att bygga en operationslogg så att ändringar sedan den data man har kan efterfrågas, men jag har inte hunnit lösa detta.
+Omladdning av sidan för att ladda om data via nätverk känns som en riktigt dålig lösning, men jag har inte hittat något sätt att tvinga reload för resolve på alla routes. Jag har hittat lösning för en route, men skulle behöva göra detta på två routes för att det skulle fungera. Skulle också kunna tvinga reload av resolve för alla routes, men då är istället frågan när jag ska stänga av det igen. En alternativ lösning skulle vara att ha en operationslogg och vid connect hämta alla operationer som gjorts för aktivt projekt sedan senaste mottagna operation.
 
 Det görs inga kontroller för om data ändrats sedan läsning, här tänker jag mig en lösning med optimistic concurrency; versionshantering på samtliga objekt och i första hand bara ett felmeddelande. I förlängningen skulle två formulär presenteras vid sidan av varandra. Ett med den data man försökt spara och ett med uppdaterad data från databasen. Kanske något försök till automatisk merge vid enklare objekt.
 

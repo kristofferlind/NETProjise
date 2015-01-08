@@ -63,6 +63,31 @@ angular.module('projiSeApp', [
     $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
 }])
 
+//Could use this to set reload to always be done for resolve, but when to set it back again in that case?
+////http://stackoverflow.com/questions/22730868/ui-routers-resolve-functions-are-only-called-once
+//.config(function($provide) {
+//    $provide.decorator('$state', function($delegate) {
+//        var originalTransitionTo = $delegate.transitionTo;
+//        $delegate.transitionTo = function (to, toParams, options) {
+
+             //In Hub:
+//            //if never online and connected
+//            //set justConnected = true, timeout(=false, 5min) 5min? or send events from all resolves that they are done?
+//            //then reload: justConnected
+
+
+//            //if never online and connected
+//            //refresh window
+
+//            return originalTransitionTo(to, toParams, angular.extend({
+//                reload: true
+//            }, options));
+//        };
+//        return $delegate;
+//    });
+//})
+
+
 .factory('offlineInterceptor', ['$q', '$rootScope', 'Notify', function ($q, $rootScope, Notify) {
     'use strict';
 

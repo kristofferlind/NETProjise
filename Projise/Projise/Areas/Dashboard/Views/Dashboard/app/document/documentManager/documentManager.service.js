@@ -72,7 +72,7 @@ angular.module('projiSeApp').factory('DocumentManager', ['$http', '$q', '$modal'
             DocumentManager.activeDocumentData = angular.copy(doc);
 
             deferred.resolve();
-            console.log()
+            //console.log()
 
             //DocumentManager.activeDocument = angular.copy(documentMeta);
             //$http.get('/api/documentsData/' + documentMeta._id).success(function(documentData) {

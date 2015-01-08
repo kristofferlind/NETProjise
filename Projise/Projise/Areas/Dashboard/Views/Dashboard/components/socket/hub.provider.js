@@ -1,5 +1,5 @@
 ﻿//Based on https://github.com/JustMaier/angular-signalr-hub
-angular.module('projiSeApp').factory('Hub', ['$q', '$rootScope', 'SyncManager', function ($q, $rootScope, SyncManager) {
+angular.module('projiSeApp').factory('Hub', ['$q', '$rootScope', 'SyncManager', '$timeout', function ($q, $rootScope, SyncManager, $timeout) {
     'use strict';
 
     var connection = null,
@@ -59,45 +59,64 @@ angular.module('projiSeApp').factory('Hub', ['$q', '$rootScope', 'SyncManager', 
             Hub.connection.error(options.errorHandler);
         }
 
-        Hub.connection.disconnected = function () {
-            console.log('disconnected');
-        }
-
-        Hub.connection.reconnected = function () {
-            console.log('managed to reconnect');
-        }
-
-        Hub.connection.reconnecting = function () {
-            //console.log('trying to reconnect');
-        }
-
         Hub.connection.stateChanged(function (state) {
             var old = state.oldState,
                 current = state.newState,
-                states = $.signalR.connectionState;
+                states = $.signalR.connectionState,
+                hasBeenOnline = false,
+                hasBeenOffline = false,
+                lastDisconnected,
+                now = new Date(),
+                tooLongSinceConnected;
+
+            if (lastDisconnected) {
+                tooLongSinceConnected = now.getTime() - lastDisconnected.getTime() > 5 * 60 * 1000;
+            }
+
 
             switch (current) {
                 case states.connecting:
-                    //$rootScope.$apply(function () {
-                    //    $rootScope.isOnline = false;
-                    //})
+                    $timeout(function () {
+                        $rootScope.isOnline = false;
+                    });
                     break;
                 case states.connected:
-                    //console.log('managed to connect');
-                    $rootScope.$apply(function () {
+                    //This is really ugly, but it would work..
+                    //var now = new Date();
+                    //if (localStorage['lastConnect'] && now.getTime() - angular.fromJson(localStorage['lastConnect']) > 15000) {
+                    //    window.location.href = "/Dashboard";      //this would work if we could invalidate resolvedata
+                    //}
+                    //localStorage['lastConnect'] = angular.toJson(new Date());
+
+                    //console.log('hasBeenOnline', hasBeenOnline);
+                    //console.log('hasBeenOffline',hasBeenOffline);
+
+                    if ((!hasBeenOnline && hasBeenOffline) || (hasBeenOnline && lastDisconnected && tooLongSinceConnected)) {
+                        document.location.reload();
+
+                        //This would reload resolves, but not all of them, cant use?
+                        //$state.transitionTo($state.current, $stateParams, { reload: true, inherit: false, notify: true });
+                    }
+
+                    $timeout(function () {
+                        hasBeenOnline = true;
                         $rootScope.isOnline = true;
                         SyncManager.sync();
                     })
                     break;
                 case states.reconnecting:
-                    //console.log('trying to reconnect');
-                    $rootScope.$apply(function () {
+                    if (hasBeenOnline && old === states.connected) {
+                        lastDisconnected = new Date();
+                        hasBeenOffline = true;
+                    }
+
+                    $timeout(function () {
                         $rootScope.isOnline = false;
                     })
                     break;
                 case states.disconnected:
-                    //console.log('lost connection to server :(');
-                    $rootScope.$apply(function () {
+                    hasBeenOffline = true;
+                    $timeout(function () {
                         $rootScope.isOnline = false;
                     })
                     break;

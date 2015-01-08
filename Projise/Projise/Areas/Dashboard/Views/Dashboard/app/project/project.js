@@ -13,9 +13,6 @@ angular.module('projiSeApp')
             resolve: {
                 resolvedProjectProvider: ['ProjectProvider', function(ProjectProvider) {
                     return ProjectProvider.promise;
-                }],
-                resolvedSprintProvider: ['SprintProvider', function(SprintProvider) {
-                    return SprintProvider.promise;
                 }]
             }
         })
@@ -42,6 +39,17 @@ angular.module('projiSeApp')
         .state('dashboard.project.sprint', {
             url: '/sprint',
             //authenticate: true,
+            resolve: {
+                resolvedSprintProvider: ['SprintProvider', function (SprintProvider) {
+                    return SprintProvider.promise;
+                }],
+                checkActiveSprint: ['Sprint', function (Sprint) {
+                    return Sprint.setActiveSprint();
+                }],
+                checkSprintBacklog: ['StoryProvider', function (StoryProvider) {
+                    return StoryProvider.promiseSprintBacklog;
+                }]
+            },
             views: {
                 'main@': {
                     templateUrl: 'Areas/Dashboard/Views/Dashboard/app/project/sprint/sprint.html',
@@ -52,6 +60,14 @@ angular.module('projiSeApp')
         .state('dashboard.project.story', {
             url: '/story',
             //authenticate: true,
+            resolve: {
+                resolvedSprintProvider: ['SprintProvider', function (SprintProvider) {
+                    return SprintProvider.promise;
+                }],
+                checkActiveSprint: ['Sprint', function (Sprint) {
+                    return Sprint.setActiveSprint();
+                }]
+            },
             views: {
                 'main@': {
                     templateUrl: 'Areas/Dashboard/Views/Dashboard/app/project/story/story.html',

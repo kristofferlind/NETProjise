@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using Owin;
 using Projise.App_Infrastructure;
 using System;
+//using Signalr.MongoDb;
 
 [assembly: OwinStartupAttribute(typeof(Projise.Startup))]
 namespace Projise
@@ -44,6 +45,10 @@ namespace Projise
             ConfigureAuth(app);
             app.MapSignalR();
             GlobalHost.DependencyResolver.Register(typeof(JsonSerializer), () => JsonSerializerFactory.Value);
+
+            //var mongoconf = new MongoScaleoutConfiguration("Mongo");
+
+            //GlobalHost.DependencyResolver.UseMongoDb(mongoconf);
         }
     }
 }
