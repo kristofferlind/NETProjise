@@ -13,6 +13,9 @@ angular.module('projiSeApp')
             resolve: {
                 resolvedProjectProvider: ['ProjectProvider', function(ProjectProvider) {
                     return ProjectProvider.promise;
+                }],
+                resolvedSprintProvider: ['SprintProvider', function (SprintProvider) {
+                    return SprintProvider.promise;
                 }]
             }
         })
@@ -40,14 +43,11 @@ angular.module('projiSeApp')
             url: '/sprint',
             //authenticate: true,
             resolve: {
-                resolvedSprintProvider: ['SprintProvider', function (SprintProvider) {
-                    return SprintProvider.promise;
-                }],
-                checkActiveSprint: ['Sprint', function (Sprint) {
-                    return Sprint.setActiveSprint();
-                }],
+                //checkActiveSprint: ['Sprint', function (Sprint) {
+                //    return Sprint.setActiveSprint();
+                //}],
                 checkSprintBacklog: ['StoryProvider', function (StoryProvider) {
-                    return StoryProvider.promiseSprintBacklog;
+                    return StoryProvider.promiseSprintBacklog();
                 }]
             },
             views: {
@@ -61,13 +61,16 @@ angular.module('projiSeApp')
             url: '/story',
             //authenticate: true,
             resolve: {
-                resolvedSprintProvider: ['SprintProvider', function (SprintProvider) {
-                    return SprintProvider.promise;
-                }],
-                checkActiveSprint: ['Sprint', function (Sprint) {
-                    return Sprint.setActiveSprint();
+                //resolvedSprintProvider: ['SprintProvider', function (SprintProvider) {
+                //    return SprintProvider.promise;
+                //}],
+                //checkActiveSprint: ['Sprint', function (Sprint) {
+                //    return Sprint.setActiveSprint();
+                //}],
+                checkSprintBacklog: ['StoryProvider', function (StoryProvider) {
+                    return StoryProvider.promiseSprintBacklog();
                 }]
-            },
+    },
             views: {
                 'main@': {
                     templateUrl: 'Areas/Dashboard/Views/Dashboard/app/project/story/story.html',

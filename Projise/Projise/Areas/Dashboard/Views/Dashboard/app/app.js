@@ -97,9 +97,17 @@ angular.module('projiSeApp', [
         //    config.headers.X-Requested-With = 'XMLHttpRequest';
         //},
         response: function (response) {
+            //console.log(response);
+
+            if (response.config.url === '/api/users/me') {
+                localStorage['me'] = angular.toJson(response);
+            }
+
             //cache data if get request
             if (response.config.method === 'GET' && $rootScope.user && $rootScope.user.activeProject) {
                 var key = $rootScope.user.activeProject + ':' + response.config.url;
+                //console.log(key);
+                localStorage['activeProject'] = $rootScope.user.activeProject;
                 localStorage[key] = angular.toJson(response);
             }
 
@@ -113,12 +121,30 @@ angular.module('projiSeApp', [
         responseError: function (response) {
             //try to load data from cache if GET
             var deferred = $q.defer();
+            //console.log('responseError');
 
-            if (response.config.method === 'GET' && !$rootScope.isOnline && $rootScope.user && $rootScope.user.activeProject) {
-                var key = $rootScope.user.activeProject + ':' + response.config.url;
+            if (response.config.url === '/api/users/me') {
+                var me = angular.fromJson(localStorage['me']);
+                //console.log('me', me);
+                deferred.resolve(me);
+            }
+
+            if (response.config.method === 'GET' && !$rootScope.isOnline) {
+                var activeProject;
+
+                if ($rootScope.user && $rootScope.user.activeProject) {
+                    activeProject = $rootScope.user.activeProject;
+                } else {
+                    activeProject = localStorage['activeProject'];
+                }
+
+                var key = activeProject + ':' + response.config.url;
+                //console.log(key);
                 var data = localStorage[key];
                 if (data) {
-                    deferred.resolve(angular.fromJson(data));
+                    var found = angular.fromJson(data);
+                    //console.log('found', found);
+                    deferred.resolve(found);
                 } else {
                     deferred.reject('no-cache');
                 }

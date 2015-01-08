@@ -46,7 +46,7 @@ html, body {
 
 .grid-1-3 {
     @include span(4 of 12);
-    min-width: 300px;
+    min-width: 400px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;

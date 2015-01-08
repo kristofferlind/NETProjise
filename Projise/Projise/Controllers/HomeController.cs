@@ -46,7 +46,8 @@ namespace Projise.Controllers
                 },
                 Fallback = new Dictionary<string, string>() 
                 {
-                    { Url.Action("Index", "Home"), Url.Action("Index", "Dashboard", new {area = "Dashboard"}) }
+                    //Fallback needed, but all api requests fail when this is present..
+                    //{ Url.Action("Index", "Home"), Url.Action("Index", "Dashboard", new {area = "Dashboard"}) }
                 },
                 Bundles = new List<string>()
                 {

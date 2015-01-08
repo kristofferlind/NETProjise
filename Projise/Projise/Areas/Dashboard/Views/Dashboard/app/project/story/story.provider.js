@@ -3,7 +3,7 @@
  * @name  StoryProvider
  * @description Manages data for stories and makes sure local instance is in sync with backend
  */
-angular.module('projiSeApp').factory('StoryProvider', ['$http', 'socket', 'Sprint', '$timeout', function($http, socket, Sprint, $timeout) {
+angular.module('projiSeApp').factory('StoryProvider', ['$http', 'socket', 'Sprint', '$timeout', '$state', function($http, socket, Sprint, $timeout, $state) {
     'use strict';
 
     var tries = 0,
@@ -12,60 +12,27 @@ angular.module('projiSeApp').factory('StoryProvider', ['$http', 'socket', 'Sprin
             StoryProvider.backlog.length = 0;
             angular.copy(stories, StoryProvider.backlog);
             socket.syncUpdates('story', StoryProvider.backlog);
-            //Sprintbacklog
-            //var storiesInSprint = stories.filter(function (story) {
-            //    return story.sprintId == StoryProvider.sprintId;
-            //});
-            //angular.copy(storiesInSprint, StoryProvider.sprintBacklog);
-            //socket.syncUpdates('story', StoryProvider.sprintBacklog, true);
         }),
         sprintBacklog = function () {
-            return StoryProvider.Sprint.sprint().succes(function () {
+            return Sprint.setActiveSprint().then(function () {
                 var storiesInSprint = StoryProvider.backlog.filter(function (story) {
-                    return story.sprintId == StoryProvider.sprintId;
+                    return story.sprintId == Sprint.activeSprintId;
                 });
                 angular.copy(storiesInSprint, StoryProvider.sprintBacklog);
                 socket.syncUpdates('story', StoryProvider.sprintBacklog, true);
-            })
+            }, function (err) {
+                $state.go('dashboard.project.project');
+                //$location.path('/project');
+                //document.location.href = '/dashboard/#/project';
+            });
         },
-
-        //Promise so we can make sure its loaded at statechange also retries because sprintId might not be ready
-        //Change this so we can work based on a promise instead
-        //sprintBacklog = function() {
-        //    return StoryProvider.backlog.filter(function (story) {
-        //        console.log(story);
-        //        return story.sprintId == StoryProvider.sprintId;
-        //    })
-        //},
-        //sprintBacklog = function() {
-        //    //If sprintId exists, we can make the request right away
-        //    if (StoryProvider.sprintId) {
-        //        return $http.get('/api/stories/' + StoryProvider.sprintId).success(function(stories) {
-        //            StoryProvider.sprintBacklog.length = 0;
-        //            angular.copy(stories, StoryProvider.sprintBacklog);
-        //            socket.syncUpdates('story', StoryProvider.sprintBacklog, true);
-        //        });
-        //    } else {
-        //        //If we've tried 10 times, stop trying
-        //        if (tries >= 10) {
-        //            return;
-        //        }
-        //        //Otherwise, try again in 50ms
-        //        else {
-        //            tries += 1;
-        //            $timeout(function() {
-        //                sprintBacklog();
-        //            }, 50);
-        //        }
-        //    }
-        //},
         StoryProvider = {
             promiseBacklog: backlog,
             promiseSprintBacklog: sprintBacklog,
             backlog: [],
             sprintBacklog: [],
-            sprintId: Sprint.activeSprintId,
-            sprint: Sprint.activeSprint()
+            //sprintId: Sprint.activeSprintId,
+            //sprint: Sprint.activeSprint()
         };
 
     //sprintBacklog();

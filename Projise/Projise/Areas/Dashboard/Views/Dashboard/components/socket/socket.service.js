@@ -113,7 +113,7 @@ angular.module('projiSeApp')
 
                         cb(event, item, array);
                     }
-                    if (!isSkippedNotification) {
+                    if (!isSkippedNotification && !item.notSynced) {
                         Notify.success(modelName + ': ' + item.name + ' ' + event);
                     }
                 }
@@ -126,13 +126,13 @@ angular.module('projiSeApp')
                         });
                     });
                     cb(event, item, array);
-                    if (!isSkippedNotification) {
+                    if (!isSkippedNotification && !item.notSynced) {
                         Notify.success(modelName + ': ' + item.name + ' ' + event)
                     }
                 }
 
                 var handleError = function (error) {
-                    console.error(error);
+                    //console.error(error);
                 }
 
                 var hub = new Hub('projectHub', {

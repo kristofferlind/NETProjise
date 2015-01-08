@@ -143,8 +143,8 @@
   },
   "Scss": {
     "CompileOnBuild": false,
-    "CompileOnSave": true,
-    "EnableChainCompilation": true,
+    "CompileOnSave": false,
+    "EnableChainCompilation": false,
     "GenerateSourceMaps": true,
     "MinifyInPlace": false,
     "NumberPrecision": 5,

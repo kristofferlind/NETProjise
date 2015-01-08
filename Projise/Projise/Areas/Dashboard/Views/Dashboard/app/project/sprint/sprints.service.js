@@ -6,7 +6,7 @@
  * @required SprintProvider
  * @description Service for managing sprints
  */
-angular.module('projiSeApp').factory('Sprint', ['$http', '$modal', 'SprintProvider', '$rootScope', 'Notify', '$q', '$state', function($http, $modal, SprintProvider, $rootScope, Notify, $q, $state) {
+angular.module('projiSeApp').factory('Sprint', ['$http', '$modal', 'SprintProvider', '$rootScope', 'Notify', '$q', '$state', '$location', function($http, $modal, SprintProvider, $rootScope, Notify, $q, $state, $location) {
     'use strict';
 
     var _sprints = SprintProvider.sprints, _activeSprint,
@@ -44,7 +44,9 @@ angular.module('projiSeApp').factory('Sprint', ['$http', '$modal', 'SprintProvid
                 if (!found) {
                     Notify.warning('Could not find active sprint, please create one.');
                     deferred.reject();
-                    $state.go('dashboard.project.project');
+                    //$state.go('dashboard.project.project');
+                    //$location.path('/project');
+                    //document.location.href = '/dashboard/#/project';
                 }
                 return deferred.promise;
             },

@@ -109,9 +109,7 @@ angular.module('projiSeApp').factory('Story', ['$http', '$modal', '$rootScope', 
                  * @description Add story to Sprint backlog
                  */
                 add: function(story) {
-                    story.sprintId = _sprintId;
-                    //console.log(story);
-                    //console.log(_sprintId);
+                    story.sprintId = Sprint.activeSprintId;
                     Story.update(story);
                 },
                 /**
@@ -210,7 +208,7 @@ angular.module('projiSeApp').factory('Story', ['$http', '$modal', '$rootScope', 
         };
 
     //Set current story for user
-    Story.User.setStory();
+    //Story.User.setStory();
 
     //Is a watch really needed here? (should probably update this manually instead)
     $rootScope.$watch(function() {

@@ -70,9 +70,8 @@ angular.module('projiSeApp').factory('Hub', ['$q', '$rootScope', 'SyncManager', 
                 tooLongSinceConnected;
 
             if (lastDisconnected) {
-                tooLongSinceConnected = now.getTime() - lastDisconnected.getTime() > 5 * 60 * 1000;
+                tooLongSinceConnected = now.getTime() - lastDisconnected.getTime() > 25000;
             }
-
 
             switch (current) {
                 case states.connecting:
@@ -88,8 +87,11 @@ angular.module('projiSeApp').factory('Hub', ['$q', '$rootScope', 'SyncManager', 
                     //}
                     //localStorage['lastConnect'] = angular.toJson(new Date());
 
-                    //console.log('hasBeenOnline', hasBeenOnline);
-                    //console.log('hasBeenOffline',hasBeenOffline);
+                    console.log('hasBeenOnline', hasBeenOnline);
+                    console.log('hasBeenOffline', hasBeenOffline);
+                    console.log(lastDisconnected);
+                    console.log('toolong', tooLongSinceConnected);
+                    console.log('shouldReload', (!hasBeenOnline && hasBeenOffline) || (hasBeenOnline && lastDisconnected && tooLongSinceConnected));
 
                     if ((!hasBeenOnline && hasBeenOffline) || (hasBeenOnline && lastDisconnected && tooLongSinceConnected)) {
                         document.location.reload();
@@ -112,13 +114,19 @@ angular.module('projiSeApp').factory('Hub', ['$q', '$rootScope', 'SyncManager', 
 
                     $timeout(function () {
                         $rootScope.isOnline = false;
+                        Hub.connection.start();
                     })
                     break;
                 case states.disconnected:
                     hasBeenOffline = true;
                     $timeout(function () {
                         $rootScope.isOnline = false;
-                    })
+                    });
+
+                    $timeout(function () {
+                        Hub.connection.start();
+                    }, 5000);
+
                     break;
             }
         })
