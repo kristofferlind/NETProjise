@@ -4,7 +4,7 @@
                 <li class="chat-message" ng-repeat="message in Chat.messages"><div class="chat-message-body"><img class="userimage" ng-src="http://www.gravatar.com/avatar/{{message.user.md5Hash}}"><b>{{message.user.userName}}:</b> <span ng-bind-html="message.message | linky:'_blank' | lineBreak"></span></div></li>
             </ul>
             <form class="chat-form">
-                <textarea class="chat-send" type="text" ng-model="newMessage.message" ng-keydown="sendMessage($event)"></textarea>
+                <textarea ng-disabled="!user.activeProject" class="chat-send" type="text" ng-model="newMessage.message" ng-keydown="sendMessage($event)"></textarea>
             </form>
         </div>
 </section>

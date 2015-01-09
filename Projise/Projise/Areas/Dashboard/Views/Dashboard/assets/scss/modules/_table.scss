@@ -5,6 +5,7 @@
     empty-cells: show;
     border: 1px solid #cbcbcb;
     width: 100%;
+    word-break: break-all;
 }
 
 .table caption {
@@ -16,13 +17,14 @@
 
 .table td,
 .table th {
-    border-left: 1px solid #cbcbcb;/*  inner column border */
+    border-left: 1px solid #cbcbcb; /*  inner column border */
     border-width: 0 0 0 1px;
     font-size: inherit;
     margin: 0;
     overflow: visible; /*to make ths where the title is really long work*/
     padding: 6px 12px; /* cell padding */
 }
+
 .table td:first-child,
 .table th:first-child {
     border-left-width: 0;
@@ -43,6 +45,7 @@ striping:
 .table td {
     background-color: transparent;
 }
+
 .table-odd td {
     background-color: #f2f2f2;
 }
@@ -56,6 +59,7 @@ striping:
 .table-bordered td {
     border-bottom: 1px solid #cbcbcb;
 }
+
 .table-bordered tbody > tr:last-child td,
 .table-horizontal tbody > tr:last-child td {
     border-bottom-width: 0;
@@ -69,6 +73,7 @@ striping:
     border-width: 0 0 1px 0;
     border-bottom: 1px solid #cbcbcb;
 }
+
 .table-horizontal tbody > tr:last-child td {
     border-bottom-width: 0;
 }

@@ -87,11 +87,11 @@ angular.module('projiSeApp').factory('Hub', ['$q', '$rootScope', 'SyncManager', 
                     //}
                     //localStorage['lastConnect'] = angular.toJson(new Date());
 
-                    console.log('hasBeenOnline', hasBeenOnline);
-                    console.log('hasBeenOffline', hasBeenOffline);
-                    console.log(lastDisconnected);
-                    console.log('toolong', tooLongSinceConnected);
-                    console.log('shouldReload', (!hasBeenOnline && hasBeenOffline) || (hasBeenOnline && lastDisconnected && tooLongSinceConnected));
+                    //console.log('hasBeenOnline', hasBeenOnline);
+                    //console.log('hasBeenOffline', hasBeenOffline);
+                    //console.log(lastDisconnected);
+                    //console.log('toolong', tooLongSinceConnected);
+                    //console.log('shouldReload', (!hasBeenOnline && hasBeenOffline) || (hasBeenOnline && lastDisconnected && tooLongSinceConnected));
 
                     if ((!hasBeenOnline && hasBeenOffline) || (hasBeenOnline && lastDisconnected && tooLongSinceConnected)) {
                         document.location.reload();

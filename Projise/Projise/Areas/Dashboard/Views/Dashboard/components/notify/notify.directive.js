@@ -18,7 +18,7 @@ angular.module('projiSeApp')
             //Add notification
             var addNotification = function(notification) {
                 //ttl = time to live, sets the time the notification is shown based on length of message
-                var ttl = 1000 + notification.text.length * 65;
+                var ttl = 1000 + notification.text.length * 90;
                 $scope.notifications.push(notification);
                 $timeout(function() {
                     $scope.deleteNotification(notification);

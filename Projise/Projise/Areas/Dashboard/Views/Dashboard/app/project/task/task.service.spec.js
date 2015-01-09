@@ -53,7 +53,6 @@ describe('Service: Task', function () {
         fakeModal = fakeModal;
     }));
 
-
     it('should be defined', function() {
         expect(Task).toBeDefined();
     });
@@ -94,7 +93,7 @@ describe('Service: Task', function () {
     });
 
     describe('Method: update', function() {
-        it('should delete document on backend', function() {
+        it('should update document on backend', function () {
             $httpBackend.expectPUT('/api/tasks/id', task).respond(null);
             Task.update(task);
             $httpBackend.flush();

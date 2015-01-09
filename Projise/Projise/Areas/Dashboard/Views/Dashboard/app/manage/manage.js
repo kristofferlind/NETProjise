@@ -13,7 +13,7 @@ angular.module('projiSeApp')
         })
         .state('dashboard.manage.projects', {
             url: '/',
-            authenticate: true,
+            //authenticate: true,
             resolve: {
                 resolvedProjectProvider: ['ProjectProvider', function(ProjectProvider) {
                     return ProjectProvider.promise;
@@ -28,7 +28,7 @@ angular.module('projiSeApp')
         })
         .state('dashboard.manage.teams', {
             url: '/teams',
-            authenticate: true,
+            //authenticate: true,
             resolve: {
                 resolvedTeamProvider: ['TeamProvider', function(TeamProvider) {
                     return TeamProvider.promise;

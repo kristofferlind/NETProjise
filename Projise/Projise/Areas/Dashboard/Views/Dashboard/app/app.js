@@ -59,7 +59,7 @@ angular.module('projiSeApp', [
     });
 }])
 
-.config(['$httpProvider', function($httpProvider) {
+.config(['$httpProvider', function ($httpProvider) {
     $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
 }])
 
@@ -189,7 +189,7 @@ angular.module('projiSeApp', [
 
                 //do a switch based on status?
                 //if response.status === 401, throw user to login (is this handled by .net?)
-                
+
 
 
                 //Is this a validationerror?
@@ -201,7 +201,6 @@ angular.module('projiSeApp', [
                         var property = modelErrors[prop];
                         for (var err in property) {
                             var error = property[err];
-                            //console.log(error);
                             Notify.error(prop + ': ' + error);
                         }
                     }
@@ -214,6 +213,21 @@ angular.module('projiSeApp', [
     }
 
     return requestInterceptor;
+}])
+
+.run(['$rootScope', 'Notify', '$location', function ($rootScope, Notify, $location) {
+    'use strict';
+
+    //Redirect to manage projects if user doesn't have an active project
+    $rootScope.$on('$stateChangeStart', function (event, next) {
+        var hasActiveProject = $rootScope.user && $rootScope.user.activeProject;
+
+        if (!hasActiveProject && next.name !== 'dashboard.manage.projects') {
+            Notify.info('You need to create and activate a project to navigate there.');
+            event.preventDefault();
+            $location.path('/');
+        }
+    });
 }]);
 
 

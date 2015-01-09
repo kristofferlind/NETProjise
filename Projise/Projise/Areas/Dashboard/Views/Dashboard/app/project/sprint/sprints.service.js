@@ -6,7 +6,7 @@
  * @required SprintProvider
  * @description Service for managing sprints
  */
-angular.module('projiSeApp').factory('Sprint', ['$http', '$modal', 'SprintProvider', '$rootScope', 'Notify', '$q', '$state', '$location', function($http, $modal, SprintProvider, $rootScope, Notify, $q, $state, $location) {
+angular.module('projiSeApp').factory('Sprint', ['$http', '$modal', 'SprintProvider', '$rootScope', 'Notify', '$q', function($http, $modal, SprintProvider, $rootScope, Notify, $q) {
     'use strict';
 
     var _sprints = SprintProvider.sprints, _activeSprint,
