@@ -52,7 +52,7 @@ describe('Service: Team', function () {
         },
         user = {
             _id: 'id',
-            name: 'name'
+            activeTeam: 'id'
         };
 
     // Initialize the controller and a mock scope
@@ -99,7 +99,7 @@ describe('Service: Team', function () {
             var insertTeam = {
                 name:'name',
                 description:'description',
-                users:['id']
+                users:[user]
             };
 
             spyOn($modal, 'open').and.returnValue(fakeModal);

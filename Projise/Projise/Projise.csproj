@@ -296,14 +296,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Areas\Chatty\ChattyAreaRegistration.cs" />
-    <Compile Include="Areas\Chatty\Controllers\ChatController.cs" />
-    <Compile Include="Areas\Chatty\Controllers\MessageController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Dashboard\DashboardAreaRegistration.cs" />
-    <Compile Include="Areas\Traffic\Controllers\TrafficController.cs" />
-    <Compile Include="Areas\Traffic\Controllers\TrafficInfoController.cs" />
-    <Compile Include="Areas\Traffic\TrafficAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\DocumentsController.cs" />
@@ -333,14 +327,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Chatty\Content\dyn.css" />
-    <Content Include="Areas\Chatty\Content\pic\b.jpg" />
-    <Content Include="Areas\Chatty\Content\pic\clock.png" />
-    <Content Include="Areas\Chatty\Content\pic\delete.png" />
-    <Content Include="Areas\Chatty\Content\pic\favicon.png" />
-    <Content Include="Areas\Chatty\Content\pic\logo.png" />
-    <Content Include="Areas\Chatty\Scripts\Message.js" />
-    <Content Include="Areas\Chatty\Scripts\MessageBoard.js" />
     <Content Include="Areas\Dashboard\Views\.gitattributes" />
     <Content Include="Areas\Dashboard\Views\.gitignore" />
     <Content Include="Areas\Dashboard\Views\.tmp\app\app.css" />
@@ -580,12 +566,8 @@
     <Content Include="Areas\Dashboard\Views\Gruntfile.js" />
     <Content Include="Areas\Dashboard\Views\karma.conf.js" />
     <Content Include="Areas\Dashboard\Views\protractor.conf.js" />
-    <Content Include="Areas\Traffic\Content\site.css" />
-    <Content Include="Areas\Traffic\Scripts\trafficInfo.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\original\bootstrap.css" />
-    <Content Include="Content\original\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -738,10 +720,6 @@
     <Content Include="Areas\Dashboard\Views\package.json" />
     <Content Include="Areas\Dashboard\Views\README.md" />
     <Content Include="Areas\Dashboard\Views\e2e\.jshintrc" />
-    <Content Include="Areas\Chatty\Views\web.config" />
-    <Content Include="Areas\Chatty\Views\Chat\Index.cshtml" />
-    <Content Include="Areas\Traffic\Views\web.config" />
-    <Content Include="Areas\Traffic\Views\Traffic\Index.cshtml" />
     <Content Include="Areas\Dashboard\Views\Dashboard\assets\fonts\fontawesome-webfont.eot" />
     <Content Include="Areas\Dashboard\Views\Dashboard\assets\fonts\fontawesome-webfont.ttf" />
     <Content Include="Areas\Dashboard\Views\Dashboard\assets\fonts\fontawesome-webfont.woff" />
@@ -882,10 +860,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Chatty\Views\Shared\" />
     <Folder Include="Areas\Dashboard\Views\Dashboard\app\document\templateManager\" />
     <Folder Include="Areas\Dashboard\Views\Shared\" />
-    <Folder Include="Areas\Traffic\Views\Shared\" />
     <Folder Include="Controllers\Api\" />
   </ItemGroup>
   <ItemGroup>

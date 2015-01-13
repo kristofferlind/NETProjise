@@ -8,7 +8,10 @@ describe('Controller: sprintEditController', function () {
     var sprintEditController,
         scope,
         modalInstance = {},
-        sprint = {};
+        sprint = {
+            start: '',
+            end: ''
+        };
 
       // Initialize the controller and a mock scope
     beforeEach(inject(function ($controller, $rootScope) {
