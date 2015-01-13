@@ -46,10 +46,11 @@ html, body {
 
 .grid-1-3 {
     @include span(4 of 12);
-    min-width: 400px;
+    min-width: 300px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+    min-height: 300px;
 }
 
 .grid-2-3 {

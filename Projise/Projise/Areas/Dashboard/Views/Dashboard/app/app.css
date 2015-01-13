@@ -79,10 +79,11 @@ html, body {
   float: left;
   padding-left: 1.04167%;
   padding-right: 1.04167%;
-  min-width: 400px;
+  min-width: 300px;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  min-height: 300px; }
 
 .grid-2-3 {
   -moz-box-sizing: border-box;
@@ -558,7 +559,8 @@ https://github.com/yui/pure/blob/master/LICENSE.md
   empty-cells: show;
   border: 1px solid #cbcbcb;
   width: 100%;
-  word-break: break-all; }
+  /*-ms-word-break: break-word;
+  word-break: break-word;*/ }
 
 .table caption {
   color: #000;
@@ -2643,7 +2645,8 @@ body {
   font-size: 30px;
   margin-left: 40px;
   line-height: 30px;
-  position: absolute; }
+  position: absolute;
+  z-index: 105; }
 
 .navbar-project {
   width: 100%;
@@ -2858,6 +2861,9 @@ input.story-filter {
 .dropzone-task {
   display: block;
   height: 100px; }
+
+.backlog {
+  min-height: 300px; }
 
 input.task-add {
   width: calc(100% - 75px);

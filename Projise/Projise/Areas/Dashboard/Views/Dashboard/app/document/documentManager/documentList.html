@@ -2,7 +2,7 @@
     <div class="grid-3-3">
         <h2>Documents</h2>
         <ul class="list-toolbar">
-            <li><a tooltip="Create document" class="button button-primary button-small" ng-click="DocumentManager.create()"><i class="fa fa-plus"></i></a></li>
+            <li><a ng-disabled="!isOnline" tooltip="Create document" class="button button-primary button-small" ng-click="DocumentManager.create()"><i class="fa fa-plus"></i></a></li>
         </ul>
         <table class="table table-horizontal">
             <tr ng-repeat="document in DocumentManager.all">

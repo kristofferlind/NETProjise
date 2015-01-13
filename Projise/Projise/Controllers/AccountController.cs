@@ -366,7 +366,6 @@ namespace Projise.Controllers
 
                         repo.SetGoogleToken(appUser);                        
                     }
-                    //SetCsrfCookie();
 
                     return RedirectToLocal(returnUrl);
                 case Projise.Models.SignInStatus.LockedOut:
@@ -471,7 +470,6 @@ namespace Projise.Controllers
 
         private ActionResult RedirectToLocal(string returnUrl)
         {
-            SetCsrfCookie();
             if (Url.IsLocalUrl(returnUrl))
             {
                 return Redirect(returnUrl);
@@ -506,23 +504,6 @@ namespace Projise.Controllers
                 }
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
-        }
-
-        private void SetCsrfCookie()
-        {
-            //var cookie1 = Request.Cookies.Get(".AspNet.ApplicationCookie");
-            //var cookie2 = Response.Cookies.Get(".AspNet.ApplicationCookie");
-            //var cookie3 = ControllerContext.RequestContext.HttpContext.Response.Headers;
-            //var cookie4 = HttpContext.GetOwinContext().Response.Cookies;
-            //var cookie5 = HttpContext.GetOwinContext().Request.Cookies;
-            //var cookie6 = HttpContext.GetOwinContext().Response.Headers;
-            //var cookie7 = HttpContext.GetOwinContext().Request.Headers;
-
-            //var authCookie = Response.Cookies.Get(".AspNet.ApplicationCookie");
-
-            //var csrfToken = new CSRFToken().GenerateCsrfTokenFromAuthToken(authCookie.Value);
-            //var csrfCookie = new HttpCookie("XSRF-TOKEN", csrfToken) { HttpOnly = false };
-            //HttpContext.Response.Cookies.Add(csrfCookie);
         }
         #endregion
     }

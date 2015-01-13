@@ -1,7 +1,7 @@
 <div class="grid">
     <div class="grid-3-3"><h1>My Task</h1></div>
     <section class="grid-1-3">
-        <div drop drop-type="current" on-drop="Story.User.stop($item)">
+        <div class="backlog" drop drop-type="current" on-drop="Story.User.stop($item)">
         <h2>Sprint backlog</h2>
         <div class="story-filter-container">Filter: <input class="story-filter" type="text" ng-model="filter.sbFilter">
             <button tooltip="Show completed stories" class="button completed button-small" ng-click="filter.sbStatus = 'completed'">
@@ -35,7 +35,7 @@
                 <td class="task-toggle-td"><input class="task-toggle" type="checkbox" ng-model="task.isDone"></td>
                 <td class="task-td-description">{{task.description}}</td>
                 <td class="button-group-inline">
-                <button tooltip="Edit task" class="button button-secondary button-small" ng-click="Task.update(task)"><i class="fa fa-cog"></i></button>
+                <!--<button tooltip="Edit task" class="button button-secondary button-small" ng-click="Task.update(task)"><i class="fa fa-cog"></i></button>-->
                 <button tooltip="Delete task" class="button button-small button-error" ng-click="Task.delete(task)"><i class="fa fa-trash-o"></i></button></td>
             </tr>
         </table>

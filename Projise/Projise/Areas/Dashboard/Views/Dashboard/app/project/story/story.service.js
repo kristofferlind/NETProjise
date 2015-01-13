@@ -3,7 +3,7 @@
  * @name  Story
  * @description Service for managing stories
  */
-angular.module('projiSeApp').factory('Story', ['$http', '$modal', '$rootScope', 'StoryProvider', 'Sprint', 'Session', 'Task', function($http, $modal, $rootScope, StoryProvider, Sprint, Session, Task) {
+angular.module('projiSeApp').factory('Story', ['$http', '$modal', '$rootScope', 'StoryProvider', 'Sprint', 'Session', 'Task', 'Notify', function($http, $modal, $rootScope, StoryProvider, Sprint, Session, Task, Notify) {
     'use strict';
 
     var _user = Session.user(),
@@ -108,7 +108,11 @@ angular.module('projiSeApp').factory('Story', ['$http', '$modal', '$rootScope', 
                  * @param {Object} story Story data
                  * @description Add story to Sprint backlog
                  */
-                add: function(story) {
+                add: function (story) {
+                    if (!story.points) {
+                        Notify.warning('Points should be set for story before planning work on it.');
+                        return;
+                    }
                     story.sprintId = Sprint.activeSprintId;
                     Story.update(story);
                 },
@@ -160,6 +164,8 @@ angular.module('projiSeApp').factory('Story', ['$http', '$modal', '$rootScope', 
                 start: function (story) {
                     //Make sure there's not another active story or this one is already active
                     if (story.userId || Story.User.story) {
+                        console.log(story);
+                        Notify.warning('Somebody is already working on this task.');
                         return;
                     }
                     //Update status

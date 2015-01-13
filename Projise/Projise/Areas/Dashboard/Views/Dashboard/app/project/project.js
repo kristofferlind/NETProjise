@@ -70,7 +70,7 @@ angular.module('projiSeApp')
                 checkSprintBacklog: ['StoryProvider', function (StoryProvider) {
                     return StoryProvider.promiseSprintBacklog();
                 }]
-    },
+            },
             views: {
                 'main@': {
                     templateUrl: 'Areas/Dashboard/Views/Dashboard/app/project/story/story.html',

@@ -113,7 +113,7 @@ angular.module('projiSeApp', [
 
             //kinda weird that this is a 200.. (should be status 401, which should end up in responseError, how to fix?)
             if (response.data && response.data.message && response.data.message === 'Authorization has been denied for this request.') {
-                window.location.href = "/";
+                document.location.reload();
             }
 
             return response;
@@ -222,9 +222,12 @@ angular.module('projiSeApp', [
     $rootScope.$on('$stateChangeStart', function (event, next) {
         var hasActiveProject = $rootScope.user && $rootScope.user.activeProject;
 
+        //if ($rootScope.user && !$rootScope.user.activeProject && next.name !== 'dashboard.manage.projects') {
         if (!hasActiveProject && next.name !== 'dashboard.manage.projects') {
-            Notify.info('You need to create and activate a project to navigate there.');
-            event.preventDefault();
+            if ($rootScope.user) {
+                Notify.info('You need to create and activate a project to navigate there.');
+                event.preventDefault();
+            }
             $location.path('/');
         }
     });
@@ -266,3 +269,21 @@ angular.module('projiSeApp', [
 //        });
 //    });
 //}]);
+
+//https://github.com/angular-ui/bootstrap/issues/1696
+angular.module('ui.bootstrap.modal').directive('modalWindow', ['$timeout', function ($timeout) {
+    return {
+        priority: 1,
+        link: function (scope, element, attrs) {
+            var form = element.find('form');
+            if (form) {
+                var input = form.find('input');
+                if (input) {
+                    $timeout(function () {
+                        input.select();
+                    });
+                }
+            }
+        }
+    };
+}]);

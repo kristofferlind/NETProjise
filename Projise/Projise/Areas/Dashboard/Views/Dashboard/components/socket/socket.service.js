@@ -32,7 +32,7 @@ angular.module('projiSeApp')
                  */
                 var lastChange = 0;
 
-                var isSkippedNotification = (modelName === 'document' || modelName === 'user' || modelName === 'message' || isSprintBacklog === true);
+                var isSkippedNotification = (modelName === 'document' || modelName === 'user' || modelName === 'task' || modelName === 'message' || isSprintBacklog === true);
 
 
                 var reSync = function () {

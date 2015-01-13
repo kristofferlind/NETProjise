@@ -37,6 +37,10 @@ namespace Projise.DomainModel.Repositories
 
         public override void Add(Team collectionItem)
         {
+            if (collectionItem.Users == null)
+            {
+                collectionItem.Users = new List<User>();
+            }
             collectionItem.Users.Clear();
             collectionItem.Users.Add(user);
             collection.Insert<Team>(collectionItem);
@@ -56,10 +60,12 @@ namespace Projise.DomainModel.Repositories
 
         public void RemoveUser(ObjectId teamId, ObjectId userId)
         {
-            collection.FindAndRemove(new FindAndRemoveArgs
+            collection.FindAndModify(new FindAndModifyArgs
             {
-                Query = Query<Team>.Where(t => t.Users.All(u => u.Id == userId))
+                Query = Query<Team>.EQ(t => t.Id, teamId),
+                Update = Update<Team>.Pull<User>(t => t.Users, builder => builder.EQ(u => u.Id, userId))
             });
+
             var team = FindById(teamId);
             Sync(new SyncEventArgs<IEntity>("save", team));
         }

@@ -1,5 +1,5 @@
 <div class="story-item grid {{story.status | toCSSName}} {{activeSprint}}" ng-class="{nosync: story.notSynced}">
-    <div class="grid-1-6 story-item-priority"><span ng-if="!story.points">?</span>{{story.points}}</div>
+    <div class="grid-1-6 story-item-priority"><span ng-if="!story.points">?</span><span ng-if="story.points">{{story.points}}</span></div>
     <div class="grid-5-6 story-item-body ">
     <span class="story-item-delete" ng-transclude></span>
         <p><b>{{story.name}}</b> - {{story.description}}</p>

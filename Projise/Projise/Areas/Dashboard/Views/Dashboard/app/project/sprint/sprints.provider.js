@@ -11,7 +11,6 @@ angular.module('projiSeApp').factory('SprintProvider', ['$http', 'socket', '$roo
         SprintProvider.sprints.length = 0;
         angular.copy(sprints, SprintProvider.sprints);
         socket.syncUpdates('sprint', SprintProvider.sprints, false, updated);
-        //updated();
     }),
     updated = function (event, item, array) {
         $rootScope.$broadcast('sprints:updated');

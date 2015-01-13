@@ -28,6 +28,7 @@ namespace Projise.Controllers
             teamRepository = new TeamRepository(AppUser);
             teamService = new TeamService(AppUser);
             teamRepository.OnChange += SyncManager.OnChange;
+            teamService.OnChange += SyncManager.OnChange;
         }
 
         // GET: api/Team
@@ -68,14 +69,18 @@ namespace Projise.Controllers
         [ValidateModel]
         public void AddUser([FromBody]User user)
         {
+            if (SessionUser.ActiveTeam == new ObjectId("000000000000000000000000"))
+            {
+                throw new ArgumentNullException("Active team needed to add member.");
+            }
             teamService.AddUser(SessionUser.ActiveTeam, user.Email);
         }
 
         [HttpDelete]
         [Route("api/teams/users/{id}")]
-        public void RemoveUser(string pId, string uId)
+        public void RemoveUser(string id)
         {
-            var userId = ObjectId.Parse(uId);
+            var userId = ObjectId.Parse(id);
             teamService.RemoveUser(SessionUser.ActiveTeam, userId);
         }
     }

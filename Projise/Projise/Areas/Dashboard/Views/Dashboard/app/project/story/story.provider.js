@@ -3,7 +3,7 @@
  * @name  StoryProvider
  * @description Manages data for stories and makes sure local instance is in sync with backend
  */
-angular.module('projiSeApp').factory('StoryProvider', ['$http', 'socket', 'Sprint', '$timeout', '$location', function($http, socket, Sprint, $timeout, $location) {
+angular.module('projiSeApp').factory('StoryProvider', ['$http', 'socket', 'Sprint', '$timeout', '$location', '$q', function($http, socket, Sprint, $timeout, $location, $q) {
     'use strict';
 
     var tries = 0,
@@ -14,28 +14,38 @@ angular.module('projiSeApp').factory('StoryProvider', ['$http', 'socket', 'Sprin
             socket.syncUpdates('story', StoryProvider.backlog);
         }),
         sprintBacklog = function () {
-            return Sprint.setActiveSprint().then(function () {
-                var storiesInSprint = StoryProvider.backlog.filter(function (story) {
-                    return story.sprintId == Sprint.activeSprintId;
+            var deferred = $q.defer();
+            var sprints = Sprint.all();
+            if (sprints && sprints.length > 0) {
+                Sprint.setActiveSprint().then(function () {
+                    var storiesInSprint = StoryProvider.backlog.filter(function (story) {
+                        return story.sprintId == Sprint.activeSprintId;
+                    });
+                    angular.copy(storiesInSprint, StoryProvider.sprintBacklog);
+                    socket.syncUpdates('story', StoryProvider.sprintBacklog, true);
+                    deferred.resolve();
+                }, function (err) {
+                    $location.path('/project');
+                    deferred.reject();
                 });
-                angular.copy(storiesInSprint, StoryProvider.sprintBacklog);
-                socket.syncUpdates('story', StoryProvider.sprintBacklog, true);
-            }, function (err) {
-                //$state.go('dashboard.project.project');
-                $location.path('/project');
-                //document.location.href = '/dashboard/#/project';
-            });
+            } else {
+                if (tries >= 10) {
+                    deferred.reject();
+                } else {
+                    tries++;
+                    $timeout(function () {
+                        sprintBacklog();
+                    }, 50);
+                }
+            }
+            return deferred.promise;
         },
         StoryProvider = {
             promiseBacklog: backlog,
             promiseSprintBacklog: sprintBacklog,
             backlog: [],
             sprintBacklog: [],
-            //sprintId: Sprint.activeSprintId,
-            //sprint: Sprint.activeSprint()
         };
-
-    //sprintBacklog();
 
     return StoryProvider;
 }]);

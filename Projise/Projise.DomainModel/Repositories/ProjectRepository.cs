@@ -73,10 +73,12 @@ namespace Projise.DomainModel.Repositories
 
         public void RemoveUser(ObjectId projectId, ObjectId userId)
         {
-            collection.FindAndRemove(new FindAndRemoveArgs
+            collection.FindAndModify(new FindAndModifyArgs
             {
-                Query = Query<Project>.Where(p => p.Users.All(u => u.Id == userId))
+                Query = Query<Project>.EQ(p => p.Id, projectId),
+                Update = Update<Project>.Pull<User>(p => p.Users, builder => builder.EQ(u => u.Id, userId))
             });
+
             var project = FindById(projectId);
             Sync(new SyncEventArgs<IEntity>("save", project));
         }

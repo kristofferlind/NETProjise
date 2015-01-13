@@ -27,7 +27,13 @@ angular.module('projiSeApp').factory('Task', ['$http', '$modal', 'socket', funct
                 //Update getter
                 Task.all = angular.copy(tasks);
                 //Setup sync with backend
-                socket.syncUpdates('task', Task.all);
+                var _tasks = tasks;
+                socket.syncUpdates('task', _tasks, false, function (event, item, array) {
+                    //Should put this data on story instead, this is a bad solution
+                    angular.copy(array.filter(function (task) {
+                        return task.storyId === _story._id;
+                    }), Task.all);
+                });
             });
         },
         /**

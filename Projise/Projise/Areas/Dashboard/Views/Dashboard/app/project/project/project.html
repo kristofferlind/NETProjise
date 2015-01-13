@@ -3,13 +3,13 @@
     <section class="grid-1-3">
         <h2>Sprints</h2>
         <ul class="list-toolbar">
-            <li><a tooltip="Create sprint" class="button button-primary button-small" ng-click="Sprint.create()"><i class="fa fa-plus"></i></a></li>
+            <li><a ng-disabled="!isOnline" tooltip="Create sprint" class="button button-primary button-small" ng-click="Sprint.create()"><i class="fa fa-plus"></i></a></li>
         </ul>
         <div class="story-filter-container">Sprints should be 1-4 weeks long.</div>
         <div ng-repeat="sprint in Sprint.all()">
             <div sprint-item ng-model="sprint">
                 <button tooltip="Edit sprint" class="button button-primary button-small" ng-click="Sprint.update(sprint)"><i class="fa fa-cog"></i></button>
-                <button ng-disabled="!isOnline" tooltip="Delete sprint" class="button button-error button-small" dialog-confirm dialog-message="Removing this sprint will make all it's data unavailable, are you sure this is what you want to do?" on-confirm="Sprint.delete(sprint)"><i class="fa fa-trash-o"></i></button>
+                <button ng-disabled="!isOnline" tooltip="Delete sprint" class="button button-error button-small" confirm-dialog confirm-message="Are you sure you want to delete this sprint?" on-confirm="Sprint.delete(sprint)"><i class="fa fa-trash-o"></i></button>
             </div>
         </div>
     </section>
@@ -17,7 +17,7 @@
         <div>
         <h2>Product backlog</h2>
         <ul class="list-toolbar">
-            <li><a tooltip="Create story" class="button button-primary button-small" ng-click="Story.create()"><i class="fa fa-plus"></i></a></li>
+            <li><a ng-disabled="!isOnline" tooltip="Create story" class="button button-primary button-small" ng-click="Story.create()"><i class="fa fa-plus"></i></a></li>
         </ul>
         <div class="story-filter-container">Filter: <input class="story-filter" type="text" ng-model="filter.pbFilter">
             <button tooltip="Show completed stories" class="button completed button-small" ng-click="filter.pbStatus = 'completed'">

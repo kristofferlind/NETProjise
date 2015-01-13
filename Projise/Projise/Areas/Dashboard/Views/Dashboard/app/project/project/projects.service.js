@@ -3,7 +3,7 @@
  * @name  Project
  * @description Service to manage projects
  */
-angular.module('projiSeApp').factory('Project', ['$http', '$modal', '$timeout', '$rootScope', 'ProjectProvider', 'Session', function ($http, $modal, $timeout, $rootScope, ProjectProvider, Session) {
+angular.module('projiSeApp').factory('Project', ['$http', '$modal', '$timeout', '$rootScope', 'ProjectProvider', 'Session', 'Notify', function ($http, $modal, $timeout, $rootScope, ProjectProvider, Session, Notify) {
     'use strict';
 
     var _user = Session.user(),
@@ -154,7 +154,11 @@ angular.module('projiSeApp').factory('Project', ['$http', '$modal', '$timeout', 
 
                     //Send to backend on submit
                     addUserModal.result.then(function(user) {
-                        $http.put('/api/projects/' + Project.activeProjectId() + '/users', user);
+                        $http.put('/api/projects/' + Project.activeProjectId() + '/users', user).then(function (data) {
+                            //console.log(data);
+                        }, function (err) {
+                            Notify.warning('No such user found and invitations not implemented yet. Please tell user to join Projise first.');
+                        })
                     });
                 },
                 /**

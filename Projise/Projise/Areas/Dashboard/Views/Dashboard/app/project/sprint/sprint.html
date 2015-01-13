@@ -1,49 +1,49 @@
 <div class="grid">
     <div class="grid-3-3"><h1>Plan sprint</h1></div>
     <section class="grid-1-3">
-                <div drop drop-type="sb" on-drop="Story.SprintBacklog.remove($item)">
-        <h2>Product backlog</h2>
-        <ul class="list-toolbar">
-            <li><a tooltip="Create story" class="button button-primary button-small" ng-click="Story.create()"><i class="fa fa-plus"></i></a></li>
-        </ul>
-        <div class="story-filter-container">Filter: <input class="story-filter" type="text" ng-model="filter.pbFilter">
-            <button tooltip="Show completed stories" class="button completed button-small" ng-click="filter.pbStatus = 'completed'">
-                <i class="fa fa-check"></i>
-            </button><button tooltip="Show stories in progress" class="button in-progress button-small" ng-click="filter.pbStatus = 'in progress'">
-                <i class="fa fa-cogs"></i>
-            </button><button tooltip="Show stories that needs work" class="button not-started button-small" ng-click="filter.pbStatus = 'not started'">
-                <i class="fa fa-ban"></i>
-            </button><button tooltip="Show all stories" class="button status-all button-small" ng-click="filter.pbStatus = ''">
-                <i class="fa fa-asterisk"></i>
-            </button>
-        </div>
-        <div ng-repeat="pbStory in Story.backlog() | orderBy: 'priority':true | filter: filter.pbStatus | filter: filter.pbFilter">
-            <div story-item ng-model="pbStory" drag drag-data="{{pbStory}}" drag-type="pb" drag-id="{{pbStory._id}}" >
-                <button tooltip="Edit story" class="button button-primary button-small" ng-click="Story.edit(pbStory)"><i class="fa fa-cog"></i></button>
-                <button ng-disabled="!isOnline" tooltip="Delete story" class="button button-error button-small" confirm-dialog confirm-message="Are you sure you want to remove this story?" on-confirm="Story.delete(pbStory)"><i class="fa fa-trash-o"></i></button>
+        <div class="backlog" drop drop-type="sb" on-drop="Story.SprintBacklog.remove($item)">
+            <h2>Product backlog</h2>
+            <ul class="list-toolbar">
+                <li><a ng-disabled="!isOnline" tooltip="Create story" class="button button-primary button-small" ng-click="Story.create()"><i class="fa fa-plus"></i></a></li>
+            </ul>
+            <div class="story-filter-container">Filter: <input class="story-filter" type="text" ng-model="filter.pbFilter">
+                <button tooltip="Show completed stories" class="button completed button-small" ng-click="filter.pbStatus = 'completed'">
+                    <i class="fa fa-check"></i>
+                </button><button tooltip="Show stories in progress" class="button in-progress button-small" ng-click="filter.pbStatus = 'in progress'">
+                    <i class="fa fa-cogs"></i>
+                </button><button tooltip="Show stories that needs work" class="button not-started button-small" ng-click="filter.pbStatus = 'not started'">
+                    <i class="fa fa-ban"></i>
+                </button><button tooltip="Show all stories" class="button status-all button-small" ng-click="filter.pbStatus = ''">
+                    <i class="fa fa-asterisk"></i>
+                </button>
+            </div>
+            <div ng-repeat="pbStory in Story.backlog() | orderBy: 'priority':true | filter: filter.pbStatus | filter: filter.pbFilter">
+                <div story-item ng-model="pbStory" drag drag-data="{{pbStory}}" drag-type="pb" drag-id="{{pbStory._id}}" >
+                    <button tooltip="Edit story" class="button button-primary button-small" ng-click="Story.edit(pbStory)"><i class="fa fa-cog"></i></button>
+                    <button ng-disabled="!isOnline" tooltip="Delete story" class="button button-error button-small" confirm-dialog confirm-message="Are you sure you want to remove this story?" on-confirm="Story.delete(pbStory)"><i class="fa fa-trash-o"></i></button>
+                </div>
             </div>
         </div>
-    </div>
     </section>
     <section class="grid-1-3">
-                <div drop drop-type="pb" on-drop="Story.SprintBacklog.add($item)">
-        <h2>Sprint backlog</h2>
-        <div class="story-filter-container">Filter: <input class="story-filter" type="text" ng-model="filter.sbFilter">
-            <button tooltip="Show completed stories" class="button completed button-small" ng-click="filter.sbStatus = 'completed'">
-                <i class="fa fa-check"></i>
-            </button><button tooltip="Show stories in progress" class="button in-progress button-small" ng-click="filter.sbStatus = 'in progress'">
-                <i class="fa fa-cogs"></i>
-            </button><button tooltip="Show stories that needs work" class="button not-started button-small" ng-click="filter.sbStatus = 'not started'">
-                <i class="fa fa-ban"></i>
-            </button><button tooltip="Show all stories" class="button status-all button-small" ng-click="filter.sbStatus = ''">
-                <i class="fa fa-asterisk"></i>
-            </button>
-        </div>
-        <div ng-repeat="sbStory in Story.sprintBacklog() | orderBy: 'priority':true | filter: filter.sbStatus | filter: filter.sbFilter">
-            <div story-item ng-model="sbStory" drag drag-data="{{sbStory}}" drag-type="sb" drag-id="{{sbStory._id}}" >
+        <div class="backlog" drop drop-type="pb" on-drop="Story.SprintBacklog.add($item)">
+            <h2>Sprint backlog</h2>
+            <div class="story-filter-container">Filter: <input class="story-filter" type="text" ng-model="filter.sbFilter">
+                <button tooltip="Show completed stories" class="button completed button-small" ng-click="filter.sbStatus = 'completed'">
+                    <i class="fa fa-check"></i>
+                </button><button tooltip="Show stories in progress" class="button in-progress button-small" ng-click="filter.sbStatus = 'in progress'">
+                    <i class="fa fa-cogs"></i>
+                </button><button tooltip="Show stories that needs work" class="button not-started button-small" ng-click="filter.sbStatus = 'not started'">
+                    <i class="fa fa-ban"></i>
+                </button><button tooltip="Show all stories" class="button status-all button-small" ng-click="filter.sbStatus = ''">
+                    <i class="fa fa-asterisk"></i>
+                </button>
+            </div>
+            <div ng-repeat="sbStory in Story.sprintBacklog() | orderBy: 'priority':true | filter: filter.sbStatus | filter: filter.sbFilter">
+                <div story-item ng-model="sbStory" drag drag-data="{{sbStory}}" drag-type="sb" drag-id="{{sbStory._id}}" >
+                </div>
             </div>
         </div>
-    </div>
     </section>
     <section class="grid-1-3">
         <h2>Sprint burndown chart</h2>

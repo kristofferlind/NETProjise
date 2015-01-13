@@ -44,10 +44,8 @@ angular.module('projiSeApp').factory('Sprint', ['$http', '$modal', 'SprintProvid
                 if (!found) {
                     Notify.warning('Could not find active sprint, please create one.');
                     deferred.reject();
-                    //$state.go('dashboard.project.project');
-                    //$location.path('/project');
-                    //document.location.href = '/dashboard/#/project';
                 }
+
                 return deferred.promise;
             },
             /**
@@ -67,7 +65,7 @@ angular.module('projiSeApp').factory('Sprint', ['$http', '$modal', 'SprintProvid
              * @type {Object}
              * @description Currently active sprintId
              */
-            activeSprintId: {},
+            activeSprintId: null,
             /**
              * @ngdoc method
              * @name  all
@@ -100,7 +98,7 @@ angular.module('projiSeApp').factory('Sprint', ['$http', '$modal', 'SprintProvid
              * @param {Object} sprint Sprint object
              * @description Delete project
              */
-            delete: function(sprint) {
+            delete: function (sprint) {
                 $http.delete('/api/sprints/' + sprint._id);
             },
             // find: function() {},

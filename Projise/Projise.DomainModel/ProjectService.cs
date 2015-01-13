@@ -50,6 +50,11 @@ namespace Projise.DomainModel
         public void AddUser(ObjectId projectId, string email)
         {
             var user = userRepository.FindByEmail(email);
+
+            if (user == null)
+            {
+                throw new ArgumentException("No such user found.");
+            }
             //var project = projectRepository.FindById(projectId);
             //project.Users.Add(user);
             //project.Users = project.Users.Distinct().ToList();

@@ -8,7 +8,7 @@
  * @requires $modal
  * @description Service for managing team data
  */
-angular.module('projiSeApp').factory('Team', ['$http', '$rootScope', 'TeamProvider', 'Session', '$modal', function($http, $rootScope, TeamProvider, Session, $modal) {
+angular.module('projiSeApp').factory('Team', ['$http', '$rootScope', 'TeamProvider', 'Session', '$modal', 'Notify', function($http, $rootScope, TeamProvider, Session, $modal, Notify) {
     'use strict';
 
     var _teams = TeamProvider.teams,
@@ -65,7 +65,7 @@ angular.module('projiSeApp').factory('Team', ['$http', '$rootScope', 'TeamProvid
                 $http.post('/api/teams', {
                     name: team.name,
                     description: team.description,
-                    users: [_user._id]
+                    users: [_user]
                 });
             });
         },
@@ -129,7 +129,11 @@ angular.module('projiSeApp').factory('Team', ['$http', '$rootScope', 'TeamProvid
              * @param {Object} user Userdata
              * @description Adds user to active team
              */
-            add: function(user) {
+            add: function (user) {
+                if (!_user.activeTeam) {
+                    Notify.warning('You need to pick a team to add member to.');
+                    return;
+                }
                 return $http.put('/api/teams/users', user);
             },
             /**

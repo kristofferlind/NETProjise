@@ -130,6 +130,7 @@ describe('Service: Story', function () {
     describe('SprintBacklog: ', function() {
         var editedStory = story;
         editedStory.sprintId = 'id';
+        editedStory.points = 5;
 
         describe('Method: add', function() {
 

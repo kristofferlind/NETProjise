@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MongoDB.Driver;
 using MongoDB.Bson.Serialization.Attributes;
+using System.ComponentModel.DataAnnotations;
 
 namespace Projise.DomainModel.Entities
 {
@@ -14,6 +15,8 @@ namespace Projise.DomainModel.Entities
     {
         public ObjectId Id { get; set; }
         public string UserName { get; set; }
+        
+        [EmailAddress]
         public string Email { get; set; }
     }
 
@@ -22,6 +25,8 @@ namespace Projise.DomainModel.Entities
     {
         public ObjectId Id { get; set; }
         public string UserName { get; set; }
+
+        [EmailAddress]
         public string Email { get; set; }
         public ObjectId ActiveProject { get; set; }
         public ObjectId ActiveTeam { get; set; }
