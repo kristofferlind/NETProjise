@@ -11,7 +11,19 @@ namespace Projise.Controllers
     {
         public ActionResult Index()
         {
+            SetCsrfCookie();
             return View();
+        }
+
+        private void SetCsrfCookie()
+        {
+            var authCookie = Request.Cookies.Get(".AspNet.ApplicationCookie");
+            if (authCookie != null)
+            {
+                var csrfToken = new CSRFToken().GenerateCsrfTokenFromAuthToken(authCookie.Value);
+                var csrfCookie = new HttpCookie("XSRF-TOKEN", csrfToken) { HttpOnly = false };
+                HttpContext.Response.Cookies.Add(csrfCookie);
+            }
         }
 
         //public ActionResult About()
